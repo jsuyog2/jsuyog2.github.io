@@ -1,0 +1,24 @@
+#tapTo{
+/*    width:20%;*/
+    padding-top:10%;
+}
+.txt{
+    font-size:25px;
+    opacity: 0;
+    float: left;
+    padding: 10px;
+    position: relative;
+}
+text{
+    width: 20%;
+    position: relative;
+}
+.center{
+align-content: center;
+}
+
+.removeImg{
+/*    height: 40%;*/
+    width: 100%;
+    align-self: center;
+}
