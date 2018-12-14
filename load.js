@@ -33,6 +33,7 @@ function greeting() {
     myFilename = myFilename.toLowerCase().replace(/\b[a-z]/g, function(letter) {
     return letter.toUpperCase();
     });
+    console.log(myFilename);
     var thehours = new Date().getHours();
     var themessage;
     var morning = ('Good Morning '+myFilename);
