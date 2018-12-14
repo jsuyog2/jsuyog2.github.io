@@ -30,7 +30,7 @@ greeting();
 function greeting() {
     var getName = document.location.pathname.match(/[^\/]+$/)[0];
     var myFilename = getPageName(getName);
-    myFilename = myFilename.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+    var myFilename = myFilename.toLowerCase().replace(/\b[a-z]/g, function(letter) {
     return letter.toUpperCase();
     });
     console.log(myFilename);
