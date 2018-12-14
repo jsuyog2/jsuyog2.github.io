@@ -30,6 +30,9 @@ greeting();
 function greeting() {
     var getName = document.location.pathname.match(/[^\/]+$/)[0];
     var myFilename = getPageName(getName);
+    myFilename = myFilename.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+    return letter.toUpperCase();
+    });
     var thehours = new Date().getHours();
     var themessage;
     var morning = ('Good Morning '+myFilename);
