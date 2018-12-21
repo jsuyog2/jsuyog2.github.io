@@ -85,11 +85,11 @@ $(document).ready(function () {
         totalAdults = $("#totalAdults").val();
         startingDate = $('#startingDate').val();
         endingDate = $('#endingDate').val();
-        if (totalAdults != null && startingDate!= "" && endingDate!="") {
+        if (totalAdults != null && startingDate != "" && endingDate != "") {
             $('#error').html("");
 
 
-            console.log("totalAdults" + totalAdults);
+            // console.log("totalAdults" + totalAdults);
 
 
             //days
@@ -100,8 +100,6 @@ $(document).ready(function () {
             } else {
                 stay = days;
             }
-            var hr = (parseDate(startingDate)).getHours();
-            console.log(hr);
 
             //hotel
             if ($("#hotelEnable").prop("checked") == false) {
@@ -109,7 +107,7 @@ $(document).ready(function () {
             } else if ($("#hotelEnable").prop("checked") == true) {
                 hotelPrice = $("#hotelPrice").val();
                 hotelPricePerDay = hotelPrice * stay;
-                hotelPricePerPerson = hotelPricePerDay / totalAdults;
+               hotelPricePerPerson = Math.round(hotelPricePerDay / totalAdults);
             }
 
 
@@ -122,11 +120,11 @@ $(document).ready(function () {
                     pdAvg = $("#pdAvg").val();
                     km = $("#km").val();
                     rate = $("#rate").val();
-                    totalVehicleCost = (((km * 2) / pdAvg) * rate) / totalAdults;
+                   totalVehicleCost = Math.round((((km * 2) / pdAvg) * rate) / totalAdults);
                 } else if ($('#diffVehicle').prop("checked") == true) {
                     ticketPrice = $("#ticketPrice").val();
                     returnTicketPrice = $("#returnTicketPrice").val();
-                    totalVehicleCost = parseInt(ticketPrice) + parseInt(returnTicketPrice);
+                    totalVehicleCost= Math.round(parseInt(ticketPrice) + parseInt(returnTicketPrice));
                 }
             }
 
@@ -139,38 +137,43 @@ $(document).ready(function () {
                 lunch = $("#rateLunch").val();
                 dinner = $("#rateDinner").val();
                 var foodStay;
-                if(stay==0||stay==1){
-                    foodStay=1;
-                }else{
-                    foodStay=(stay+1);
+                if (stay == 0 || stay == 1) {
+                    foodStay = 1;
+                } else {
+                    foodStay = (stay + 1);
                 }
-                foodCostPerPerson = (parseInt(breakfast) + parseInt(lunch) + parseInt(dinner)) * foodStay;
+                foodCostPerPerson= Math.round((parseInt(breakfast) + parseInt(lunch) + parseInt(dinner)) * foodStay);
             }
 
-
+            //extra Money 
+            var extraMoney = totalAdults * stay * 150;
             //total
 
-            var perPersonCostPerDay = foodCostPerPerson + totalVehicleCost + hotelPricePerPerson;
-            console.log("foodCostPerPerson:" + foodCostPerPerson);
-            console.log("totalVehicleCost:" + totalVehicleCost);
-            console.log("hotelPricePerPerson:" + hotelPricePerPerson);
-            console.log("stay:" + stay);
-
-            var perPersonCost = perPersonCostPerDay*totalAdults;
+            var perPersonCostPerDay = foodCostPerPerson + totalVehicleCost + hotelPricePerPerson + extraMoney;
 
 
-            $('#totalBudget').html(perPersonCost);
+
+            // console.log("foodCostPerPerson:" + foodCostPerPerson);
+            // console.log("totalVehicleCost:" + totalVehicleCost);
+            // console.log("hotelPricePerPerson:" + hotelPricePerPerson);
+            // console.log("stay:" + stay);
+
+            var totalCost = perPersonCostPerDay * totalAdults;
+
+
+            $('#totalBudget').html(totalCost);
+            $('#extraMoney').html(extraMoney);
             $('#total').html(perPersonCostPerDay);
             $('#totalFood').html(foodCostPerPerson);
             $('#totalTrasportation').html(totalVehicleCost);
             $('#totalHotel').html(hotelPricePerPerson);
 
 
-        } else if(totalAdults == null){
+        } else if (totalAdults == null) {
             $('#error').html("This Total Adults is required.");
-        }else if (startingDate== "") {
+        } else if (startingDate == "") {
             $('#error').html("This 'Date From' is required.");
-        }else if (endingDate=="") {
+        } else if (endingDate == "") {
             $('#error').html("This 'Date To' is required.");
         }
     });
