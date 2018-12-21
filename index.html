@@ -59,18 +59,34 @@
                         <!-- /dates -->
                         <p style="color:red" id="error"></p>
                         <p>
-                            <label>
-                                <input id="hotelEnable" type="checkbox" />
-                                <span>Hotel?</span>
-                            </label>
-                            <label>
-                                <input id="vehicleEnable" type="checkbox" />
-                                <span>Vehicle/Trasportation?</span>
-                            </label>
-                            <label>
-                                <input id="foodEnable" type="checkbox" />
-                                <span>Food?</span>
-                            </label>
+                                Hotel?:<div2 class="switch">
+                                <label>
+                                    Off
+                                    <input id="hotelEnable" type="checkbox" />
+                                    <span class="lever"></span>
+                                    On
+                                </label>
+                            </div2>
+                            <br/> <br/>
+                            Vehicle/Trasportation?:<div2 class="switch">
+                                <label>
+                                    Off
+                                    <input id="vehicleEnable" type="checkbox" />
+                                    <span class="lever"></span>
+                                    On
+                                </label>
+                            </div2>
+                            <br/> <br/>
+                            Food?: <div2 class="switch">
+                                <label>
+                                    Off
+                                    <input id="foodEnable" type="checkbox" />
+                                    <span class="lever"></span>
+                                    On
+                                </label>
+                            </div2>
+                            <br/> <br/>
+
                         </p>
                         <!-- hotel -->
 
@@ -91,7 +107,7 @@
                                 </label>
 
                                 <label>
-                                    <input id="diffVehicle"  name="tripVehicle" type="radio" />
+                                    <input id="diffVehicle" name="tripVehicle" type="radio" />
                                     <span>Bus/Train/Flight</span>
                                 </label>
                             </p>
@@ -174,11 +190,11 @@
             <div class="col s12 l6">
                 <div class="card">
                     <div class="card-content black-text">
-                        Hotel:₹<txt id="totalHotel"></txt>/Night<br/>
-                        Trasportation:₹<txt id="totalTrasportation"></txt>/Person<br/>
-                        Food:₹<txt id="totalFood"></txt>/Person<br/>
-                        Total:₹<txt id="total"></txt><br/>
-                        Total Budget:₹<txt id="totalBudget"></txt><br/>
+                        Hotel:₹<txt id="totalHotel"></txt>/Night<br />
+                        Trasportation:₹<txt id="totalTrasportation"></txt>/Person<br />
+                        Food:₹<txt id="totalFood"></txt>/Person<br />
+                        Total:₹<txt id="total"></txt><br />
+                        Total Budget:₹<txt id="totalBudget"></txt><br />
                     </div>
                 </div>
             </div>
