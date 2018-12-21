@@ -29,7 +29,7 @@ stopInterval = setInterval(function () {
 greeting();
 function greeting() {
     var getName = document.location.pathname.match(/[^\/]+$/)[0];
-    var myFilename = getPageName(getName);
+    var myFilename = getPageName(getName).toUpperCase();
    $('.greeting').css('text-transform', 'capitalize');
     var thehours = new Date().getHours();
     var themessage;
