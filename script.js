@@ -1,11 +1,22 @@
 $(document).ready(function () {
     $('select').formSelect();
-    $('.datepicker').datepicker({
+    $('#startingDate').datepicker({
         format: "mm/dd/yyyy",
-        autoClose: true
+        autoClose: true,
+        minDate: new Date(),
+        onSelect : function(date){
+            $("#endingDate").prop('disabled', false);
+            $('#endingDate').datepicker({
+                format: "mm/dd/yyyy",
+                autoClose: true,
+                minDate: date
+            });
+        }
     });
+
     $('.timepicker').timepicker({
         autoClose: true
+
     });
     //People
     var totalAdults = 0;
@@ -43,8 +54,10 @@ $(document).ready(function () {
     //vehicleEnable Checkbox
     $("#vehicleEnable").change(function () {
         if ($(this).prop("checked") == true) {
+            
             $("#forVehicle").prop('hidden', false);
         } else if ($(this).prop("checked") == false) {
+
             $("#forVehicle").prop('hidden', true);
         }
     });
@@ -104,10 +117,14 @@ $(document).ready(function () {
             //hotel
             if ($("#hotelEnable").prop("checked") == false) {
                 hotelPricePerPerson = 0;
+               
             } else if ($("#hotelEnable").prop("checked") == true) {
                 hotelPrice = $("#hotelPrice").val();
+             if (hotelPrice!=null || hotelPrice!="") {
                 hotelPricePerDay = hotelPrice * stay;
-               hotelPricePerPerson = Math.round(hotelPricePerDay / totalAdults);
+                hotelPricePerPerson = Math.round(hotelPricePerDay / totalAdults);
+             }   
+                
             }
 
 
@@ -120,11 +137,11 @@ $(document).ready(function () {
                     pdAvg = $("#pdAvg").val();
                     km = $("#km").val();
                     rate = $("#rate").val();
-                   totalVehicleCost = Math.round((((km * 2) / pdAvg) * rate) / totalAdults);
+                    totalVehicleCost = Math.round((((km * 2) / pdAvg) * rate) / totalAdults);
                 } else if ($('#diffVehicle').prop("checked") == true) {
                     ticketPrice = $("#ticketPrice").val();
                     returnTicketPrice = $("#returnTicketPrice").val();
-                    totalVehicleCost= Math.round(parseInt(ticketPrice) + parseInt(returnTicketPrice));
+                    totalVehicleCost = Math.round(parseInt(ticketPrice) + parseInt(returnTicketPrice));
                 }
             }
 
@@ -133,20 +150,36 @@ $(document).ready(function () {
             if ($("#foodEnable").prop("checked") == false) {
                 foodCostPerPerson = 0
             } else {
+            
+              if ($("#rateBreakfast").val()!=null && $("#rateBreakfast").val()!='') {
                 breakfast = $("#rateBreakfast").val();
+                }else{
+                    breakfast = 0;
+                }
+              if ($("#rateLunch").val()!=null && $("#rateLunch").val()!='') {
                 lunch = $("#rateLunch").val();
+                }else{
+                    lunch = 0;
+                }
+              if ($("#rateDinner").val()!=null && $("#rateDinner").val()!='') {
                 dinner = $("#rateDinner").val();
+                }else{
+                    dinner = 0;
+                }
+                
+                
+                
                 var foodStay;
                 if (stay == 0 || stay == 1) {
                     foodStay = 1;
                 } else {
                     foodStay = (stay + 1);
                 }
-                foodCostPerPerson= Math.round((parseInt(breakfast) + parseInt(lunch) + parseInt(dinner)) * foodStay);
+                foodCostPerPerson = Math.round((parseInt(breakfast) + parseInt(lunch) + parseInt(dinner)) * foodStay);
             }
 
             //extra Money 
-            var extraMoney = totalAdults * stay * 150;
+            var extraMoney = totalAdults * stay * 100;
             //total
 
             var perPersonCostPerDay = foodCostPerPerson + totalVehicleCost + hotelPricePerPerson + extraMoney;
