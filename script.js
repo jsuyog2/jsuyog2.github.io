@@ -1,4 +1,8 @@
+/*jslint browser: true*/
+/*global $*/
+/*eslint-env browser*/
 $(document).ready(function () {
+    "use strict";
     $('select').formSelect();
     $('#startingDate').datepicker({
         format: "mm/dd/yyyy",
@@ -18,75 +22,93 @@ $(document).ready(function () {
         autoClose: true
 
     });
-    //People
-    var totalAdults = 0;
-    //dates
-    var startingDate = 0;
-    var endingDate = 0;
-    var days = 0;
-    //hotel
-    var hotelPrice = 0;
-    var stay = 0;
-    var hotelPricePerDay = 0;
-    var hotelPricePerPerson = 0;
-    //vehicle
-    var pdAvg = 0;
-    var km = 0;
-    var rate = 0;
-    var returnTicketPrice = 0;
-    var ticketPrice = 0;
-    var totalVehicleCost = 0;
-    //food
-    var breakfast = 0;
-    var lunch = 0;
-    var dinner = 0;
-    var foodCostPerPerson = 0;
 
+
+
+    function parseDate(str) {
+        var mdy = str.split('/');
+        return new Date(mdy[2], mdy[0] - 1, mdy[1]);
+    }
+
+    function datediff(first, second) {
+        first = parseDate(first);
+        second = parseDate(second);
+        return Math.round(Math.abs((second.getTime() - first.getTime()) / (86400000)));
+    }
+
+    //People
+    var totalAdults = 0,
+        //dates
+        startingDate = 0,
+        endingDate = 0,
+        days = 0,
+        //hotel
+        hotelPrice = 0,
+        stay = 0,
+        hotelPricePerDay = 0,
+        hotelPricePerPerson = 0,
+        //vehicle
+        pdAvg = 0,
+        km = 0,
+        rate = 0,
+        returnTicketPrice = 0,
+        ticketPrice = 0,
+        totalVehicleCost = 0,
+        //food
+        breakfast = 0,
+        lunch = 0,
+        dinner = 0,
+        foodCostPerPerson = 0,
+        //extra money
+        extraMoney = 0,
+        //perPersonCosts
+        perPersonCostPerDay = 0,
+        totalCost = 0;
 
     //hotelEnable Checkbox
     $("#hotelEnable").change(function () {
-        if ($(this).prop("checked") == true) {
+        if ($(this).prop("checked") === true) {
             $("#forHotel").prop('hidden', false);
-        } else if ($(this).prop("checked") == false) {
+        } else if ($(this).prop("checked") === false) {
             $("#forHotel").prop('hidden', true);
         }
     });
     //vehicleEnable Checkbox
     $("#vehicleEnable").change(function () {
-        if ($(this).prop("checked") == true) {
+        if ($(this).prop("checked") === true) {
 
             $("#forVehicle").prop('hidden', false);
-        } else if ($(this).prop("checked") == false) {
+        } else if ($(this).prop("checked") === false) {
 
             $("#forVehicle").prop('hidden', true);
         }
     });
     //foodEnable Checkbox
     $("#foodEnable").change(function () {
-        if ($(this).prop("checked") == true) {
+        if ($(this).prop("checked") === true) {
             $("#forFood").prop('hidden', false);
-        } else if ($(this).prop("checked") == false) {
+        } else if ($(this).prop("checked") === false) {
             $("#forFood").prop('hidden', true);
         }
     });
 
     //trip radio button
     $('input[name="tripVehicle"]').change(function () {
-        if ($('#car').prop("checked") == true) {
+        if ($('#car').prop("checked") === true) {
             $("#carDiv").prop('hidden', false);
             $("#diffVehicleDiv").prop('hidden', true);
-        } else if ($('#diffVehicle').prop("checked") == true) {
+        } else if ($('#diffVehicle').prop("checked") === true) {
             $("#carDiv").prop('hidden', true);
             $("#diffVehicleDiv").prop('hidden', false);
         }
     });
     $('input[name="foodRadio"]').change(function () {
-        if ($('#defaultFood').prop("checked") == true) {
+        if ($('#defaultFood').prop("checked") === true) {
             $("#foodDiv input").prop('disabled', true);
             $("#rateBreakfast").val(100);
             $("#rateLunch").val(200);
             $("#rateDinner").val(200);
-        } else if ($('#changeFood').prop("checked") == true) {
+        } else if ($('#changeFood').prop("checked") === true) {
             $("#foodDiv input").prop('disabled', false);
         }
     });
@@ -98,7 +120,7 @@ $(document).ready(function () {
         totalAdults = $("#totalAdults").val();
         startingDate = $('#startingDate').val();
         endingDate = $('#endingDate').val();
-        if (totalAdults != null && startingDate != "" && endingDate != "") {
+        if (totalAdults !== null && startingDate !== "" && endingDate !== "") {
             $('#error').html("");
 
 
@@ -108,19 +130,19 @@ $(document).ready(function () {
             //days
 
             days = datediff(startingDate, endingDate);
-            if (days == 0) {
+            if (days === 0) {
                 stay = 1;
             } else {
                 stay = days;
             }
 
             //hotel
-            if ($("#hotelEnable").prop("checked") == false) {
+            if ($("#hotelEnable").prop("checked") === false) {
                 hotelPricePerPerson = 0;
 
-            } else if ($("#hotelEnable").prop("checked") == true) {
+            } else if ($("#hotelEnable").prop("checked") === true) {
                 hotelPrice = $("#hotelPrice").val();
-                if (hotelPrice != null || hotelPrice != "") {
+                if (hotelPrice !== null || hotelPrice !== "") {
                     hotelPricePerDay = hotelPrice * stay;
                     hotelPricePerPerson = Math.round(hotelPricePerDay / totalAdults);
                 }
@@ -130,39 +152,39 @@ $(document).ready(function () {
 
 
             //Vehicle
-            if ($("#vehicleEnable").prop("checked") == false) {
+            if ($("#vehicleEnable").prop("checked") === false) {
                 totalVehicleCost = 0;
             } else {
-                if ($('#car').prop("checked") == true) {
+                if ($('#car').prop("checked") === true) {
 
-                    if ($("#pdAvg").val() != null && $("#pdAvg").val() != '') {
+                    if ($("#pdAvg").val() !== null && $("#pdAvg").val() !== '') {
                         pdAvg = $("#pdAvg").val();
                         $('#pdAvgError').html("");
 
                     } else {
-                        var pdAvg = 1;
+                        pdAvg = 1;
                         $('#pdAvgError').html("This Petrol/Diesel Avg. is required.");
                     }
-                    if ($("#km").val() != null && $("#km").val() != '') {
+                    if ($("#km").val() !== null && $("#km").val() !== '') {
                         km = $("#km").val();
                         $('#kmError').html("");
                     } else {
-                        var km = 0;
+                        km = 0;
                         $('#kmError').html("This Total Km is required.");
                     }
-                    if ($("#rate").val() != null && $("#rate").val() != '') {
+                    if ($("#rate").val() !== null && $("#rate").val() !== '') {
                         rate = $("#rate").val();
                         $('#rateError').html("");
 
                     } else {
-                        var rate = 0;
+                        rate = 0;
                         $('#rateError').html("This Petrol/Diesel Rate is required.");
                     }
-                    totalVehicleCost = Math.round((((km * 2) / pdAvg) * rate) / parseInt(totalAdults));
+                    totalVehicleCost = Math.round((((km * 2) / pdAvg) * rate) / parseInt(totalAdults, 10));
 
-                } else if ($('#diffVehicle').prop("checked") == true) {
+                } else if ($('#diffVehicle').prop("checked") === true) {
 
-                    if ($("#ticketPrice").val() != null && $("#ticketPrice").val() != '') {
+                    if ($("#ticketPrice").val() !== null && $("#ticketPrice").val() !== '') {
                         ticketPrice = $("#ticketPrice").val();
                         $('#ticketPriceError').html("");
 
@@ -170,36 +192,36 @@ $(document).ready(function () {
                         $('#ticketPriceError').html("This Ticket Price is required.");
                     }
 
-                    if ($("#returnTicketPrice").val() != null && $("#returnTicketPrice").val() != '') {
+                    if ($("#returnTicketPrice").val() !== null && $("#returnTicketPrice").val() !== '') {
                         returnTicketPrice = $("#returnTicketPrice").val();
                         $('#returnTicketPriceError').html("");
 
                     } else {
                         $('#returnTicketPriceError').html("This Ticket Price is required.");
                     }
-                    totalVehicleCost = Math.round(parseInt(ticketPrice) + parseInt(returnTicketPrice));
+                    totalVehicleCost = Math.round(parseInt(ticketPrice, 10) + parseInt(returnTicketPrice, 10));
                 }
             }
 
 
             //food
-            if ($("#foodEnable").prop("checked") == false) {
-                foodCostPerPerson = 0
+            if ($("#foodEnable").prop("checked") === false) {
+                foodCostPerPerson = 0;
             } else {
 
-                if ($("#rateBreakfast").val() != null && $("#rateBreakfast").val() != '') {
+                if ($("#rateBreakfast").val() !== null && $("#rateBreakfast").val() !== '') {
                     breakfast = $("#rateBreakfast").val();
                 } else {
                     breakfast = $("#rateBreakfast").val(0);
                     breakfast = 0;
                 }
-                if ($("#rateLunch").val() != null && $("#rateLunch").val() != '') {
+                if ($("#rateLunch").val() !== null && $("#rateLunch").val() !== '') {
                     lunch = $("#rateLunch").val();
                 } else {
                     lunch = $("#rateLunch").val(0);
                     lunch = 0;
                 }
-                if ($("#rateDinner").val() != null && $("#rateDinner").val() != '') {
+                if ($("#rateDinner").val() !== null && $("#rateDinner").val() !== '') {
                     dinner = $("#rateDinner").val();
                 } else {
                     dinner = $("#rateDinner").val(0);
@@ -209,19 +231,19 @@ $(document).ready(function () {
 
 
                 var foodStay;
-                if (stay == 0 || stay == 1) {
+                if (stay === 0 || stay === 1) {
                     foodStay = 1;
                 } else {
                     foodStay = (stay + 1);
                 }
-                foodCostPerPerson = Math.round((parseInt(breakfast) + parseInt(lunch) + parseInt(dinner)) * foodStay);
+                foodCostPerPerson = Math.round((parseInt(breakfast, 10) + parseInt(lunch, 10) + parseInt(dinner, 10)) * foodStay);
             }
 
             //extra Money 
-            var extraMoney = totalAdults * stay * 100;
+            extraMoney = totalAdults * stay * 100;
             //total
 
-            var perPersonCostPerDay = foodCostPerPerson + totalVehicleCost + hotelPricePerPerson + extraMoney;
+            perPersonCostPerDay = foodCostPerPerson + totalVehicleCost + hotelPricePerPerson + extraMoney;
 
 
 
@@ -230,7 +252,7 @@ $(document).ready(function () {
             // console.log("hotelPricePerPerson:" + hotelPricePerPerson);
             // console.log("stay:" + stay);
 
-            var totalCost = perPersonCostPerDay * totalAdults;
+            totalCost = perPersonCostPerDay * totalAdults;
 
 
             $('#totalBudget').html(totalCost);
@@ -241,11 +263,11 @@ $(document).ready(function () {
             $('#totalHotel').html(hotelPricePerPerson);
 
 
-        } else if (totalAdults == null) {
+        } else if (totalAdults === null) {
             $('#error').html("This Total Adults is required.");
-        } else if (startingDate == "") {
+        } else if (startingDate === "") {
             $('#error').html("This 'Date From' is required.");
-        } else if (endingDate == "") {
+        } else if (endingDate === "") {
             $('#error').html("This 'Date To' is required.");
         }
     });
@@ -253,14 +275,3 @@ $(document).ready(function () {
 
 
 });
-
-function parseDate(str) {
-    var mdy = str.split('/');
-    return new Date(mdy[2], mdy[0] - 1, mdy[1]);
-}
-
-function datediff(first, second) {
-    first = parseDate(first);
-    second = parseDate(second);
-    return Math.round(Math.abs((second.getTime() - first.getTime()) / (86400000)));
-}
