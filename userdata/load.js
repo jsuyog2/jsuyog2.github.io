@@ -1,92 +1,119 @@
-var txt1 = "Beginning today,",
-    txt2 = "treat everyone you meet as",
-    txt3 = "if they were going to be dead by",
-    txt4 = "midnight.",
-    txt5 = "Extend to them",
-    txt6 = "all the care,",
-    txt7 = "kindness and understanding you",
-    txt8 = "can muster,and",
-    txt9 = "do it with no thought of",
-    txt10 = "any reward.",
-    txt11 = "Your life will never be",
-    txt12 = "the same again.";
+ // Initialize Firebase
+ var config = {
+     apiKey: "AIzaSyA2j-RQ3-OQxQCuAUUi5uiFd-TCqxVARso",
+     authDomain: "goodmorningmessage-ada16.firebaseapp.com",
+     databaseURL: "https://goodmorningmessage-ada16.firebaseio.com",
+     projectId: "goodmorningmessage-ada16",
+     storageBucket: "goodmorningmessage-ada16.appspot.com",
+     messagingSenderId: "315271312037"
+ };
+ firebase.initializeApp(config);
+ var database = firebase.database();
 
-$('#txt1').html(txt1);
-$('#txt2').html(txt2);
-$('#txt3').html(txt3);
-$('#txt4').html(txt4);
-$('#txt5').html(txt5);
-$('#txt6').html(txt6);
-$('#txt7').html(txt7);
-$('#txt8').html(txt8);
-$('#txt9').html(txt9);
-$('#txt10').html(txt10);
-$('#txt11').html(txt11);
-$('#txt12').html(txt12);
+ var txt1 = document.getElementById("txt1");
+ var txt2 = document.getElementById("txt2");
+ var txt3 = document.getElementById("txt3");
+ var txt4 = document.getElementById("txt4");
+ var txt5 = document.getElementById("txt5");
+ var txt6 = document.getElementById("txt6");
+ var txt7 = document.getElementById("txt7");
+ var txt8 = document.getElementById("txt8");
+ var txt9 = document.getElementById("txt9");
+ var txt10 = document.getElementById("txt10");
+ var txt11 = document.getElementById("txt11");
+ var txt12 = document.getElementById("txt12");
 
-greeting();
-var cIndex = 0,
-    maxIndex = 12;
+ var txt1Ref = database.ref().child('txt1');
+ var txt2Ref = database.ref().child('txt2');
+ var txt3Ref = database.ref().child('txt3');
+ var txt4Ref = database.ref().child('txt4');
+ var txt5Ref = database.ref().child('txt5');
+ var txt6Ref = database.ref().child('txt6');
+ var txt7Ref = database.ref().child('txt7');
+ var txt8Ref = database.ref().child('txt8');
+ var txt9Ref = database.ref().child('txt9');
+ var txt10Ref = database.ref().child('txt10');
+ var txt11Ref = database.ref().child('txt11');
+ var txt12Ref = database.ref().child('txt12');
 
-function removeImg() {
-    $(".removeImg").fadeOut('slow');
-    setTimeout(function () {
-        $(".removeImg").remove();
-    }, 1000);
-}
 
-setTimeout(removeImg, 4470);
+ txt1Ref.on('value', snap => txt1.innerHTML = snap.val());
+ txt2Ref.on('value', snap => txt2.innerHTML = snap.val());
+ txt3Ref.on('value', snap => txt3.innerHTML = snap.val());
+ txt4Ref.on('value', snap => txt4.innerHTML = snap.val());
+ txt5Ref.on('value', snap => txt5.innerHTML = snap.val());
+ txt6Ref.on('value', snap => txt6.innerHTML = snap.val());
+ txt7Ref.on('value', snap => txt7.innerHTML = snap.val());
+ txt8Ref.on('value', snap => txt8.innerHTML = snap.val());
+ txt9Ref.on('value', snap => txt9.innerHTML = snap.val());
+ txt10Ref.on('value', snap => txt10.innerHTML = snap.val());
+ txt11Ref.on('value', snap => txt11.innerHTML = snap.val());
+ txt12Ref.on('value', snap => txt12.innerHTML = snap.val());
 
-function removeTxt(id) {
-    var idTxt = 'txt' + id;
-    var nextIdTxt = 'txt' + (id + 1);
-    $("#" + idTxt).fadeOut('slow');
-    console.log(idTxt);
-    $("#" + nextIdTxt).fadeIn('slow');
 
-}
+ greeting();
+ var cIndex = 0,
+     maxIndex = 12;
 
-var stopInterval;
-stopInterval = setInterval(function () {
-    if (cIndex == maxIndex) {
-        clearInterval(stopInterval);
-    }
-    removeTxt(cIndex);
+ function removeImg() {
+     $(".removeImg").fadeOut('slow');
+     setTimeout(function () {
+         $(".removeImg").remove();
+     }, 1000);
+ }
 
-    cIndex++;
-}, 4800);
+ setTimeout(removeImg, 4470);
 
-function greeting() {
-    var getName = document.location.pathname.match(/[^\/]+$/)[0];
-    var myFilename = getPageName(getName).toUpperCase();
-    $('.greeting').css('text-transform', 'capitalize');
-    var thehours = new Date().getHours();
-    var themessage;
-    var morning = ('Good Morning ' + myFilename);
-    var afternoon = ('Good Afternoon ' + myFilename);
-    var evening = ('Good Evening ' + myFilename);
-    var night = ('Good Night ' + myFilename);
+ function removeTxt(id) {
+     var idTxt = 'txt' + id;
+     var nextIdTxt = 'txt' + (id + 1);
+     $("#" + idTxt).fadeOut('slow');
+     console.log(idTxt);
+     $("#" + nextIdTxt).fadeIn('slow');
 
-    if (thehours >= 3 && thehours < 12) {
-        themessage = morning;
+ }
 
-    } else if (thehours >= 12 && thehours < 17) {
-        themessage = afternoon;
+ var stopInterval;
+ stopInterval = setInterval(function () {
+     if (cIndex == maxIndex) {
+         clearInterval(stopInterval);
+     }
+     removeTxt(cIndex);
 
-    } else if (thehours >= 17 && thehours < 22) {
-        themessage = evening;
-    } else if (thehours >= 22 && thehours < 24) {
-        themessage = night;
-    } else if (thehours >= 0 && thehours < 3) {
-        themessage = night;
-    }
+     cIndex++;
+ }, 4800);
 
-    $('.greeting').append(themessage);
-}
+ function greeting() {
+     var getName = "new"; //document.location.pathname.match(/[^\/]+$/)[0];
+     var myFilename = getPageName(getName).toUpperCase();
+     $('.greeting').css('text-transform', 'capitalize');
+     var thehours = new Date().getHours();
+     var themessage;
+     var morning = ('Good Morning ' + myFilename);
+     var afternoon = ('Good Afternoon ' + myFilename);
+     var evening = ('Good Evening ' + myFilename);
+     var night = ('Good Night ' + myFilename);
 
-function getPageName(url) {
-    var index = url.lastIndexOf("/") + 1;
-    var filenameWithExtension = url.substr(index);
-    var filename = filenameWithExtension.split(".")[0]; // <-- added this line
-    return filename; // <-- added this line
-}
+     if (thehours >= 3 && thehours < 12) {
+         themessage = morning;
+
+     } else if (thehours >= 12 && thehours < 17) {
+         themessage = afternoon;
+
+     } else if (thehours >= 17 && thehours < 22) {
+         themessage = evening;
+     } else if (thehours >= 22 && thehours < 24) {
+         themessage = night;
+     } else if (thehours >= 0 && thehours < 3) {
+         themessage = night;
+     }
+
+     $('.greeting').append(themessage);
+ }
+
+ function getPageName(url) {
+     var index = url.lastIndexOf("/") + 1;
+     var filenameWithExtension = url.substr(index);
+     var filename = filenameWithExtension.split(".")[0]; // <-- added this line
+     return filename; // <-- added this line
+ }
