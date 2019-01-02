@@ -84,7 +84,7 @@
  }, 4800);
 
  function greeting() {
-     var getName = "new"; //document.location.pathname.match(/[^\/]+$/)[0];
+     var getName =  document.location.pathname.match(/[^\/]+$/)[0];
      var myFilename = getPageName(getName).toUpperCase();
      $('.greeting').css('text-transform', 'capitalize');
      var thehours = new Date().getHours();
