@@ -40,11 +40,11 @@
      txt2Ref.set(txt2);
      txt3Ref.set(txt3);
      txt4Ref.set(txt4);
-     txt5Ref.set(txt4);
-     txt6Ref.set(txt5);
-     txt7Ref.set(txt6);
-     txt8Ref.set(txt7);
-     txt9Ref.set(txt8);
+     txt5Ref.set(txt5);
+     txt6Ref.set(txt6);
+     txt7Ref.set(txt7);
+     txt8Ref.set(txt8);
+     txt9Ref.set(txt9);
      txt10Ref.set(txt10);
      txt11Ref.set(txt11);
      txt12Ref.set(txt12);
