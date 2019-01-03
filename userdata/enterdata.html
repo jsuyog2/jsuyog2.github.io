@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
-    <title class="greeting"></title>
+    <title>Enter Data</title>
 </head>
 
 <body>
@@ -69,6 +69,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script src="conf.js"></script>
 <script src="submit.js"></script>
+<script src="auth.js"></script>
+<script>
+    var loginCheck = sessionStorage.getItem("login");
+    console.log(loginCheck);
+    
+if(loginCheck=="false"){
+   
+    
+    window.location.href = "auth";
+}
+   
+</script>
 
 </html>

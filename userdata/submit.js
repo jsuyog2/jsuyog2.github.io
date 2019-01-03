@@ -1,14 +1,4 @@
- // Initialize Firebase
- var config = {
-     apiKey: "AIzaSyA2j-RQ3-OQxQCuAUUi5uiFd-TCqxVARso",
-     authDomain: "goodmorningmessage-ada16.firebaseapp.com",
-     databaseURL: "https://goodmorningmessage-ada16.firebaseio.com",
-     projectId: "goodmorningmessage-ada16",
-     storageBucket: "goodmorningmessage-ada16.appspot.com",
-     messagingSenderId: "315271312037"
- };
- firebase.initializeApp(config);
- var database = firebase.database();
+
 
  var txt1Ref = database.ref().child('txt1');
  var txt2Ref = database.ref().child('txt2');
