@@ -62,12 +62,12 @@
      }, 1000);
  }
 
- setTimeout(removeImg, 4470);
+ setTimeout(removeImg, 2235);
 
  function removeTxt(id) {
      var idTxt = 'txt' + id;
      var nextIdTxt = 'txt' + (id + 1);
-     $("#" + idTxt).fadeOut('slow');
+    //  $("#" + idTxt).fadeOut('slow');
      console.log(idTxt);
      $("#" + nextIdTxt).fadeIn('slow');
 
@@ -79,9 +79,15 @@
          clearInterval(stopInterval);
      }
      removeTxt(cIndex);
-
+     if (cIndex == maxIndex) {
+        for (let index = 0; index <= maxIndex; index++) {
+           $("#txt" + index).fadeOut('slow');
+           console.log(index);
+           
+        }
+    }
      cIndex++;
- }, 4800);
+ }, 2400);
 
  function greeting() {
      var getName =  document.location.pathname.match(/[^\/]+$/)[0];
