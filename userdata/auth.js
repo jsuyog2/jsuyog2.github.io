@@ -20,3 +20,13 @@ $("#login").click(function () {
             console.log(error);
         });
 });
+
+$("#signOut").click(function () {
+firebase.auth().signOut().then(function() {
+    alert('Sign-out successful');
+    sessionStorage.setItem("login", false);
+    window.location.href = "auth";
+  }).catch(function(error) {
+    // An error happened.
+  });
+});
