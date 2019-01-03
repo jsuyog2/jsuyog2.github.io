@@ -76,7 +76,7 @@
     var loginCheck = sessionStorage.getItem("login");
     console.log(loginCheck);
     
-if(loginCheck=="false"){
+if(loginCheck=="false" || loginCheck==null){
    
     
     window.location.href = "auth";
