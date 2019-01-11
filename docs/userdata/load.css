@@ -8,16 +8,16 @@
     margin-left: -200px;
 }
 .txt {
-    /* height: 200px; */
-    /* width: 400px; */
+    height: 200px;
+    width: 400px;
     text-align: center;
     font-family: 'Charm', cursive;
-    /* position: fixed; */
-    /* top: 60%; */
-    /* left: 50%; */
-    font-size: 200%;
-    /* margin-top: -100px; */
-    /* margin-left: -200px; */
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    font-size: 50px;
+    margin-top: -100px;
+    margin-left: -200px;
 }
 
 .removeImg{
@@ -34,8 +34,4 @@
 }
 .greeting {
   text-transform: capitalize;
-}
-#txt13{
-    top:10%;
-    position: absolute;
 }
