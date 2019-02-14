@@ -8,9 +8,10 @@
 
 <body>
 
-    
 
- <h1 id="txt1" ></h1>
-<?php include('js.php'); ?>
-    </body>
+
+    <h1 id="txt1"></h1>
+    <?php include('js.php'); ?>
+</body>
+
 </html>
