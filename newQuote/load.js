@@ -51,7 +51,8 @@
  txt12Ref.on('value', snap => txt12.innerHTML = snap.val());
 
 
- greeting();
+
+
  var cIndex = 0,
      maxIndex = 12;
 
