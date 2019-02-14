@@ -1,13 +1,16 @@
 
 
- var txt1 = document.getElementById("txt1");
+ var title = document.getElementById("title");
+ var tagline = document.getElementById("tagline");
 
 
- var txt1Ref = database.ref().child('txt1');
+ var titleRef = database.ref().child('index/title');
+ var taglineRef = database.ref().child('index/tagline');
 
 
 
- txt1Ref.on('value', snap => txt1.innerHTML = snap.val());
+ titleRef.on('value', snap => title.innerHTML = snap.val());
+ taglineRef.on('value', snap => tagline.innerHTML = snap.val());
 
 
 
