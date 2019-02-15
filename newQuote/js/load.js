@@ -1,47 +1,44 @@
 $(document).ready(function () {
 
     if ($("#title").length != 0) {
-        firebaseReadDataIndex("title","index");
-        firebaseReadDataIndex("tagline","index");
-       
+        firebaseReadDataIndex("title", "index");
+        firebaseReadDataIndex("tagline", "index");
+
+    }
+    if ($('meta[name="login"]').length != 0) {
+        displayDataInInput("title", "index");
+        displayDataInInput("tagline", "index");
+        displayDataInInput("logo-container", "header");
+        displayDataInSection("1");
+        displayDataInSection("2");
+        displayDataInSection("3");
     }
 
     if ($('#logo-container').length != 0) {
-           firebaseReadDataIndex("logo-container","header");
+        firebaseReadDataIndex("logo-container", "header");
     }
 
     if ($('.blockSection').length != 0) {
-        var blockFirstElms = document.getElementById("blockFirst").getElementsByTagName("*");
-        firebaseReadDataForSection(blockFirstElms[1], "1", "icon");
-        firebaseReadDataForSection(blockFirstElms[2], "1", "title");
-        firebaseReadDataForSection(blockFirstElms[3], "1", "paragraph");
 
 
-        var blockSecondElms = document.getElementById("blockSecond").getElementsByTagName("*");
-        firebaseReadDataForSection(blockSecondElms[1], "2", "icon");
-        firebaseReadDataForSection(blockSecondElms[2], "2", "title");
-        firebaseReadDataForSection(blockSecondElms[3], "2", "paragraph");
 
-        var blockThirdElms = document.getElementById("blockThird").getElementsByTagName("*");
-        firebaseReadDataForSection(blockThirdElms[1], "3", "icon");
-        firebaseReadDataForSection(blockThirdElms[2], "3", "title");
-        firebaseReadDataForSection(blockThirdElms[3], "3", "paragraph");
+firebaseReadDataForSection("blockFirst","1");
+firebaseReadDataForSection("blockSecond","2");
+firebaseReadDataForSection("blockThird","3");
 
+ 
     }
 
 });
 
-function firebaseReadDataForSection(id, block, element) {
 
-    var Ref = database.ref().child('index/block/' + block + '/' + element);
-    Ref.on('value', snap => id.innerHTML = snap.val());
-}
-
-function firebaseReadDataIndex(id,section) {
-    var idGet = document.getElementById(id);
-    var Ref = database.ref().child(section+'/'+id);
-    Ref.on('value', snap => idGet.innerHTML = snap.val());
-}
+$("#submit").click(function () {
+    if ($('meta[name="login"]').length != 0) {
+        updateData('logo-containerChange', 'header', 'logo-container');
+        updateData('titleChange', 'index', 'title');
+        updateData('taglineChange', 'index', 'tagline');
+    }
+});
 
 $("#login").click(function () {
     var email = $('input[name=username]').val();
@@ -102,4 +99,48 @@ function singOut() {
     }).catch(function (error) {
         // An error happened.
     });
+}
+
+
+function firebaseReadDataForSection(id,block) {
+    var idGet = document.getElementById(id).getElementsByTagName("*");
+    var Reficon = database.ref().child('index/block/' + block + '/' + "icon");
+    var Reftitle = database.ref().child('index/block/' + block + '/' + "title");
+    var Refparagraph = database.ref().child('index/block/' + block + '/' + "paragraph");
+    
+    Reficon.on('value', snap => idGet[1].innerHTML = snap.val());
+    Reftitle.on('value', snap => idGet[2].innerHTML = snap.val());
+    Refparagraph.on('value', snap => idGet[3].innerHTML = snap.val());
+}
+
+function firebaseReadDataIndex(id, section) {
+    var idGet = document.getElementById(id);
+    var Ref = database.ref().child(section + '/' + id);
+    Ref.on('value', snap => idGet.innerHTML = snap.val());
+}
+
+function updateData(id, section, path) {
+    var value = document.getElementById(id).value;
+    var Ref = database.ref().child(section + '/' + path);
+    Ref.set(value);
+}
+
+function displayDataInInput(id, section) {
+    var idGet = document.getElementById(id + 'Change');
+    var Ref = database.ref().child(section + '/' + id);
+    Ref.on('value', snap => idGet.value = snap.val());
+    M.updateTextFields();
+}
+
+function displayDataInSection(block) {
+    var idGeticon = document.getElementById("b" + block + "icon" + 'Change');
+    var idGettitle = document.getElementById("b" + block + "title" + 'Change');
+    var idGetparagraph = document.getElementById("b" + block + "paragraph" + 'Change');
+    var Reficon = database.ref().child('index/block/' + block + '/' + "icon");
+    var Reftitle = database.ref().child('index/block/' + block + '/' + "title");
+    var Refparagraph = database.ref().child('index/block/' + block + '/' + "paragraph");
+    Reficon.on('value', snap => idGeticon.value = snap.val());
+    Reftitle.on('value', snap => idGettitle.value = snap.val());
+    Refparagraph.on('value', snap => idGetparagraph.value = snap.val());
+    M.updateTextFields();
 }
