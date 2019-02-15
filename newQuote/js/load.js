@@ -104,7 +104,7 @@ function firebaseReadDataForSection(id, block) {
     var Reftitle = database.ref().child('index/block/' + block + '/' + "title");
     var Refparagraph = database.ref().child('index/block/' + block + '/' + "paragraph");
 
-    Reficon.on('value', snap => idGet[1].innerHTML = snap.val());
+    Reficon.on('value', snap => idGet[1].src = 'https://png.icons8.com/color/'+snap.val()+'/72');
     Reftitle.on('value', snap => idGet[2].innerHTML = snap.val());
     Refparagraph.on('value', snap => idGet[3].innerHTML = snap.val());
 }
