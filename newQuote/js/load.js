@@ -1,53 +1,47 @@
 $(document).ready(function () {
 
     if ($("#title").length != 0) {
-        var title = document.getElementById("title");
-        var tagline = document.getElementById("tagline");
-        var titleRef = database.ref().child('index/title');
-        var taglineRef = database.ref().child('index/tagline');
-        titleRef.on('value', snap => title.innerHTML = snap.val());
-        taglineRef.on('value', snap => tagline.innerHTML = snap.val());
+        firebaseReadDataIndex("title","index");
+        firebaseReadDataIndex("tagline","index");
+       
     }
 
     if ($('#logo-container').length != 0) {
-        var logoContainer = document.getElementById("logo-container");
-        var logoContainerRef = database.ref().child('header/logoContainer');
-        logoContainerRef.on('value', snap => logoContainer.innerHTML = snap.val());
+           firebaseReadDataIndex("logo-container","header");
     }
 
     if ($('.blockSection').length != 0) {
         var blockFirstElms = document.getElementById("blockFirst").getElementsByTagName("*");
-        
-        var b1iconRef = database.ref().child('index/block/1/icon');
-        var b1titleRef = database.ref().child('index/block/1/title');
-        var b1paragraphRef = database.ref().child('index/block/1/paragraph');
+        firebaseReadDataForSection(blockFirstElms[1], "1", "icon");
+        firebaseReadDataForSection(blockFirstElms[2], "1", "title");
+        firebaseReadDataForSection(blockFirstElms[3], "1", "paragraph");
 
-        b1iconRef.on('value', snap => blockFirstElms[1].innerHTML = snap.val());
-        b1titleRef.on('value', snap => blockFirstElms[2].innerHTML = snap.val());
-        b1paragraphRef.on('value', snap => blockFirstElms[3].innerHTML = snap.val());
-        
+
         var blockSecondElms = document.getElementById("blockSecond").getElementsByTagName("*");
-        
-        var b2iconRef = database.ref().child('index/block/2/icon');
-        var b2titleRef = database.ref().child('index/block/2/title');
-        var b2paragraphRef = database.ref().child('index/block/2/paragraph');
+        firebaseReadDataForSection(blockSecondElms[1], "2", "icon");
+        firebaseReadDataForSection(blockSecondElms[2], "2", "title");
+        firebaseReadDataForSection(blockSecondElms[3], "2", "paragraph");
 
-        b2iconRef.on('value', snap => blockSecondElms[1].innerHTML = snap.val());
-        b2titleRef.on('value', snap => blockSecondElms[2].innerHTML = snap.val());
-        b2paragraphRef.on('value', snap => blockSecondElms[3].innerHTML = snap.val());
-        
         var blockThirdElms = document.getElementById("blockThird").getElementsByTagName("*");
-        
-        var b3iconRef = database.ref().child('index/block/3/icon');
-        var b3titleRef = database.ref().child('index/block/3/title');
-        var b3paragraphRef = database.ref().child('index/block/3/paragraph');
+        firebaseReadDataForSection(blockThirdElms[1], "3", "icon");
+        firebaseReadDataForSection(blockThirdElms[2], "3", "title");
+        firebaseReadDataForSection(blockThirdElms[3], "3", "paragraph");
 
-        b3iconRef.on('value', snap => blockThirdElms[1].innerHTML = snap.val());
-        b3titleRef.on('value', snap => blockThirdElms[2].innerHTML = snap.val());
-        b3paragraphRef.on('value', snap => blockThirdElms[3].innerHTML = snap.val());
     }
 
 });
+
+function firebaseReadDataForSection(id, block, element) {
+
+    var Ref = database.ref().child('index/block/' + block + '/' + element);
+    Ref.on('value', snap => id.innerHTML = snap.val());
+}
+
+function firebaseReadDataIndex(id,section) {
+    var idGet = document.getElementById(id);
+    var Ref = database.ref().child(section+'/'+id);
+    Ref.on('value', snap => idGet.innerHTML = snap.val());
+}
 
 $("#login").click(function () {
     var email = $('input[name=username]').val();
