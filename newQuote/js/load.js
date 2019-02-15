@@ -22,11 +22,11 @@ $(document).ready(function () {
 
 
 
-firebaseReadDataForSection("blockFirst","1");
-firebaseReadDataForSection("blockSecond","2");
-firebaseReadDataForSection("blockThird","3");
+        firebaseReadDataForSection("blockFirst", "1");
+        firebaseReadDataForSection("blockSecond", "2");
+        firebaseReadDataForSection("blockThird", "3");
 
- 
+
     }
 
 });
@@ -37,6 +37,10 @@ $("#submit").click(function () {
         updateData('logo-containerChange', 'header', 'logo-container');
         updateData('titleChange', 'index', 'title');
         updateData('taglineChange', 'index', 'tagline');
+        updateDataInSection('1');
+        updateDataInSection('2');
+        updateDataInSection('3');
+   
     }
 });
 
@@ -102,12 +106,12 @@ function singOut() {
 }
 
 
-function firebaseReadDataForSection(id,block) {
+function firebaseReadDataForSection(id, block) {
     var idGet = document.getElementById(id).getElementsByTagName("*");
     var Reficon = database.ref().child('index/block/' + block + '/' + "icon");
     var Reftitle = database.ref().child('index/block/' + block + '/' + "title");
     var Refparagraph = database.ref().child('index/block/' + block + '/' + "paragraph");
-    
+
     Reficon.on('value', snap => idGet[1].innerHTML = snap.val());
     Reftitle.on('value', snap => idGet[2].innerHTML = snap.val());
     Refparagraph.on('value', snap => idGet[3].innerHTML = snap.val());
@@ -143,4 +147,16 @@ function displayDataInSection(block) {
     Reftitle.on('value', snap => idGettitle.value = snap.val());
     Refparagraph.on('value', snap => idGetparagraph.value = snap.val());
     M.updateTextFields();
+}
+
+function updateDataInSection(block) {
+    var idGeticon = document.getElementById("b" + block + "icon" + 'Change').value;
+    var idGettitle = document.getElementById("b" + block + "title" + 'Change').value;
+    var idGetparagraph = document.getElementById("b" + block + "paragraph" + 'Change').value;
+    var Reficon = database.ref().child('index/block/' + block + '/' + "icon");
+    var Reftitle = database.ref().child('index/block/' + block + '/' + "title");
+    var Refparagraph = database.ref().child('index/block/' + block + '/' + "paragraph");
+    Reficon.set(idGeticon);
+    Reftitle.set(idGettitle);
+    Refparagraph.set(idGetparagraph);
 }
