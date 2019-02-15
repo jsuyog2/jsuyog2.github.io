@@ -3,6 +3,9 @@ $(document).ready(function () {
     if ($("#title").length != 0) {
         firebaseReadDataIndex("title", "index");
         firebaseReadDataIndex("tagline", "index");
+        firebaseReadDataForSection("blockFirst", "1");
+        firebaseReadDataForSection("blockSecond", "2");
+        firebaseReadDataForSection("blockThird", "3");
 
     }
     if ($('meta[name="login"]').length != 0) {
@@ -18,17 +21,6 @@ $(document).ready(function () {
         firebaseReadDataIndex("logo-container", "header");
     }
 
-    if ($('.blockSection').length != 0) {
-
-
-
-        firebaseReadDataForSection("blockFirst", "1");
-        firebaseReadDataForSection("blockSecond", "2");
-        firebaseReadDataForSection("blockThird", "3");
-
-
-    }
-
 });
 
 
@@ -40,7 +32,7 @@ $("#submit").click(function () {
         updateDataInSection('1');
         updateDataInSection('2');
         updateDataInSection('3');
-   
+
     }
 });
 
