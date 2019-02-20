@@ -30,7 +30,7 @@ $(document).ready(function () {
 
 
     //            
-    $(".icon").each(function (index) {
+    $(".icon").each(function () {
         var icon = $(this).html();
         $(this).html('<img src="https://png.icons8.com/color/' + icon + '">');
     });
@@ -194,7 +194,7 @@ $(document).ready(function () {
                             rate = 0;
                             $('#rateError').html("This Petrol/Diesel Rate is required.");
                         }
-                        totalVehicleCost = Math.round(((((km * 2) / pdAvg) * rate) / parseInt(totalAdults, 10)) * parseInt(totalBikesCar));
+                        totalVehicleCost = Math.round(((((km * 2) / pdAvg) * rate) / parseInt(totalAdults, 10)) * parseInt(totalBikesCar, 10));
                     } else if (totalBikesCar === null) {
                         $('#errorCar').html("This Total car is required.");
                     }
@@ -257,7 +257,7 @@ $(document).ready(function () {
 
             //extra Money 
             //            extraMoney = Math.round(500 * stay / totalAdults);
-            extraMoney = parseInt(extraMoney);
+            extraMoney = parseInt(extraMoney, 10);
             //total
 
             perPersonCostPerDay = foodCostPerPerson + totalVehicleCost + hotelPricePerPerson + extraMoney;
