@@ -28,7 +28,7 @@ $(document).ready(function () {
     //            
     $(".icon").each(function (index) {
         var icon =  $(this).html();
-       $(this).html('<img src="https://png.icons8.com/'+icon+'">');
+       $(this).html('<img src="https://png.icons8.com/color/'+icon+'">');
     });
 
 

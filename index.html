@@ -21,23 +21,38 @@
                 <div class="col s12 l12">
                     <div class="card">
                         <div class="card-content black-text">
-                            Hotel:₹<var id="totalHotel">0</var>/Person<br />
-                            Trasportation:₹<var id="totalTrasportation">0</var>/Person<br />
-                            Food:₹<var id="totalFood">0</var>/Person<br />
-                            Extra Money:<var id="extraMoney">0</var>/Person<br />
-                            Total:₹<var id="total">0</var>/Person<br />
-                            Total Budget:₹<var id="totalBudget">0</var><br />
+                            <div class="row">
+                                <div class="col s2">
+                                    <div class="icon">hotel-information</div>₹<var id="totalHotel">0</var>/Person
+                                </div>
+                                <div class="col s2">
+                                    <div class="icon">gas-station</div>₹<var id="totalTrasportation">0</var>/Person
+                                </div>
+                                <div class="col s2">
+                                    <div class="icon">dining-room</div>₹<var id="totalFood">0</var>/Person
+                                </div>
+                                <div class="col s2">
+                                    <div class="icon">rupee</div><var id="extraMoney">0</var>/Person
+                                </div>
+                                <div class="col s2">
+                                    <div class="icon">refund</div>₹<var id="total">0</var>/Person
+                                </div>
+                                <div class="col s2">
+                                    <div class="icon">bill</div>₹<var id="totalBudget">0</var>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- /total -->
                 <!-- MainCard -->
-                <div class="col s12 l3">
+
+                <div class="col s12 l12">
                     <div class="card">
                         <div class="card-content black-text">
                             <!-- total people -->
                             <div class="row">
-                                <div class="input-field col s12 m12">
+                                <div class="input-field col s6 m6 l6">
                                     <select id="totalAdults">
                                         <option value="" disabled selected>Total Adults</option>
                                         <option value="1">1</option>
@@ -51,84 +66,79 @@
                                     </select>
                                     <label>Total Adults</label>
                                 </div>
+                                <!-- /total people -->
+                                <!--extraMoney-->
+                                <div class="col s6 m6 l6">
+                                    <div class="input-field">
+                                        <input id="exMoney" min="1" type="number" value="0">
+                                        <label for="exMoney">Extra Money</label>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- /total people -->
-
+                            <!--/extraMoney-->
                             <!-- dates -->
-                            <!-- <div class="col s6 m6 l6"> -->
-                            <div class="col s12 m12 l12">
-                                <div class="input-field">
-                                    <input type="text" id="startingDate" class="datepicker">
-                                    <label for="startingDate">Date From</label>
+                            <div class="row">
+                                <div class="col s6 m6 l6">
+                                    <div class="input-field">
+                                        <input type="text" id="startingDate" class="datepicker">
+                                        <label for="startingDate">Date From</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input type="text" id="endingDate" class="datepicker" disabled>
+                                        <label for="endingDate">Date To</label>
+                                    </div>
                                 </div>
-                                <div class="input-field">
-                                    <input type="text" id="endingDate" class="datepicker" disabled>
-                                    <label for="endingDate">Date To</label>
+                                <!-- /dates -->
+                                <div class="col s6 m6 l6">
+                                    <p>
+                                        Hotel?:<var class="switch">
+                                            <label>
+
+                                                <input id="hotelEnable" type="checkbox" />
+                                                <span class="lever"></span>
+
+                                            </label>
+                                        </var>
+                                        <br /> <br />
+                                        Vehicle/Trasportation?:<var class="switch">
+                                            <label>
+
+                                                <input id="vehicleEnable" type="checkbox" />
+                                                <span class="lever"></span>
+
+                                            </label>
+                                        </var>
+                                        <br /> <br />
+                                        Food?: <var class="switch">
+                                            <label>
+
+                                                <input id="foodEnable" type="checkbox" />
+                                                <span class="lever"></span>
+
+                                            </label>
+                                        </var>
+                                        <br /> <br />
+                                    </p>
                                 </div>
                             </div>
-                            <!-- <div class="col s6 m6 l6">
-                            <div class="input-field">
-                                <input id="startingTime" type="text" class="timepicker">
-                                <label for="startingTime">Time From</label>
+                            <div class="row">
+                                <p style="color:red" id="error"></p>
+                                <br>
+                                <p><a id="submit" class="waves-effect waves-light btn">Submit</a></p>
                             </div>
-                            <div class="input-field">
-                                <input id="endingTime" type="text" class="timepicker">
-                                <label for="endingTime">Time To</label>
-                            </div>
-                        </div> -->
-                            <!-- /dates -->
-                            <div class="col s12 m12 l12">
-                                <div class="input-field">
-                                    <input id="exMoney" min="1" type="number" value="0">
-                                    <label for="exMoney">Extra Money</label>
-                                </div>
-                            </div>
-                            <p style="color:red" id="error"></p>
-                            <p>
-                                Hotel?:<var class="switch">
-                                    <label>
-
-                                        <input id="hotelEnable" type="checkbox" />
-                                        <span class="lever"></span>
-
-                                    </label>
-                                </var>
-                                <br /> <br />
-                                Vehicle/Trasportation?:<var class="switch">
-                                    <label>
-
-                                        <input id="vehicleEnable" type="checkbox" />
-                                        <span class="lever"></span>
-
-                                    </label>
-                                </var>
-                                <br /> <br />
-                                Food?: <var class="switch">
-                                    <label>
-
-                                        <input id="foodEnable" type="checkbox" />
-                                        <span class="lever"></span>
-
-                                    </label>
-                                </var>
-                                <br /> <br />
-                            </p>
-                            <a id="submit" class="waves-effect waves-light btn">Submit</a>
                         </div>
                     </div>
                 </div>
                 <!-- /MainCard -->
 
                 <!-- hotel -->
-                <div class="col s12 l3">
-                    <div id="forHotel" hidden>
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input id="hotelPrice" min="1" type="number">
-                                        <label for="hotelPrice">Hotel Price / Night</label>
-                                    </div>
+                <div id="forHotel" class="col s12 l4" hidden>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="hotelPrice" min="1" type="number">
+                                    <label for="hotelPrice">Hotel Price / Night</label>
                                 </div>
                             </div>
                         </div>
@@ -136,77 +146,75 @@
                 </div>
                 <!-- /hotel -->
                 <!-- Vehicle -->
-                <div class="col s12 l3">
-                    <div id="forVehicle" hidden>
-                        <div class="card">
-                            <div class="card-content">
-                                <p>
-                                    <label>
-                                        <input id="car" name="tripVehicle" type="radio" checked />
-                                        <span>Car/Bike</span>
-                                    </label>
+                <div id="forVehicle" class="col s12 l4" hidden>
+                    <div class="card">
+                        <div class="card-content">
+                            <p>
+                                <label>
+                                    <input id="car" name="tripVehicle" type="radio" checked />
+                                    <span>Car/Bike</span>
+                                </label>
 
-                                    <label>
-                                        <input id="diffVehicle" name="tripVehicle" type="radio" />
-                                        <span>Bus/Train/Flight</span>
-                                    </label>
-                                </p>
-                                <br />
-                                <div id="carDiv">
-                                    <div class="row">
-                                        <div class="input-field col s12 m12">
-                                            <select id="totalBikesCar">
-                                                <option value="" disabled selected>Total Bikes/Car</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                            </select>
-                                            <label>Total Bikes/Car</label>
-                                        </div>
-                                        <p id="errorCar"></p>
+                                <label>
+                                    <input id="diffVehicle" name="tripVehicle" type="radio" />
+                                    <span>Bus/Train/Flight</span>
+                                </label>
+                            </p>
+                            <br />
+                            <div id="carDiv">
+                                <div class="row">
+                                    <div class="input-field col s12 m12">
+                                        <select id="totalBikesCar">
+                                            <option value="" disabled selected>Total Bikes/Car</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                        <label>Total Bikes/Car</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="pdAvg" min="1" type="number">
-                                            <label for="pdAvg">Petrol/Diesel Avg. km/l</label>
-                                        </div>
-                                        <p id="pdAvgError"></p>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="km" min="1" type="number">
-                                            <label for="km">Total Km of One Way</label>
-                                        </div>
-                                        <p id="kmError"></p>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="rate" min="1" type="number">
-                                            <label for="rate">Petrol/Diesel Rate</label>
-                                        </div>
-                                        <p id="rateError"></p>
-                                    </div>
+                                    <p id="errorCar"></p>
                                 </div>
-                                <div id="diffVehicleDiv" hidden>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="ticketPrice" min="1" type="number">
-                                            <label for="ticketPrice">Ticket Price From Origin to Destination</label>
-                                        </div>
-                                        <p id="ticketPriceError"></p>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="pdAvg" min="1" type="number">
+                                        <label for="pdAvg">Petrol/Diesel Avg. km/l</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="returnTicketPrice" min="1" type="number">
-                                            <label for="returnTicketPrice">Ticket Price From Destination to Origin</label>
-                                        </div>
-                                        <p id="returnTicketPriceError"></p>
+                                    <p id="pdAvgError"></p>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="km" min="1" type="number">
+                                        <label for="km">Total Km of One Way</label>
                                     </div>
+                                    <p id="kmError"></p>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="rate" min="1" type="number">
+                                        <label for="rate">Petrol/Diesel Rate</label>
+                                    </div>
+                                    <p id="rateError"></p>
+                                </div>
+                            </div>
+                            <div id="diffVehicleDiv" hidden>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="ticketPrice" min="1" type="number">
+                                        <label for="ticketPrice">Ticket Price From Origin to Destination</label>
+                                    </div>
+                                    <p id="ticketPriceError"></p>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="returnTicketPrice" min="1" type="number">
+                                        <label for="returnTicketPrice">Ticket Price From Destination to Origin</label>
+                                    </div>
+                                    <p id="returnTicketPriceError"></p>
                                 </div>
                             </div>
                         </div>
@@ -214,39 +222,37 @@
                 </div>
                 <!-- /Vehicle -->
                 <!-- food -->
-                <div class="col s12 l3">
-                    <div id="forFood" hidden>
-                        <div class="card">
-                            <div class="card-content">
-                                <p>
-                                    <label>
-                                        <input id="defaultFood" name="foodRadio" type="radio" checked />
-                                        <span>Default</span>
-                                    </label>
+                <div id="forFood" class="col s12 l4" hidden>
+                    <div class="card">
+                        <div class="card-content">
+                            <p>
+                                <label>
+                                    <input id="defaultFood" name="foodRadio" type="radio" checked />
+                                    <span>Default</span>
+                                </label>
 
-                                    <label>
-                                        <input id="changeFood" name="foodRadio" type="radio" />
-                                        <span>Change Food Rates</span>
-                                    </label>
-                                </p>
-                                <div id="foodDiv">
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="rateBreakfast" type="number" value="100" min="1" disabled>
-                                            <label for="rateBreakfast">Breakfast</label>
-                                        </div>
+                                <label>
+                                    <input id="changeFood" name="foodRadio" type="radio" />
+                                    <span>Change Food Rates</span>
+                                </label>
+                            </p>
+                            <div id="foodDiv">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="rateBreakfast" type="number" value="100" min="1" disabled>
+                                        <label for="rateBreakfast">Breakfast</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="rateLunch" type="number" min="1" value="200" disabled>
-                                            <label for="rateLunch">Lunch</label>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="rateLunch" type="number" min="1" value="200" disabled>
+                                        <label for="rateLunch">Lunch</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="rateDinner" type="number" min="1" value="200" disabled>
-                                            <label for="rateDinner">Dinner</label>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="rateDinner" type="number" min="1" value="200" disabled>
+                                        <label for="rateDinner">Dinner</label>
                                     </div>
                                 </div>
                             </div>
