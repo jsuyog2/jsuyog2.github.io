@@ -9,6 +9,7 @@
     <!-- css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
 
@@ -19,27 +20,40 @@
             <div class="row">
                 <!-- total -->
                 <div class="col s12 l12">
-                    <div class="card">
-                        <div class="card-content black-text">
-                            <div class="row">
-                                <div class="col s2">
-                                    <div class="icon">hotel-information</div>₹<var id="totalHotel">0</var>/Person
-                                </div>
-                                <div class="col s2">
-                                    <div class="icon">gas-station</div>₹<var id="totalTrasportation">0</var>/Person
-                                </div>
-                                <div class="col s2">
-                                    <div class="icon">dining-room</div>₹<var id="totalFood">0</var>/Person
-                                </div>
-                                <div class="col s2">
-                                    <div class="icon">rupee</div><var id="extraMoney">0</var>/Person
-                                </div>
-                                <div class="col s2">
-                                    <div class="icon">refund</div>₹<var id="total">0</var>/Person
-                                </div>
-                                <div class="col s2">
-                                    <div class="icon">bill</div>₹<var id="totalBudget">0</var>
-                                </div>
+                    <div class="carousel carousel-slider center" style="max-height: 200px">
+                        <div class="carousel-item" href="#one!">
+                            <div class="icon">hotel-information</div>
+                            <div>₹<b class="cost" id="totalHotel">0</b>
+                            </div>
+                            <div>/Person</div>
+                        </div>
+                        <div class="carousel-item" href="#two!">
+                            <div class="icon">gas-station</div>
+                            <div>₹<b class="cost" id="totalTrasportation">0</b>
+                            </div>
+                            <div>/Person</div>
+                        </div>
+                        <div class="carousel-item" href="#three!">
+                            <div class="icon">dining-room</div>
+                            <div>₹<b class="cost" id="totalFood">0</b>
+                            </div>
+                            <div>/Person</div>
+                        </div>
+                        <div class="carousel-item" href="#four!">
+                            <div class="icon">rupee</div>
+                            <div>₹<b class="cost" id="extraMoney">0</b>
+                            </div>
+                            <div>/Person</div>
+                        </div>
+                        <div class="carousel-item" href="#five!">
+                            <div class="icon">refund</div>
+                            <div>₹<b class="cost" id="total">0</b>
+                            </div>
+                            <div>/Person</div>
+                        </div>
+                        <div class="carousel-item" href="#six!">
+                            <div class="icon">bill</div>
+                            <div>₹<b class="cost" id="totalBudget">0</b>
                             </div>
                         </div>
                     </div>

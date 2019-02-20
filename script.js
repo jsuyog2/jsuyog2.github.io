@@ -19,6 +19,11 @@ $(document).ready(function () {
         }
     });
 
+    $('.carousel.carousel-slider').carousel({
+        fullWidth: true,
+        indicators: true
+    });
+
     $('.timepicker').timepicker({
         autoClose: true
 
@@ -27,8 +32,8 @@ $(document).ready(function () {
 
     //            
     $(".icon").each(function (index) {
-        var icon =  $(this).html();
-       $(this).html('<img src="https://png.icons8.com/color/'+icon+'">');
+        var icon = $(this).html();
+        $(this).html('<img src="https://png.icons8.com/color/' + icon + '">');
     });
 
 
