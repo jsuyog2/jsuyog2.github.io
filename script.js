@@ -1,6 +1,7 @@
 /*jslint browser: true*/
 /*global $*/
 /*eslint-env browser*/
+
 $(document).ready(function () {
     "use strict";
     $('select').formSelect();
@@ -21,6 +22,13 @@ $(document).ready(function () {
     $('.timepicker').timepicker({
         autoClose: true
 
+    });
+
+
+    //            
+    $(".icon").each(function (index) {
+        var icon =  $(this).html();
+       $(this).html('<img src="https://png.icons8.com/'+icon+'">');
     });
 
 
@@ -274,8 +282,8 @@ $(document).ready(function () {
             $('#error').html("This 'Date From' is required.");
         } else if (endingDate === "") {
             $('#error').html("This 'Date To' is required.");
-        }else if(extraMoney === ""){
-              $('#error').html("This 'Extra Money' is required.");
+        } else if (extraMoney === "") {
+            $('#error').html("This 'Extra Money' is required.");
         }
     });
 
