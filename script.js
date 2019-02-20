@@ -48,6 +48,7 @@ $(document).ready(function () {
         hotelPricePerDay = 0,
         hotelPricePerPerson = 0,
         //vehicle
+        totalBikesCar = 0,
         pdAvg = 0,
         km = 0,
         rate = 0,
@@ -120,12 +121,11 @@ $(document).ready(function () {
         totalAdults = $("#totalAdults").val();
         startingDate = $('#startingDate').val();
         endingDate = $('#endingDate').val();
-        if (totalAdults !== null && startingDate !== "" && endingDate !== "") {
+        extraMoney = $('#exMoney').val();
+
+
+        if (totalAdults !== null && startingDate !== "" && endingDate !== "" && extraMoney !== "") {
             $('#error').html("");
-
-
-            // console.log("totalAdults" + totalAdults);
-
 
             //days
 
@@ -156,32 +156,36 @@ $(document).ready(function () {
                 totalVehicleCost = 0;
             } else {
                 if ($('#car').prop("checked") === true) {
+                    $('#errorCar').html("");
+                    totalBikesCar = $("#totalBikesCar").val();
+                    if (totalBikesCar !== null) {
+                        if ($("#pdAvg").val() !== null && $("#pdAvg").val() !== '') {
+                            pdAvg = $("#pdAvg").val();
+                            $('#pdAvgError').html("");
 
-                    if ($("#pdAvg").val() !== null && $("#pdAvg").val() !== '') {
-                        pdAvg = $("#pdAvg").val();
-                        $('#pdAvgError').html("");
+                        } else {
+                            pdAvg = 1;
+                            $('#pdAvgError').html("This Petrol/Diesel Avg. is required.");
+                        }
+                        if ($("#km").val() !== null && $("#km").val() !== '') {
+                            km = $("#km").val();
+                            $('#kmError').html("");
+                        } else {
+                            km = 0;
+                            $('#kmError').html("This Total Km is required.");
+                        }
+                        if ($("#rate").val() !== null && $("#rate").val() !== '') {
+                            rate = $("#rate").val();
+                            $('#rateError').html("");
 
-                    } else {
-                        pdAvg = 1;
-                        $('#pdAvgError').html("This Petrol/Diesel Avg. is required.");
+                        } else {
+                            rate = 0;
+                            $('#rateError').html("This Petrol/Diesel Rate is required.");
+                        }
+                        totalVehicleCost = Math.round(((((km * 2) / pdAvg) * rate) / parseInt(totalAdults, 10)) * parseInt(totalBikesCar));
+                    } else if (totalBikesCar === null) {
+                        $('#errorCar').html("This Total car is required.");
                     }
-                    if ($("#km").val() !== null && $("#km").val() !== '') {
-                        km = $("#km").val();
-                        $('#kmError').html("");
-                    } else {
-                        km = 0;
-                        $('#kmError').html("This Total Km is required.");
-                    }
-                    if ($("#rate").val() !== null && $("#rate").val() !== '') {
-                        rate = $("#rate").val();
-                        $('#rateError').html("");
-
-                    } else {
-                        rate = 0;
-                        $('#rateError').html("This Petrol/Diesel Rate is required.");
-                    }
-                    totalVehicleCost = Math.round((((km * 2) / pdAvg) * rate) / parseInt(totalAdults, 10));
-
                 } else if ($('#diffVehicle').prop("checked") === true) {
 
                     if ($("#ticketPrice").val() !== null && $("#ticketPrice").val() !== '') {
@@ -240,7 +244,8 @@ $(document).ready(function () {
             }
 
             //extra Money 
-            extraMoney = totalAdults * stay * 100;
+            //            extraMoney = Math.round(500 * stay / totalAdults);
+            extraMoney = parseInt(extraMoney);
             //total
 
             perPersonCostPerDay = foodCostPerPerson + totalVehicleCost + hotelPricePerPerson + extraMoney;
@@ -269,10 +274,12 @@ $(document).ready(function () {
             $('#error').html("This 'Date From' is required.");
         } else if (endingDate === "") {
             $('#error').html("This 'Date To' is required.");
+        }else if(extraMoney === ""){
+              $('#error').html("This 'Extra Money' is required.");
         }
     });
 
 
-    
+
 
 });

@@ -61,6 +61,12 @@
                             </div>
                         </div> -->
                         <!-- /dates -->
+                        <div class="col s12 m12 l12">
+                            <div class="input-field">
+                                <input id="exMoney" min="1" type="number" value="0">
+                                <label for="exMoney">Extra Money</label>
+                            </div>
+                        </div>
                         <p style="color:red" id="error"></p>
                         <p>
                             Hotel?:<var class="switch">
@@ -116,6 +122,23 @@
                             </p>
                             <br />
                             <div id="carDiv">
+                                <div class="row">
+                                    <div class="input-field col s12 m12">
+                                        <select id="totalBikesCar">
+                                            <option value="" disabled selected>Total Bikes/Car</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                        <label>Total Bikes/Car</label>
+                                    </div>
+                                    <p id="errorCar"></p>
+                                </div>
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="pdAvg" min="1" type="number">
