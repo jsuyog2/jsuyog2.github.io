@@ -10,3 +10,7 @@
 .per{
      font-family: 'Acme', sans-serif;
 }
+.middle-indicator{
+   position:absolute;
+   top:0%;
+   }
