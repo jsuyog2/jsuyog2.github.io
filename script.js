@@ -29,13 +29,19 @@ $(document).ready(function () {
     });
 
 
-    //            
+    //display icon         
     $(".icon").each(function () {
         var icon = $(this).html();
         $(this).html('<img src="https://png.icons8.com/color/' + icon + '">');
     });
 
+    $('#next').click(function () {
+        $('.carousel').carousel('next');
+    });
 
+    $('#back').click(function () {
+        $('.carousel').carousel('prev');
+    });
 
     function parseDate(str) {
         var mdy = str.split('/');
