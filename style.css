@@ -1,16 +1,38 @@
 @import url(//fonts.googleapis.com/css?family=Acme);
-.cost{
+
+.cost {
     font-size: 300%;
     font-family: 'Acme', sans-serif;
 }
-.costTitle{
-     font-size: 150%;
+
+.costTitle {
+    font-size: 150%;
     font-family: 'Acme', sans-serif;
 }
-.per{
-     font-family: 'Acme', sans-serif;
+
+.per {
+    font-family: 'Acme', sans-serif;
 }
-.middle-indicator{
-   position:absolute;
-   top:0%;
-   }
+
+.middle-indicator {
+    position: absolute;
+    top: 0%;
+}
+
+.carousel-slider {
+    max-height: 200px;
+    min-height: 200px;
+}
+
+#back {
+    top: 60px;
+    background-color: transparent;
+}
+
+#next {
+    top: 60px;
+}
+
+#error {
+    color: red;
+}
