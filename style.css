@@ -5,12 +5,24 @@
     font-family: 'Acme', sans-serif;
 }
 
+@media only screen and (max-width: 600px) {
+.costTitle {
+    font-size: 115%;
+}
+}
+@media only screen and (min-width: 600px) {
 .costTitle {
     font-size: 150%;
+}
+}
+
+.costTitle {
+
     font-family: 'Acme', sans-serif;
 }
 
 .per {
+    padding: 0px;
     font-family: 'Acme', sans-serif;
 }
 

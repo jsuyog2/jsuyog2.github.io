@@ -21,45 +21,57 @@
             <div class="col s12 l12">
                 <div class="row">
                     <div class="col s12 l12">
-                        <div class="carousel carousel-slider center">
-                            <div class="carousel-fixed-item center middle-indicator">
-                                <div class="left"> <a id='back' class="waves-effect waves-light black-text"> <i class="small material-icons">chevron_left</i> </a></div>
-                                <div class="right"> <a id='next' class="waves-effect waves-light black-text"> <i class="small material-icons">chevron_right</i> </a></div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="icon">hotel-information</div>
-                                <div class="costTitle">Hotel</div>
-                                <div>₹<b class="cost" id="totalHotel">0</b></div>
-                                <div class="per">/Person</div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="icon">gas-station</div>
-                                <div class="costTitle">Trasportation</div>
-                                <div>₹<b class="cost" id="totalTrasportation">0</b></div>
-                                <div class="per">/Person</div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="icon">dining-room</div>
-                                <div class="costTitle">Food</div>
-                                <div>₹<b class="cost" id="totalFood">0</b></div>
-                                <div class="per">/Person</div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="icon">rupee</div>
-                                <div class="costTitle">Extra Money</div>
-                                <div>₹<b class="cost" id="extraMoney">0</b></div>
-                                <div class="per">/Person</div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="icon">refund</div>
-                                <div class="costTitle">Total</div>
-                                <div>₹<b class="cost" id="total">0</b></div>
-                                <div class="per">/Person</div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="icon">bill</div>
-                                <div class="costTitle">Total Budget</div>
-                                <div>₹<b class="cost" id="totalBudget">0</b></div>
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                                <div class="row">
+                                    <div class="col l4 s6">
+                                        <div class="icon">bill</div>
+                                        <div class="row">
+                                            <div class="costTitle">Total Budget</div>
+                                        </div>
+                                        <div class="row">₹<b class="cost" id="totalBudget">0</b></div>
+                                    </div>
+                                    <div class="col l4 s6">
+                                        <div class="icon">refund</div>
+                                        <div class="row">
+                                            <div class="costTitle">Total</div>
+                                        </div>
+                                        <div class="row">₹<b class="cost" id="total">0</b><div class="per">/Person</div></div>
+                                        
+                                    </div>
+                                    <div class="col l4 s6">
+                                        <div class="icon">rupee</div>
+                                        <div class="row">
+                                            <div class="costTitle">Extra Money</div>
+                                        </div>
+                                        <div class="row">₹<b class="cost" id="extraMoney">0</b>  <div class="per">/Person</div></div>
+                                      
+                                    </div>
+                                    <div class="col l4 s6">
+                                        <div class="icon">hotel-information</div>
+                                        <div class="row">
+                                            <div class="costTitle">Hotel</div>
+                                        </div>
+                                        <div class="row">₹<b class="cost" id="totalHotel">0</b> <div class="per">/Person</div></div>
+                                       
+                                    </div>
+                                    <div class="col l4 s6">
+                                        <div class="icon">gas-station</div>
+                                        <div class="row">
+                                            <div class="costTitle">Trasportation</div>
+                                        </div>
+                                        <div class="row">₹<b class="cost" id="totalTrasportation">0</b> <div class="per">/Person</div></div>
+                                       
+                                    </div>
+                                    <div class="col l4 s6">
+                                        <div class="icon">dining-room</div>
+                                        <div class="row">
+                                            <div class="costTitle">Food</div>
+                                        </div>
+                                        <div class="row">₹<b class="cost" id="totalFood">0</b> <div class="per">/Person</div></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -96,8 +108,8 @@
                         <div class="row">
                             <p id="error"></p> <br>
                             <div id="submitBtn" class="">
-                                <a id="submit" class="btn waves-effect waves-light">Submit
-    <i class="material-icons right">send</i></a>
+                                <a id="submit" class="btn waves-effect waves-light modal-trigger" href="#modal1">Submit
+                                    <i class="material-icons right">send</i></a>
                             </div>
                         </div>
                     </div>

@@ -27,8 +27,6 @@ $(document).ready(function () {
         autoClose: true
 
     });
-
-
     //display icon         
     $(".icon").each(function () {
         var icon = $(this).html();
@@ -42,6 +40,8 @@ $(document).ready(function () {
     $('#back').click(function () {
         $('.carousel').carousel('prev');
     });
+
+
 
     function parseDate(str) {
         var mdy = str.split('/');
@@ -144,7 +144,7 @@ $(document).ready(function () {
 
         if (totalAdults !== null && startingDate !== "" && endingDate !== "" && extraMoney !== "") {
             $('#error').html("");
-
+            $('.modal').modal();
             //days
 
             days = datediff(startingDate, endingDate);
@@ -303,14 +303,14 @@ $(document).ready(function () {
             $('#submitBtn').addClass("fixed-action-btn");
             $('#submit').addClass("btn-floating btn-large");
             $('#submit').removeClass("btn");
-             $("#submit").empty();
-             $("#submit").append('<i class="material-icons right">send</i>');
+            $("#submit").empty();
+            $("#submit").append('<i class="material-icons right">send</i>');
         } else {
             $('#submitBtn').removeClass("fixed-action-btn");
             $('#submit').addClass("btn");
             $('#submit').removeClass("btn-floating btn-large");
-             $("#submit").empty();
-             $("#submit").append('Submit <i class="material-icons right">send</i>');
+            $("#submit").empty();
+            $("#submit").append('Submit <i class="material-icons right">send</i>');
         }
     });
 
