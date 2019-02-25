@@ -19,29 +19,11 @@ $(document).ready(function () {
         }
     });
 
-    $('.carousel.carousel-slider').carousel({
-        fullWidth: true
-    });
-
-    $('.timepicker').timepicker({
-        autoClose: true
-
-    });
     //display icon         
     $(".icon").each(function () {
         var icon = $(this).html();
         $(this).html('<img src="https://png.icons8.com/color/' + icon + '">');
     });
-
-    $('#next').click(function () {
-        $('.carousel').carousel('next');
-    });
-
-    $('#back').click(function () {
-        $('.carousel').carousel('prev');
-    });
-
-
 
     function parseDate(str) {
         var mdy = str.split('/');
