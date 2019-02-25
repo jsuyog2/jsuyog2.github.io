@@ -7,7 +7,7 @@
 
 @media only screen and (max-width: 600px) {
 .costTitle {
-    font-size: 115%;
+    font-size: 100%;
 }
 }
 @media only screen and (min-width: 600px) {
