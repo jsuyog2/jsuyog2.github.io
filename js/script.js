@@ -20,6 +20,7 @@ $(document).ready(function () {
     });
 
      $('.sidenav').sidenav();
+    $('.parallax').parallax();
     //display icon         
     $(".icon").each(function () {
         var icon = $(this).html();

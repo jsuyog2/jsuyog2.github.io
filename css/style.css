@@ -1,3 +1,11 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
 nav ul a,
 nav .brand-logo {
     color: #444;
@@ -11,27 +19,54 @@ p {
     color: #26a69a;
 }
 
+.parallax-container {
+    min-height: 380px;
+    line-height: 0;
+    height: auto;
+    color: rgba(255, 255, 255, .9);
+}
+
+.parallax-container .section {
+    width: 100%;
+}
+
+@media only screen and (max-width : 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
 footer.page-footer {
     margin: 0;
-}
-
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-
-main {
-    flex: 1 0 auto;
 }
 
 .card {
     border-radius: 10px;
 }
 
-.light {
+.light{
     white-space: pre-line;
 }
+
 
 @import url(//fonts.googleapis.com/css?family=Acme);
 
@@ -41,15 +76,14 @@ main {
 }
 
 @media only screen and (max-width: 600px) {
-    .costTitle {
-        font-size: 100%;
-    }
+.costTitle {
+    font-size: 100%;
 }
-
+}
 @media only screen and (min-width: 600px) {
-    .costTitle {
-        font-size: 150%;
-    }
+.costTitle {
+    font-size: 150%;
+}
 }
 
 .costTitle {
@@ -83,4 +117,15 @@ main {
 
 #error {
     color: red;
+}
+
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
 }
