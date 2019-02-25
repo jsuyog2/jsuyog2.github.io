@@ -20,17 +20,17 @@
 }
 
 .carousel-slider {
-    max-height: 200px;
-    min-height: 200px;
+    max-height: 12.500em;
+    min-height: 12.500em;
 }
 
 #back {
-    top: 60px;
+    top: 3.750em;
     background-color: transparent;
 }
 
 #next {
-    top: 60px;
+    top: 3.750em;
 }
 
 #error {
