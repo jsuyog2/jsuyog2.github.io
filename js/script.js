@@ -19,6 +19,7 @@ $(document).ready(function () {
         }
     });
 
+     $('.sidenav').sidenav();
     //display icon         
     $(".icon").each(function () {
         var icon = $(this).html();

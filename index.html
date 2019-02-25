@@ -11,195 +11,40 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
 </head>
 
 <body>
-    <div class="container">
-        <div class="row"></div>
-        <div class="row">
-            <div class="col s12 l12">
-                <div class="row">
-                    <div class="col s12 l12">
-                        <!-- Modal Structure -->
-                        <div id="modal1" class="modal">
-                           <div class="modal-header right"><a class="modal-close waves-effect waves-green btn-flat"> <i class="material-icons">close</i></a></div>
-                            <div class="modal-content">
-                                <div class="row">
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">bill</div>
-                                            <div class="costTitle">Total Budget</div>
-                                        </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="totalBudget">0</b></div>
-                                    </div>
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">refund</div>
-                                            <div class="costTitle">Total</div>
-                                        </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="total">0</b>
-                                            /Person
-                                        </div>
-                                    </div>
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">rupee</div>
-                                            <div class="costTitle">Extra Money</div>
-                                        </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="extraMoney">0</b>
-                                            /Person
-                                        </div>
-                                    </div>
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">hotel-information</div>
-                                            <div class="costTitle">Hotel</div>
-                                        </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="totalHotel">0</b>
-                                            /Person
-                                        </div>
-                                    </div>
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">gas-station</div>
-                                            <div class="costTitle">Trasportation</div>
-                                        </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="totalTrasportation">0</b>
-                                            /Person
-                                        </div>
-                                    </div>
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">dining-room</div>
-                                            <div class="costTitle">Food</div>
-                                        </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="totalFood">0</b>
-                                            /Person
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 l12">
-                <div class="card">
-                    <div class="card-content black-text">
-                        <div class="row">
-                            <div class="input-field col s6 m6 l6"> <select id="totalAdults">
-                                    <option value="" disabled selected>Total Adults</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                </select> <label>Total Adults</label></div>
-                            <div class="col s6 m6 l6">
-                                <div class="input-field"> <input id="exMoney" min="1" type="number" value="0"> <label for="exMoney">Extra Money</label></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s6 m6 l6">
-                                <div class="input-field"> <input type="text" id="startingDate" class="datepicker"> <label for="startingDate">Date From</label></div>
-                                <div class="input-field"> <input type="text" id="endingDate" class="datepicker" disabled> <label for="endingDate">Date To</label></div>
-                            </div>
-                            <div class="col s6 m6 l6">
-                                <p> Hotel?:<var class="switch"> <label><input id="hotelEnable" type="checkbox" /> <span class="lever"></span></label> </var> <br /> <br /> Vehicle/Trasportation?:<var class="switch"> <label><input id="vehicleEnable" type="checkbox" /> <span class="lever"></span></label> </var> <br /> <br /> Food?: <var class="switch"> <label><input id="foodEnable" type="checkbox" /> <span class="lever"></span></label> </var> <br /> <br /></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <p id="error"></p> <br>
-                            <div id="submitBtn" class="">
-                                <a id="submit" class="btn waves-effect waves-light modal-trigger" href="#modal1">Submit
-                                    <i class="material-icons right">send</i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="forHotel" class="col s12 l4" hidden>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="row">
-                            <div class="input-field col s12"> <input id="hotelPrice" min="1" type="number"> <label for="hotelPrice">Hotel Price / Night</label></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="forVehicle" class="col s12 l4" hidden>
-                <div class="card">
-                    <div class="card-content">
-                        <p> <label> <input id="car" name="tripVehicle" type="radio" checked /> <span>Car/Bike</span> </label><label> <input id="diffVehicle" name="tripVehicle" type="radio" /> <span>Bus/Train/Flight</span> </label></p> <br />
-                        <div id="carDiv">
-                            <div class="row">
-                                <div class="input-field col s12 m12"> <select id="totalBikesCar">
-                                        <option value="" disabled selected>Total Bikes/Car</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                    </select> <label>Total Bikes/Car</label></div>
-                                <p id="errorCar"></p>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12"> <input id="pdAvg" min="1" type="number"> <label for="pdAvg">Petrol/Diesel Avg. km/l</label></div>
-                                <p id="pdAvgError"></p>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12"> <input id="km" min="1" type="number"> <label for="km">Total Km of One Way</label></div>
-                                <p id="kmError"></p>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12"> <input id="rate" min="1" type="number"> <label for="rate">Petrol/Diesel Rate</label></div>
-                                <p id="rateError"></p>
-                            </div>
-                        </div>
-                        <div id="diffVehicleDiv" hidden>
-                            <div class="row">
-                                <div class="input-field col s12"> <input id="ticketPrice" min="1" type="number"> <label for="ticketPrice">Ticket Price From Origin to Destination</label></div>
-                                <p id="ticketPriceError"></p>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12"> <input id="returnTicketPrice" min="1" type="number"> <label for="returnTicketPrice">Ticket Price From Destination to Origin</label></div>
-                                <p id="returnTicketPriceError"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="forFood" class="col s12 l4" hidden>
-                <div class="card">
-                    <div class="card-content">
-                        <p> <label> <input id="defaultFood" name="foodRadio" type="radio" checked /> <span>Default</span> </label><label> <input id="changeFood" name="foodRadio" type="radio" /> <span>Change Food Rates</span> </label></p>
-                        <div id="foodDiv">
-                            <div class="row">
-                                <div class="input-field col s12"> <input id="rateBreakfast" type="number" value="100" min="1" disabled> <label for="rateBreakfast">Breakfast</label></div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12"> <input id="rateLunch" type="number" min="1" value="200" disabled> <label for="rateLunch">Lunch</label></div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12"> <input id="rateDinner" type="number" min="1" value="200" disabled> <label for="rateDinner">Dinner</label></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+   <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="index.html" class="brand-logo">Logo</a>
+            <ul class="right hide-on-med-and-down navbarData">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav navbarData">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    
+    
+     <footer class="page-footer teal">
+
+        <div class="footer-copyright teal">
+            <div class="container">
+                Made by Suyog Jadhav.
             </div>
         </div>
-    </div>
-    <script src="jquery.min.js"></script>
-    <script src="jquery-1.11.3.min.js"></script>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <script src="js/firebaseConfig.js"></script>
+    <script src="js/firebaseScript.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

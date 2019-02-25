@@ -1,3 +1,38 @@
+nav ul a,
+nav .brand-logo {
+    color: #444;
+}
+
+p {
+    line-height: 2rem;
+}
+
+.sidenav-trigger {
+    color: #26a69a;
+}
+
+footer.page-footer {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.light {
+    white-space: pre-line;
+}
+
 @import url(//fonts.googleapis.com/css?family=Acme);
 
 .cost {
@@ -6,14 +41,15 @@
 }
 
 @media only screen and (max-width: 600px) {
-.costTitle {
-    font-size: 100%;
+    .costTitle {
+        font-size: 100%;
+    }
 }
-}
+
 @media only screen and (min-width: 600px) {
-.costTitle {
-    font-size: 150%;
-}
+    .costTitle {
+        font-size: 150%;
+    }
 }
 
 .costTitle {
