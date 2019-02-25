@@ -298,6 +298,21 @@ $(document).ready(function () {
     });
 
 
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 350) {
+            $('#submitBtn').addClass("fixed-action-btn");
+            $('#submit').addClass("btn-floating btn-large");
+            $('#submit').removeClass("btn");
+             $("#submit").empty();
+             $("#submit").append('<i class="material-icons right">send</i>');
+        } else {
+            $('#submitBtn').removeClass("fixed-action-btn");
+            $('#submit').addClass("btn");
+            $('#submit').removeClass("btn-floating btn-large");
+             $("#submit").empty();
+             $("#submit").append('Submit <i class="material-icons right">send</i>');
+        }
+    });
 
 
 });
