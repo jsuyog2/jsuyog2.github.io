@@ -9,10 +9,40 @@ function saveTrip() {
             exMoney: textValue('exMoney'),
             startingDate: textValue('startingDate'),
             endingDate: textValue('endingDate'),
-            hotel:chackBoxCheck('hotelEnable'),
-            vehicle:chackBoxCheck('vehicleEnable'),
-            food:chackBoxCheck('foodEnable')
+            hotelcheck: chackBoxCheck('hotelEnable'),
+            vehiclecheck: chackBoxCheck('vehicleEnable'),
+            foodcheck: chackBoxCheck('foodEnable')
         });
+        if (chackBoxCheck('hotelEnable') == true) {
+            firebase.database().ref('users/' + userId + '/saveTrip/' + name + '/hotel').set({
+                price: textValue('hotelPrice')
+            });
+        }
+        if (chackBoxCheck('vehicleEnable') == true) {
+            if ($('#car').prop("checked") === true) {
+                var total = {
+                    vehicleType:1,
+                    totalCar: textValue('totalBikesCar'),
+                    Avg: textValue('pdAvg'),
+                    km: textValue('km'),
+                    rate: textValue('rate')
+                }
+            } else if ($('#diffVehicle').prop("checked") === true) {
+                var total ={
+                    vehicleType:2,
+                    ticketPrice:textValue('ticketPrice'),
+                    returnTicketPrice:textValue('returnTicketPrice')
+                }
+            }
+            firebase.database().ref('users/' + userId + '/saveTrip/' + name + '/vehicle').set(total);
+        }
+        if (chackBoxCheck('foodEnable') == true) {
+            firebase.database().ref('users/' + userId + '/saveTrip/' + name + '/food').set({
+                Breakfast: textValue('rateBreakfast'),
+                Lunch: textValue('rateLunch'),
+                Dinner: textValue('rateDinner')
+            });
+        }
     });
 }
 
@@ -42,7 +72,7 @@ console.log();
 
 function chackBoxCheck(id) {
     if ($('#' + id).prop("checked") === true) {
-      return true;
+        return true;
     } else if ($('#' + id).prop("checked") === false) {
         return false;
     }
