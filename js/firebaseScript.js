@@ -1,5 +1,3 @@
-var provider = new firebase.auth.GoogleAuthProvider();
-
 //on Login
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -90,6 +88,9 @@ function register(email, password) {
 function sendEmailVerification() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user.emailVerified) {
+            firebase.database().ref('users/' + user.uid).set({
+                email: user.email
+            });
             console.log('verified');
         } else {
             user.sendEmailVerification();
@@ -99,7 +100,7 @@ function sendEmailVerification() {
 }
 
 //onclick reset password
-function resetPassword(){
+function resetPassword() {
     firebase.auth().onAuthStateChanged(function (user) {
         var email = user.email;
         sendPasswordReset(email);

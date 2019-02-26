@@ -38,65 +38,78 @@
                     <div class="col s12 l12">
                         <!-- Modal Structure -->
                         <div id="modal1" class="modal">
-                            <div class="modal-header right"><a class="modal-close waves-effect waves-green btn-flat "> <i class="material-icons">close</i></a></div>
-                            <div class="modal-content">
-                                <div class="row">
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">bill</div>
-                                            <div class="costTitle">Total Budget</div>
+                            <div class="container">
+                                <div class="modal-header right"><a class="modal-close waves-effect waves-green btn-flat "> <i class="material-icons">close</i></a></div>
+                                <div class="modal-content">
+                                    <div class="row">
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">bill</div>
+                                                <div class="costTitle">Total Budget</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="totalBudget">0</b></div>
                                         </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="totalBudget">0</b></div>
-                                    </div>
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">refund</div>
-                                            <div class="costTitle">Total</div>
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">refund</div>
+                                                <div class="costTitle">Total</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="total">0</b>
+                                                /Person
+                                            </div>
                                         </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="total">0</b>
-                                            /Person
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">rupee</div>
+                                                <div class="costTitle">Extra Money</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="extraMoney">0</b>
+                                                /Person
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">rupee</div>
-                                            <div class="costTitle">Extra Money</div>
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">hotel-information</div>
+                                                <div class="costTitle">Hotel</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="totalHotel">0</b>
+                                                /Person
+                                            </div>
                                         </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="extraMoney">0</b>
-                                            /Person
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">gas-station</div>
+                                                <div class="costTitle">Trasportation</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="totalTrasportation">0</b>
+                                                /Person
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">hotel-information</div>
-                                            <div class="costTitle">Hotel</div>
-                                        </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="totalHotel">0</b>
-                                            /Person
-                                        </div>
-                                    </div>
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">gas-station</div>
-                                            <div class="costTitle">Trasportation</div>
-                                        </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="totalTrasportation">0</b>
-                                            /Person
-                                        </div>
-                                    </div>
-                                    <div class="col l4 s12">
-                                        <div class="col s4 l12">
-                                            <div class="icon">dining-room</div>
-                                            <div class="costTitle">Food</div>
-                                        </div>
-                                        <div class="col s8 l12">₹<b class="cost" id="totalFood">0</b>
-                                            /Person
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">dining-room</div>
+                                                <div class="costTitle">Food</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="totalFood">0</b>
+                                                /Person
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <div class="input-field col s10">
+                                            <input id="trip_name" type="text" class="validate">
+                                            <label for="trip_name">Trip Name</label>
+                                        </div>
+                                        <div class="input-field col s2">
+                                            <a id="saveTripBtn" onclick="" class="modal-close waves-effect waves-green btn-flat">Save</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div id="errorSave" style="color: red"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -228,6 +241,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
     <script src="js/firebaseConfig.js"></script>
     <script src="js/firebaseScript.js"></script>
+    <script src="js/firebaseDatabase.js"></script>
     <script src="js/script.js"></script>
 </body>
 
