@@ -51,13 +51,9 @@ $('#trip_name').keyup(function () {
     firebase.auth().onAuthStateChanged(function (user) {
         firebase.database().ref('users/' + user.uid + '/saveTrip/' + name).on("value", function (snapshot) {
             if (snapshot.numChildren() > 0) {
-                $("#saveTripBtn").attr("onclick", "");
-                $("#saveTripBtn").addClass("disabled");
-                $("#errorSave").html("already exist");
+                $("#saveTripBtn").html("UPDATE");
             } else {
-                $("#saveTripBtn").attr("onclick", "saveTrip()");
-                $("#saveTripBtn").removeClass("disabled");
-                $("#errorSave").html("");
+                $("#saveTripBtn").html("SAVE");
             }
         });
     });
