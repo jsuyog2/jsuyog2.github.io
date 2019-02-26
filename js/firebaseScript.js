@@ -88,9 +88,7 @@ function register(email, password) {
 function sendEmailVerification() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user.emailVerified) {
-            firebase.database().ref('users/' + user.uid).set({
-                email: user.email
-            });
+            firebase.database().ref('users/' + user.uid+'/email').set(user.email);
             console.log('verified');
         } else {
             user.sendEmailVerification();
