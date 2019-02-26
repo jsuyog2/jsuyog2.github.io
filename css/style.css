@@ -70,11 +70,6 @@ footer.page-footer {
 
 @import url(//fonts.googleapis.com/css?family=Acme);
 
-.cost {
-    font-size: 300%;
-    font-family: 'Acme', sans-serif;
-}
-
 @media only screen and (max-width: 600px) {
     .costTitle {
         font-size: 100%;
@@ -83,6 +78,10 @@ footer.page-footer {
     .user-view {
         display: block;
     }
+    .cost {
+    font-size: 200%;
+    font-family: 'Acme', sans-serif;
+}
 }
 
 @media only screen and (min-width: 600px) {
@@ -93,6 +92,10 @@ footer.page-footer {
     .user-view {
         display: none;
     }
+    .cost {
+    font-size: 250%;
+    font-family: 'Acme', sans-serif;
+}
 }
 
 .costTitle {

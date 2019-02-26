@@ -21,6 +21,7 @@ $(document).ready(function () {
 
     $('.sidenav').sidenav();
     $('.parallax').parallax();
+    $('.collapsible').collapsible();
     //display icon         
     $(".icon").each(function () {
         var icon = $(this).html();
