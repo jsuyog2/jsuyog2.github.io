@@ -83,6 +83,15 @@ function register(email, password) {
     });
 }
 
+function sendEmailVerification() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user.emailVerified) {
+        } else {
+             user.sendEmailVerification(); 
+        }
+    });
+}
+
 $("#login").click(function () {
     var email = $('input[name=username]').val();
     var password = $('input[name=password]').val();
