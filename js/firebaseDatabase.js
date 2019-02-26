@@ -11,7 +11,8 @@ function saveTrip() {
         endingDate: textValue('endingDate'),
         hotelcheck: chackBoxCheck('hotelEnable'),
         vehiclecheck: chackBoxCheck('vehicleEnable'),
-        foodcheck: chackBoxCheck('foodEnable')
+        foodcheck: chackBoxCheck('foodEnable'),
+        total: $('#totalBudget').html()
     });
     if (chackBoxCheck('hotelEnable') == true) {
         firebase.database().ref('users/' + userId + '/saveTrip/' + name + '/hotel').set({
@@ -43,8 +44,36 @@ function saveTrip() {
             Dinner: textValue('rateDinner')
         });
     }
-
 }
+$(document).ready(function () {
+    if ($("#allTrip").length != 0) {
+        firebase.auth().onAuthStateChanged(function (user) {
+            firebase.database().ref('users/' + user.uid + '/saveTrip').on("value", function (snapshot) {
+                $('#allTrip').empty();
+                snapshot.forEach(function (childSnapshot) {
+                    cardDisplay(childSnapshot);
+                });
+            });
+        });
+    }
+});
+
+function cardDisplay(childSnapshot) {
+
+    var open = '<div class="col l4 s12"><div class="card"><div class="card-content"><p><span class="card-title"><b>' + childSnapshot.key + '</b></span></p><p>' + childSnapshot.val().total + '</p></div><div class="card-action"><a class="btn modal-trigger" href="#' + childSnapshot.key + '">Open</a></div></div></div>';
+    $('#allTrip').append(open);
+var model = '';
+    model += '<div id="' + childSnapshot.key + '" class="modal"><div class="modal-content"><h4>' + childSnapshot.key + '</h4><p>';
+        
+        
+        
+    
+        
+        
+        model +='</p></div><div class="modal-footer"><a class="modal-close waves-effect waves-green btn-flat">Close</a></div></div><script>$(".modal").modal();</script>';
+    $('#allModels').append(model);
+}
+
 
 $('#trip_name').keyup(function () {
     var name = $('#trip_name').val();

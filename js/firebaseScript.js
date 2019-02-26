@@ -89,7 +89,6 @@ function sendEmailVerification() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user.emailVerified) {
             firebase.database().ref('users/' + user.uid+'/email').set(user.email);
-            console.log('verified');
         } else {
             user.sendEmailVerification();
             window.location.href = "varification";

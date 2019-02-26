@@ -19,7 +19,7 @@ $(document).ready(function () {
         }
     });
 
-     $('.sidenav').sidenav();
+    $('.sidenav').sidenav();
     $('.parallax').parallax();
     //display icon         
     $(".icon").each(function () {
