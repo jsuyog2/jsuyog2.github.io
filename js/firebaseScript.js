@@ -86,8 +86,10 @@ function register(email, password) {
 function sendEmailVerification() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user.emailVerified) {
+            console.log('verified');
         } else {
-             user.sendEmailVerification(); 
+//             user.sendEmailVerification(); 
+            console.log(false)
         }
     });
 }
