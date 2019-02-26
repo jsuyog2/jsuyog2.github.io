@@ -61,7 +61,8 @@ function login(email, password) {
 //register
 function register(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
-        window.location.href = "login";
+        sendEmailVerification();
+        //        window.location.href = "varification";
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -88,11 +89,12 @@ function sendEmailVerification() {
         if (user.emailVerified) {
             console.log('verified');
         } else {
-//             user.sendEmailVerification(); 
-            console.log(false)
+            user.sendEmailVerification();
+            window.location.href = "varification";
         }
     });
 }
+
 
 $("#login").click(function () {
     var email = $('input[name=username]').val();
