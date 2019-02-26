@@ -58,6 +58,31 @@ function login(email, password) {
         });
 }
 
+//register
+function register(email, password) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
+        window.location.href = "login";
+    }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/weak-password') {
+            M.toast({
+                html: 'The password is too weak.'
+            })
+        } else {
+            M.toast({
+                html: errorMessage
+            })
+        }
+        M.toast({
+            html: error
+        })
+        // [END_EXCLUDE]
+    });
+}
+
 $("#login").click(function () {
     var email = $('input[name=username]').val();
     var password = $('input[name=password]').val();
@@ -69,6 +94,20 @@ $(".login").on('keypress', function (e) {
         var email = $('input[name=username]').val();
         var password = $('input[name=password]').val();
         login(email, password);
+    }
+});
+
+$("#registerUser").click(function () {
+    var email = $('input[name=username]').val();
+    var password = $('input[name=password]').val();
+    register(email, password);
+});
+
+$(".register").on('keypress', function (e) {
+    if (e.which == 13) {
+        var email = $('input[name=username]').val();
+        var password = $('input[name=password]').val();
+        register(email, password);
     }
 });
 
