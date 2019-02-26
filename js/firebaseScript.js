@@ -3,11 +3,14 @@ var provider = new firebase.auth.GoogleAuthProvider();
 //on Login
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        $('.navbarData').append('<li><a href="dashborad.html">Dashborad</a></li>');
-        $('.navbarData').append(' <li><a onclick="singOut()">Logout</a></li>');
+        var name = user.displayName;
+        var email = user.email;
+        $('.navbarData').prepend('<li><div class="user-view"><div class="background"><img src="images/profileBack.png"></div><a><span class="white-text name">'+name+'</span></a><a><span class="white-text email">'+email+'</span></a></div></li>');
+        $('.navbarData').append('<li><a href="dashborad.html">Save Trips</a></li>');
         if ($('meta[name="login"]').length != 0) {
-
+            $('.navbarData').append('<li><a href="#!">Edit Profile</a></li>');
         }
+        $('.navbarData').append('<li><a onclick="singOut()">Logout</a></li>');
     } else {
         $('.navbarData').append('<li><a href="Login.html">Login</a></li>');
         if ($('meta[name="login"]').length != 0) {
@@ -62,7 +65,6 @@ function login(email, password) {
 function register(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
         sendEmailVerification();
-        //        window.location.href = "varification";
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
