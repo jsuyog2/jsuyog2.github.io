@@ -65,13 +65,13 @@ $(document).ready(function () {
 
 function cardDisplay(childSnapshot) {
 
-    var open = '<div class="col l4 s12"><div class="card"><div class="card-content"><p><span class="card-title"><b>' + childSnapshot.key + '</b></span></p><p>' + childSnapshot.val().total + '</p></div><div class="card-action"><a class="btn modal-trigger" style="margin-right:5px;" href="#' + childSnapshot.key + '">Open</a><a class="btn red" onclick="deleteRecord(' + childSnapshot.key + ')">Delete</a></div></div></div>';
+    var open = '<div class="col l4 s12"><div class="card"><div class="card-content"><p><span class="card-title"><b>' + childSnapshot.key + '</b></span></p><p>' + childSnapshot.val().total + '</p></div><div class="card-action"><a class="btn modal-trigger" style="margin-right:5px;" href="#' + childSnapshot.key + '">Open</a><a class="btn red" onclick="deleteRecord(\'' + childSnapshot.key + '\')">Delete</a></div></div></div>';
     $('#allTrip').append(open);
     var model = '';
     model += '<div id="' + childSnapshot.key + '" class="modal"><div class="modal-header right"><a class="modal-close waves-effect waves-green btn-flat "> <i class="material-icons">close</i></a></div><div class="modal-content"><h4>' + childSnapshot.key + '</h4><p>';
 
-    model += '<div class="row"><div class="col l4 s12"><div class="col s4 l12"><div class="icon">crowd</div><div class="costTitle">Total People</div></div><div class="col s8 l12"><b class="cost" id="totalBudget">' + childSnapshot.val().totalAdults + '</b></div></div><div class="col l4 s12"><div class="col s4 l12"><div class="icon">date-to</div><div class="costTitle">Date From</div> </div><div class="col s8 l12"><b class="cost" id="total">' +  childSnapshot.val().startingDate+ '</b></div> </div><div class="col l4 s12"> <div class="col s4 l12"><div class="icon">date-from</div><div class="costTitle">Date To</div></div><div class="col s8 l12"><b class="cost" id="extraMoney">' + childSnapshot.val().endingDate + '</b></div></div></div>';  
-    
+    model += '<div class="row"><div class="col l4 s12"><div class="col s4 l12"><div class="icon">crowd</div><div class="costTitle">Total People</div></div><div class="col s8 l12"><b class="cost" id="totalBudget">' + childSnapshot.val().totalAdults + '</b></div></div><div class="col l4 s12"><div class="col s4 l12"><div class="icon">date-to</div><div class="costTitle">Date From</div> </div><div class="col s8 l12"><b class="cost" id="total">' + childSnapshot.val().startingDate + '</b></div> </div><div class="col l4 s12"> <div class="col s4 l12"><div class="icon">date-from</div><div class="costTitle">Date To</div></div><div class="col s8 l12"><b class="cost" id="extraMoney">' + childSnapshot.val().endingDate + '</b></div></div></div>';
+
     model += '<div class="row"><div class="col l4 s12"><div class="col s4 l12"><div class="icon">bill</div><div class="costTitle">Total Budget</div></div><div class="col s8 l12">₹<b class="cost" id="totalBudget">' + childSnapshot.val().total + '</b></div></div><div class="col l4 s12"><div class="col s4 l12"><div class="icon">refund</div><div class="costTitle">Total</div> </div><div class="col s8 l12">₹<b class="cost" id="total">' + (childSnapshot.val().total / childSnapshot.val().totalAdults) + '</b>/Person</div> </div><div class="col l4 s12"> <div class="col s4 l12"><div class="icon">rupee</div><div class="costTitle">Extra Money</div></div><div class="col s8 l12">₹<b class="cost" id="extraMoney">' + childSnapshot.val().exMoney + '</b>/Person </div></div></div>';
     if (childSnapshot.val().hotelcheck == true || childSnapshot.val().vehiclecheck == true || childSnapshot.val().foodcheck == true) {
         model += '<ul class="collapsible">';
@@ -133,8 +133,10 @@ $('#trip_name').keyup(function () {
     });
 });
 
-function deleteRecord(name){
-    
+function deleteRecord(name) {
+    firebase.auth().onAuthStateChanged(function (user) {
+        firebase.database().ref('users/' + user.uid + '/saveTrip/' + name).remove();
+    });
 }
 
 function textValue(id) {
