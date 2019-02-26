@@ -4,13 +4,14 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Verification - Trip Calculator</title>
+    <title>Profile - Trip Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+    <meta name="login" content="login">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <!-- /CSS  -->
 </head>
@@ -23,7 +24,9 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="TripCalculator.html">Trip Calculator</a></li>
             </ul>
+
             <ul id="nav-mobile" class="sidenav navbarData">
+
                 <li><a href="index.html">Home</a></li>
                 <li><a href="TripCalculator.html">Trip Calculator</a></li>
             </ul>
@@ -34,9 +37,9 @@
         <div class="row center">
             <div class="col s4 offset-s4">
                 <div class="card">
-                    <span class="card-title">A verification link has been sent to your email account</span>
+                    <span class="card-title">Change Password</span>
                     <div class="card-content">
-                        <p>Please click on the link that has just been sent to your email account</p>
+                        <p><a onclick="resetPassword()" class="waves-effect waves-light btn">Send Link</a></p>
                     </div>
                 </div>
             </div>
@@ -58,6 +61,10 @@
     <script src="js/firebaseConfig.js"></script>
     <script src="js/firebaseScript.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        sendEmailVerification();
+
+    </script>
     <!--  /Scripts-->
 </body>
 

@@ -5,10 +5,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         var name = user.displayName;
         var email = user.email;
-        $('.navbarData').prepend('<li><div class="user-view"><div class="background"><img src="images/profileBack.png"></div><a><span class="white-text name">'+name+'</span></a><a><span class="white-text email">'+email+'</span></a></div></li>');
+        $('.navbarData').prepend('<li><div class="user-view"><div class="background"><img src="images/profileBack.png"></div><a><span class="white-text name">' + name + '</span></a><a><span class="white-text email">' + email + '</span></a></div></li>');
         $('.navbarData').append('<li><a href="dashborad.html">Save Trips</a></li>');
         if ($('meta[name="login"]').length != 0) {
-            $('.navbarData').append('<li><a href="#!">Edit Profile</a></li>');
+            $('.navbarData').append('<li><a href="editprofile.html">Edit Profile</a></li>');
         }
         $('.navbarData').append('<li><a onclick="singOut()">Logout</a></li>');
     } else {
@@ -86,6 +86,7 @@ function register(email, password) {
     });
 }
 
+//email verification
 function sendEmailVerification() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user.emailVerified) {
@@ -97,6 +98,42 @@ function sendEmailVerification() {
     });
 }
 
+//onclick reset password
+function resetPassword(){
+    firebase.auth().onAuthStateChanged(function (user) {
+        var email = user.email;
+        sendPasswordReset(email);
+    });
+}
+//password change
+function sendPasswordReset(email) {
+    // [START sendpasswordemail]
+    firebase.auth().sendPasswordResetEmail(email).then(function () {
+        // Password Reset Email Sent!
+        // [START_EXCLUDE]
+        window.location.href = "varification";
+        // [END_EXCLUDE]
+    }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/invalid-email') {
+            M.toast({
+                html: errorMessage
+            })
+        } else if (errorCode == 'auth/user-not-found') {
+            M.toast({
+                html: errorMessage
+            })
+        }
+        M.toast({
+            html: error
+        })
+        // [END_EXCLUDE]
+    });
+    // [END sendpasswordemail];
+}
 
 $("#login").click(function () {
     var email = $('input[name=username]').val();

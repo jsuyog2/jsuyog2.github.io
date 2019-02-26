@@ -63,7 +63,7 @@ footer.page-footer {
     border-radius: 10px;
 }
 
-.light{
+.light {
     white-space: pre-line;
 }
 
@@ -76,14 +76,23 @@ footer.page-footer {
 }
 
 @media only screen and (max-width: 600px) {
-.costTitle {
-    font-size: 100%;
+    .costTitle {
+        font-size: 100%;
+    }
+
+    .user-view {
+        display: block;
+    }
 }
-}
+
 @media only screen and (min-width: 600px) {
-.costTitle {
-    font-size: 150%;
-}
+    .costTitle {
+        font-size: 150%;
+    }
+
+    .user-view {
+        display: none;
+    }
 }
 
 .costTitle {
