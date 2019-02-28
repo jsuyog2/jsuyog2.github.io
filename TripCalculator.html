@@ -193,6 +193,16 @@
                                 <p id="errorCar"></p>
                             </div>
                             <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" id="autocomplete-input1" class="autocomplete">
+                                    <label for="autocomplete-input">From</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input type="text" id="autocomplete-input2" class="autocomplete" disabled>
+                                    <label for="autocomplete-input">To</label>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="input-field col s12"> <input id="pdAvg" min="1" type="number"> <label for="pdAvg">Petrol/Diesel Avg. km/l</label></div>
                                 <p id="pdAvgError"></p>
                             </div>
@@ -249,6 +259,9 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/map.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
     <script src="js/firebaseConfig.js"></script>
     <script src="js/firebaseScript.js"></script>

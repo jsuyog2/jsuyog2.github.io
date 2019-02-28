@@ -18,6 +18,10 @@ $(document).ready(function () {
             });
         }
     });
+    
+     $('input.autocomplete').autocomplete({
+      onAutocomplete: function(){getletlong(this)},
+    });
 
     $('.sidenav').sidenav();
     $('.parallax').parallax();
