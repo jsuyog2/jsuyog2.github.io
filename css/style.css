@@ -141,3 +141,7 @@ body {
 main {
     flex: 1 0 auto;
 }
+
+div.disabled {
+  opacity:0.5;
+}

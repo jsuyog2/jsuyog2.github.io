@@ -2,6 +2,28 @@
 /*global $*/
 /*eslint-env browser*/
 
+function addGuest() {
+    var totalGuest = $("#totalGuest").val();
+    if (parseInt(totalGuest, 10) < 15) {
+        totalGuest = parseInt(totalGuest, 10) + 1;
+        $(".user" + totalGuest).removeClass("disabled");
+        $("#totalGuest").val(totalGuest);
+        M.updateTextFields();
+    }
+}
+
+function removeGuest() {
+    var totalGuest = $("#totalGuest").val();
+    if (parseInt(totalGuest, 10) > 1) {
+        totalGuest = parseInt(totalGuest, 10) - 1;
+        if((totalGuest+1) != 1 ){
+            $(".user" + (totalGuest+1)).addClass("disabled");
+        }
+        $("#totalGuest").val(totalGuest);
+        M.updateTextFields();
+    }
+}
+
 $(document).ready(function () {
     "use strict";
     $('select').formSelect();
@@ -18,9 +40,11 @@ $(document).ready(function () {
             });
         }
     });
-    
-     $('input.autocomplete').autocomplete({
-      onAutocomplete: function(){getletlong(this)},
+
+    $('input.autocomplete').autocomplete({
+        onAutocomplete: function () {
+            getletlong(this)
+        },
     });
 
     $('.sidenav').sidenav();
