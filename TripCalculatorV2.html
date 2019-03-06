@@ -45,114 +45,114 @@
         </div>
     </nav>
     <main>
-       
-           <div class="row">
-            <!--People Travel-->
-            <div id="totalPeople">
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/travel2.jpg">
-                            <span class="card-title">How many people are travelling?</span>
-                        </div>
-                        <div class="card-content">
-                            <div class="row center">
-                                <div class="offset-s2 offset-l3 col s2 l1">
-                                    <a onclick="removeGuest()" class="btn-floating btn-small waves-effect waves-light red" style="top: 7px"><i class="material-icons">remove</i></a>
+        <div class="container">
+            <div class="row">
+                <!--People Travel-->
+                <div id="totalPeople">
+                    <div class="col s12 m5 offset-m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="images/travel2.jpg">
+                                <span class="card-title">How many people are travelling?</span>
+                            </div>
+                            <div class="card-content">
+                                <div class="row center">
+                                    <div class="col s1">
+                                        <a onclick="removeGuest()" class="btn-floating btn-small waves-effect waves-light red fabBtn"><i class="material-icons">remove</i></a>
+                                    </div>
+                                    <div class="col s4 center">
+                                        <input id="totalGuest" disabled value="1" id="disabled" type="number">
+                                    </div>
+                                    <div class="col s1">
+                                        <a onclick="addGuest()" class="btn-floating btn-small waves-effect waves-light red fabBtn"><i class="material-icons">add</i></a>
+                                    </div>
                                 </div>
-                                <div class="col s4 l4">
-                                    <input id="totalGuest" disabled value="1" id="disabled" type="number" style="padding-left: 10px; text-align: center; font-family: 'Nunito', sans-serif;font-weight: bold;border: solid #595150 0.5px;width: 90%;margin-left: 5%; margin-right: 5%; border-radius: 10px;">
-                                </div>
-                                <div class="col s1 l1">
-                                    <a onclick="addGuest()" class="btn-floating btn-small waves-effect waves-light red" style="top: 7px"><i class="material-icons">add</i></a>
+                                <div class="row center">
+                                    <div class="offset-s1 col s2">
+                                        <div class="icon user1">user</div>
+                                    </div>
+                                    <div class="col s2">
+                                        <div class="icon user2 disabled">user</div>
+                                    </div>
+                                    <div class="col s2">
+                                        <div class="icon user3 disabled">user</div>
+                                    </div>
+                                    <div class="col s2">
+                                        <div class="icon user4 disabled">user</div>
+                                    </div>
+                                    <div class="col s2">
+                                        <div class="icon user5 disabled">add-user-male</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row center">
-                                <div class="offset-s1 col s2">
-                                    <div class="icon user1">user</div>
-                                </div>
-                                <div class="col s2">
-                                    <div class="icon user2 disabled">user</div>
-                                </div>
-                                <div class="col s2">
-                                    <div class="icon user3 disabled">user</div>
-                                </div>
-                                <div class="col s2">
-                                    <div class="icon user4 disabled">user</div>
-                                </div>
-                                <div class="col s2">
-                                    <div class="icon user5 disabled">add-user-male</div>
-                                </div>
+                            <div class="card-action">
+                                <a id="next1" class="waves-effect waves-light btn">Next</a>
                             </div>
-                        </div>
-                        <div class="card-action">
-                            <a id="next1" class="waves-effect waves-light btn">Next</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--How Many Days-->
-            <div id="daysToStay">
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/travel3.jpg">
-                            <span class="card-title">How many days are you going for?</span>
-                        </div>
-                        <div class="card-content">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input type="text" id="startingDate" class="datepicker">
-                                    <label for="startingDate">Date From</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input type="text" id="endingDate" class="datepicker" disabled>
-                                    <label for="endingDate">Date To</label>
+                <!--How Many Days-->
+                <div id="daysToStay" hidden>
+                    <div class="col s12 m5 offset-m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="images/travel3.jpg">
+                                <span class="card-title">How many days are you going for?</span>
+                            </div>
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input type="text" id="startingDate" class="datepicker">
+                                        <label for="startingDate">Date From</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input type="text" id="endingDate" class="datepicker" disabled>
+                                        <label for="endingDate">Date To</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-action">
-                            <a id="next2" class="waves-effect waves-light btn">Next</a>
+                            <div class="card-action">
+                                <a id="next2" class="waves-effect waves-light btn">Next</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--how you go-->
-            <div id="daysToStay">
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="images/travel4.jpg">
-                            <span class="card-title">How many days are you going for?</span>
-                        </div>
-                        <div class="card-content">
-                            <div class="row">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td>Hotel?:</td>
-                                            <td><var class="switch"> <label><input id="hotelEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vehicle/Trasportation?:</td>
-                                            <td><var class="switch"> <label><input id="vehicleEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Food?:</td>
-                                            <td><var class="switch"> <label><input id="foodEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                <!--how you go-->
+                <div id="daysToStay" hidden>
+                    <div class="col s12 m5 offset-m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="images/travel4.jpg">
+                                <span class="card-title">How many days are you going for?</span>
+                            </div>
+                            <div class="card-content">
+                                <div class="row">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>Hotel?:</td>
+                                                <td><var class="switch"> <label><input id="hotelEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vehicle/Trasportation?:</td>
+                                                <td><var class="switch"> <label><input id="vehicleEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Food?:</td>
+                                                <td><var class="switch"> <label><input id="foodEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-action">
-                            <a id="next2" class="waves-effect waves-light btn">Next</a>
+                            <div class="card-action">
+                                <a id="next2" class="waves-effect waves-light btn">Next</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
             <!--write destination-->
             <div id="destination" class="row" hidden>
@@ -180,7 +180,7 @@
                     </div>
                 </div>
             </div>
-      
+        </div>
     </main>
 
     <footer class="page-footer teal">

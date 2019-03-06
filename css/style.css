@@ -78,10 +78,11 @@ footer.page-footer {
     .user-view {
         display: block;
     }
+
     .cost {
-    font-size: 200%;
-    font-family: 'Acme', sans-serif;
-}
+        font-size: 200%;
+        font-family: 'Acme', sans-serif;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -92,10 +93,11 @@ footer.page-footer {
     .user-view {
         display: none;
     }
+
     .cost {
-    font-size: 250%;
-    font-family: 'Acme', sans-serif;
-}
+        font-size: 250%;
+        font-family: 'Acme', sans-serif;
+    }
 }
 
 .costTitle {
@@ -133,6 +135,10 @@ footer.page-footer {
 
 
 body {
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -143,5 +149,17 @@ main {
 }
 
 div.disabled {
-  opacity:0.5;
+    opacity: 0.5;
+}
+
+#totalGuest {
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    border: solid #595150 0.5px;
+    width: 100%;
+    border-radius: 10px;
+}
+.fabBtn{
+    top:7px;
 }
