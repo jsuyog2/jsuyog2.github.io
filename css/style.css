@@ -163,3 +163,7 @@ div.disabled {
 .fabBtn{
     top:7px;
 }
+
+.mainDiv{
+    position: absolute;
+}
