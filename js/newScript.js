@@ -25,7 +25,13 @@ function removeGuest() {
 }
 
 $(document).ready(function () {
-    var totalAdults = parseInt($('#totalGuest').val());
+    var totalAdults;
+    $('#totalPeopleNext').click(function(){
+       totalAdults = parseInt($('#totalGuest').val());
+        $('#totalPeopleDiv').fadeOut();
+        $('#daysToStayDiv').fadeIn();
+    });
+    
     var startingDate = $('#startingDate').val();
     var endingDate = $('#endingDate').val();
     var hotel = $('#hotelEnable').prop("checked");
