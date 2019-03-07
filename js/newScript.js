@@ -222,19 +222,17 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
             $('#' + checkBoxs[i] + 'Next').html('Finish');
             $('#' + checkBoxs[i] + 'Next').addClass('Finish');
         }
-        $('.Finish').click(function () {
-            $('#' + checkBoxs[checkBoxs.length - 1]).slideToggle();
-            $('#endDiv').slideToggle();
-            totalCost = perPersonCostPerDay * totalAdults;
-            $('#totalBudget').html(totalCost);
-            $('#total').html(perPersonCostPerDay);
-            $('#totalFood').html(foodPrice);
-            $('#totalTrasportation').html(totalVehicleCost);
-            $('#totalHotel').html(hotelPrice);
-        })
-        console.log(checkBoxs);
     });
-    return total;
+    $('.Finish').click(function () {
+        $('#' + checkBoxs[checkBoxs.length - 1]).slideToggle();
+        $('#endDiv').slideToggle();
+        totalCost = perPersonCostPerDay * totalAdults;
+        $('#totalBudget').html(totalCost);
+        $('#total').html(perPersonCostPerDay);
+        $('#totalFood').html(foodPrice);
+        $('#totalTrasportation').html(totalVehicleCost);
+        $('#totalHotel').html(hotelPrice);
+    });
 }
 
 $(document).ready(function () {
