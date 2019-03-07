@@ -156,7 +156,6 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
         TicketPrice = 0,
         returnTicketPrice = 0,
         totalVehicleCost = 0;
-    console.log(i);
     $('#' + checkBoxs[i]).slideToggle();
     days = datediff(startingDate, endingDate);
     if (days === 0) {
@@ -169,7 +168,6 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
         $('#' + checkBoxs[i] + 'Next').addClass('Finish');
     }
     $('.next').click(function () {
-        console.log(this.id);
         i++;
         if (this.id === 'hotelNext') {
             hotelPrice = (parseInt($('#hotelPrice').val(), 10) * stay) / totalAdults;
