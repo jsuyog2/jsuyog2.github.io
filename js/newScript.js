@@ -164,6 +164,10 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
     } else {
         stay = days;
     }
+    if (i === checkBoxs.length - 1) {
+        $('#' + checkBoxs[i] + 'Next').html('Finish');
+        $('#' + checkBoxs[i] + 'Next').addClass('Finish');
+    }
     $('.next').click(function () {
         console.log(this.id);
         i++;
