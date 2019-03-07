@@ -58,6 +58,37 @@ function datediff(first, second) {
 }
 
 $(document).ready(function () {
+    "use strict";
+    $('select').formSelect();
+    $('#startingDate').datepicker({
+        format: "mm/dd/yyyy",
+        autoClose: true,
+        minDate: new Date(),
+        onSelect: function (date) {
+            $("#endingDate").prop('disabled', false);
+            $('#endingDate').datepicker({
+                format: "mm/dd/yyyy",
+                autoClose: true,
+                minDate: date
+            });
+        }
+    });
+
+    $('input.autocomplete').autocomplete({
+        onAutocomplete: function () {
+            getletlong(this)
+        },
+    });
+
+    $('.sidenav').sidenav();
+    $('.parallax').parallax();
+    $('.collapsible').collapsible();
+    //display icon         
+    $(".icon").each(function () {
+        var icon = $(this).html();
+        $(this).html('<img src="https://png.icons8.com/color/' + icon + '">');
+    });
+
     var totalAdults = 0,
         startingDate = "",
         endingDate = "",
@@ -106,7 +137,9 @@ $(document).ready(function () {
 
 function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
     var i = 0;
-    var total = 0,
+    var perPersonCostPerDay = 0,
+        totalCost = 0,
+        stay = 0,
         hotelPrice = 0,
         breakfast = 0,
         lunch = 0,
@@ -135,13 +168,13 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
         console.log(this.id);
         i++;
         if (this.id === 'hotelNext') {
-            hotelPrice = parseInt($('#hotelPrice').val(), 10);
+            hotelPrice = (parseInt($('#hotelPrice').val(), 10) * stay) / totalAdults;
         }
         if (this.id === 'foodNext') {
             breakfast = parseInt($("#rateBreakfast").val(), 10);
             lunch = parseInt($("#rateLunch").val(), 10);
             dinner = parseInt($("#rateDinner").val(), 10);
-            foodPrice = breakfast + lunch + dinner;
+            foodPrice = (breakfast + lunch + dinner) * stay;
         }
         if (this.id === 'vehicleNext') {
             car = $('#car').prop("checked"), 10;
@@ -167,7 +200,7 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
                 pdAvg = parseInt($("#pdAvg").val(), 10);
                 rate = parseInt($("#rate").val(), 10);
             }
-            totalVehicleCost = Math.round(((((km * 2) / pdAvg) * rate) / totalBikesCar));
+            totalVehicleCost = Math.round((((((km * 2) / pdAvg) * rate) / totalAdults) * totalBikesCar));
         }
         if (diffVehicle === true) {
             if (this.id === 'diffVehiDivNext') {
@@ -176,136 +209,32 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
                 totalVehicleCost = Math.round(TicketPrice + returnTicketPrice);
             }
         }
-        total = hotelPrice + foodPrice + totalVehicleCost;
+        perPersonCostPerDay = hotelPrice + foodPrice + totalVehicleCost;
         if (i < checkBoxs.length) {
             $('#' + checkBoxs[i - 1]).slideToggle();
             $('#' + checkBoxs[i]).slideToggle();
         }
         if (i === checkBoxs.length - 1) {
             $('#' + checkBoxs[i] + 'Next').html('Finish');
-            $('#' + checkBoxs[i] + 'Next').click(function () {
-                console.log('Total:' + total);
-                console.log('Days:' + days);
-                console.log('TotalAudlts:' + totalAdults);
-                console.log('hotelPrice:' + hotelPrice);
-                console.log('foodPrice:' + foodPrice);
-                console.log('totalVehicleCost:' + totalVehicleCost);
-            });
+            $('#' + checkBoxs[i] + 'Next').addClass('Finish');
         }
+        $('.Finish').click(function () {
+            $('#' + checkBoxs[checkBoxs.length - 1]).slideToggle();
+            $('#endDiv').slideToggle();
+            totalCost = perPersonCostPerDay * totalAdults;
+            $('#totalBudget').html(totalCost);
+            $('#total').html(perPersonCostPerDay);
+            $('#totalFood').html(foodPrice);
+            $('#totalTrasportation').html(totalVehicleCost);
+            $('#totalHotel').html(hotelPrice);
+        })
         console.log(checkBoxs);
     });
     return total;
 }
 
 $(document).ready(function () {
-    "use strict";
-    $('select').formSelect();
-    $('#startingDate').datepicker({
-        format: "mm/dd/yyyy",
-        autoClose: true,
-        minDate: new Date(),
-        onSelect: function (date) {
-            $("#endingDate").prop('disabled', false);
-            $('#endingDate').datepicker({
-                format: "mm/dd/yyyy",
-                autoClose: true,
-                minDate: date
-            });
-        }
-    });
 
-    $('input.autocomplete').autocomplete({
-        onAutocomplete: function () {
-            getletlong(this)
-        },
-    });
-
-    $('.sidenav').sidenav();
-    $('.parallax').parallax();
-    $('.collapsible').collapsible();
-    //display icon         
-    $(".icon").each(function () {
-        var icon = $(this).html();
-        $(this).html('<img src="https://png.icons8.com/color/' + icon + '">');
-    });
-
-    //People
-    var totalAdults = 0,
-        //dates
-        startingDate = 0,
-        endingDate = 0,
-        days = 0,
-        //hotel
-        hotelPrice = 0,
-        stay = 0,
-        hotelPricePerDay = 0,
-        hotelPricePerPerson = 0,
-        //vehicle
-        totalBikesCar = 0,
-        pdAvg = 0,
-        km = 0,
-        rate = 0,
-        returnTicketPrice = 0,
-        ticketPrice = 0,
-        totalVehicleCost = 0,
-        //food
-        breakfast = 0,
-        lunch = 0,
-        dinner = 0,
-        foodCostPerPerson = 0,
-        //extra money
-        extraMoney = 0,
-        //perPersonCosts
-        perPersonCostPerDay = 0,
-        totalCost = 0;
-
-    //hotelEnable Checkbox
-    $("#hotelEnable").change(function () {
-        if ($(this).prop("checked") === true) {
-            $("#forHotel").prop('hidden', false);
-        } else if ($(this).prop("checked") === false) {
-            $("#forHotel").prop('hidden', true);
-        }
-    });
-    //vehicleEnable Checkbox
-    $("#vehicleEnable").change(function () {
-        if ($(this).prop("checked") === true) {
-
-            $("#forVehicle").prop('hidden', false);
-        } else if ($(this).prop("checked") === false) {
-
-            $("#forVehicle").prop('hidden', true);
-        }
-    });
-    //foodEnable Checkbox
-    $("#foodEnable").change(function () {
-        if ($(this).prop("checked") === true) {
-            $("#forFood").prop('hidden', false);
-        } else if ($(this).prop("checked") === false) {
-            $("#forFood").prop('hidden', true);
-        }
-    });
-
-    //trip radio button
-    $('input[name="tripVehicle"]').change(function () {
-        if ($('#car').prop("checked") === true) {
-            $("#carDiv").prop('hidden', false);
-            $("#diffVehicleDiv").prop('hidden', true);
-        } else if ($('#diffVehicle').prop("checked") === true) {
-            $("#carDiv").prop('hidden', true);
-            $("#diffVehicleDiv").prop('hidden', false);
-        }
-    });
-    $('input[name="foodRadio"]').change(function () {
-        if ($('#defaultFood').prop("checked") === true) {
-            $("#foodDiv input").prop('disabled', true);
-            $("#rateBreakfast").val(100);
-            $("#rateLunch").val(200);
-            $("#rateDinner").val(200);
-        } else if ($('#changeFood').prop("checked") === true) {
-            $("#foodDiv input").prop('disabled', false);
-        }
-    });
 
 
     //submit click
