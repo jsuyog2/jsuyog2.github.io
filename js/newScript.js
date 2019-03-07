@@ -24,6 +24,28 @@ function removeGuest() {
     }
 }
 
+function addVehicle() {
+    var totalGuest = $("#totalCar").val();
+    if (parseInt(totalGuest, 10) < 15) {
+        totalGuest = parseInt(totalGuest, 10) + 1;
+        $(".car" + totalGuest).removeClass("disabled");
+        $("#totalCar").val(totalGuest);
+        M.updateTextFields();
+    }
+}
+
+function removeVehicle() {
+    var totalGuest = $("#totalCar").val();
+    if (parseInt(totalGuest, 10) > 1) {
+        totalGuest = parseInt(totalGuest, 10) - 1;
+        if ((totalGuest + 1) != 1) {
+            $(".car" + (totalGuest + 1)).addClass("disabled");
+        }
+        $("#totalCar").val(totalGuest);
+        M.updateTextFields();
+    }
+}
+
 function parseDate(str) {
     var mdy = str.split('/');
     return new Date(mdy[2], mdy[0] - 1, mdy[1]);
@@ -36,9 +58,18 @@ function datediff(first, second) {
 }
 
 $(document).ready(function () {
-    var totalAdults, startingDate, endingDate, hotel, vehicle, food;
+    var totalAdults = 0,
+        startingDate = "",
+        endingDate = "",
+        hotel = false,
+        vehicle = false,
+        food = false;
     $('#mainNextDiv1').click(function () {
         totalAdults = parseInt($('#totalGuest').val(), 10);
+        $('#mainDiv1').slideToggle();
+        $('#mainDiv2').slideToggle();
+    });
+    $('#mainDiv1Back').click(function () {
         $('#mainDiv1').slideToggle();
         $('#mainDiv2').slideToggle();
     });
@@ -50,37 +81,49 @@ $(document).ready(function () {
             $('#mainDiv3').slideToggle();
         }
     });
+    $('#mainDiv2Back').click(function () {
+        $('#mainDiv2').slideToggle();
+        $('#mainDiv3').slideToggle();
+    });
     $('#mainNextDiv3').click(function () {
+        var checkBoxs = [];
         hotel = $('#hotelEnable').prop("checked");
         vehicle = $('#vehicleEnable').prop("checked");
         food = $('#foodEnable').prop("checked");
+        if (hotel === true) {
+            checkBoxs.push('hotel');
+        }
+        if (vehicle === true) {
+            checkBoxs.push('vehicle');
+        }
+        if (food === true) {
+            checkBoxs.push('food');
+        }
         $('#mainDiv3').slideToggle();
-        addDetails(totalAdults, startingDate, endingDate, hotel, vehicle, food);
+        addDetails(totalAdults, startingDate, endingDate, checkBoxs);
     });
-
-
 });
 
-
-
-function addDetails(totalAdults, startingDate, endingDate, hotel, vehicle, food) {
-    var checkBoxs = [];
+function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
     var i = 0;
     var total = 0,
         hotelPrice = 0,
         breakfast = 0,
         lunch = 0,
         dinner = 0,
-        foodPrice = 0;
-    if (hotel === true) {
-        checkBoxs.push('hotel');
-    }
-    if (vehicle === true) {
-        checkBoxs.push('vehicle');
-    }
-    if (food === true) {
-        checkBoxs.push('food');
-    }
+        foodPrice = 0,
+        car = false,
+        diffVehicle = false,
+        totalBikesCar = 0,
+        fromPlace = '',
+        toPlace = '',
+        km = 0,
+        pdAvg = 0,
+        rate = 0,
+        TicketPrice = 0,
+        returnTicketPrice = 0,
+        totalVehicleCost = 0;
+    console.log(i);
     $('#' + checkBoxs[i]).slideToggle();
     days = datediff(startingDate, endingDate);
     if (days === 0) {
@@ -89,6 +132,7 @@ function addDetails(totalAdults, startingDate, endingDate, hotel, vehicle, food)
         stay = days;
     }
     $('.next').click(function () {
+        console.log(this.id);
         i++;
         if (this.id === 'hotelNext') {
             hotelPrice = parseInt($('#hotelPrice').val(), 10);
@@ -99,7 +143,40 @@ function addDetails(totalAdults, startingDate, endingDate, hotel, vehicle, food)
             dinner = parseInt($("#rateDinner").val(), 10);
             foodPrice = breakfast + lunch + dinner;
         }
-        total = hotelPrice + foodPrice;
+        if (this.id === 'vehicleNext') {
+            car = $('#car').prop("checked"), 10;
+            diffVehicle = $('#diffVehicle').prop("checked");
+            var index = checkBoxs.indexOf("vehicle");
+            if (car === true) {
+                checkBoxs.splice(index + 1, 0, "totalCarDiv", "destinationDiv", "carEstimDiv");
+            }
+            if (diffVehicle === true) {
+                checkBoxs.splice(index + 1, 0, "diffVehiDiv");
+            }
+        }
+        if (car === true) {
+            if (this.id === 'totalCarNext') {
+                totalBikesCar = parseInt($("#totalCar").val(), 10);
+            }
+            if (this.id === 'destinationNext') {
+                fromPlace = $('#autocomplete-input1').val();
+                toPlace = $('#autocomplete-input2').val();
+            }
+            if (this.id === 'carEstimDivNext') {
+                km = parseInt($("#km").val(), 10);
+                pdAvg = parseInt($("#pdAvg").val(), 10);
+                rate = parseInt($("#rate").val(), 10);
+            }
+            totalVehicleCost = Math.round(((((km * 2) / pdAvg) * rate) / totalBikesCar));
+        }
+        if (diffVehicle === true) {
+            if (this.id === 'diffVehiDivNext') {
+                TicketPrice = parseInt($("#ticketPrice").val(), 10);
+                returnTicketPrice = parseInt($("#returnTicketPrice").val(), 10);
+                totalVehicleCost = Math.round(TicketPrice + returnTicketPrice);
+            }
+        }
+        total = hotelPrice + foodPrice + totalVehicleCost;
         if (i < checkBoxs.length) {
             $('#' + checkBoxs[i - 1]).slideToggle();
             $('#' + checkBoxs[i]).slideToggle();
@@ -107,9 +184,15 @@ function addDetails(totalAdults, startingDate, endingDate, hotel, vehicle, food)
         if (i === checkBoxs.length - 1) {
             $('#' + checkBoxs[i] + 'Next').html('Finish');
             $('#' + checkBoxs[i] + 'Next').click(function () {
-                console.log(total, days);
+                console.log('Total:' + total);
+                console.log('Days:' + days);
+                console.log('TotalAudlts:' + totalAdults);
+                console.log('hotelPrice:' + hotelPrice);
+                console.log('foodPrice:' + foodPrice);
+                console.log('totalVehicleCost:' + totalVehicleCost);
             });
         }
+        console.log(checkBoxs);
     });
     return total;
 }
