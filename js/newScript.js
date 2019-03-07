@@ -24,36 +24,94 @@ function removeGuest() {
     }
 }
 
+function parseDate(str) {
+    var mdy = str.split('/');
+    return new Date(mdy[2], mdy[0] - 1, mdy[1]);
+}
+
+function datediff(first, second) {
+    first = parseDate(first);
+    second = parseDate(second);
+    return Math.round(Math.abs((second.getTime() - first.getTime()) / (86400000)));
+}
+
 $(document).ready(function () {
     var totalAdults, startingDate, endingDate, hotel, vehicle, food;
     $('#mainNextDiv1').click(function () {
-        totalAdults = parseInt($('#totalGuest').val());
+        totalAdults = parseInt($('#totalGuest').val(), 10);
         $('#mainDiv1').slideToggle();
         $('#mainDiv2').slideToggle();
     });
     $('#mainNextDiv2').click(function () {
         startingDate = $('#startingDate').val();
         endingDate = $('#endingDate').val();
-        $('#mainDiv2').slideToggle();
-        $('#mainDiv3').slideToggle();
+        if (startingDate !== "" && endingDate !== "") {
+            $('#mainDiv2').slideToggle();
+            $('#mainDiv3').slideToggle();
+        }
     });
     $('#mainNextDiv3').click(function () {
         hotel = $('#hotelEnable').prop("checked");
         vehicle = $('#vehicleEnable').prop("checked");
         food = $('#foodEnable').prop("checked");
         $('#mainDiv3').slideToggle();
-        var total = addDetails(hotel,vehicle,food);
-        console.log(total);
-        //$('#mainDiv2').slideToggle();
+        addDetails(totalAdults, startingDate, endingDate, hotel, vehicle, food);
     });
-
 
 
 });
 
-function addDetails(hotel,vehicle,food){
-    var checkBoxs = [hotel, vehicle, food];
-    return checkBoxs;
+
+
+function addDetails(totalAdults, startingDate, endingDate, hotel, vehicle, food) {
+    var checkBoxs = [];
+    var i = 0;
+    var total = 0,
+        hotelPrice = 0,
+        breakfast = 0,
+        lunch = 0,
+        dinner = 0,
+        foodPrice = 0;
+    if (hotel === true) {
+        checkBoxs.push('hotel');
+    }
+    if (vehicle === true) {
+        checkBoxs.push('vehicle');
+    }
+    if (food === true) {
+        checkBoxs.push('food');
+    }
+    $('#' + checkBoxs[i]).slideToggle();
+    days = datediff(startingDate, endingDate);
+    if (days === 0) {
+        stay = 1;
+    } else {
+        stay = days;
+    }
+    $('.next').click(function () {
+        i++;
+        if (this.id === 'hotelNext') {
+            hotelPrice = parseInt($('#hotelPrice').val(), 10);
+        }
+        if (this.id === 'foodNext') {
+            breakfast = parseInt($("#rateBreakfast").val(), 10);
+            lunch = parseInt($("#rateLunch").val(), 10);
+            dinner = parseInt($("#rateDinner").val(), 10);
+            foodPrice = breakfast + lunch + dinner;
+        }
+        total = hotelPrice + foodPrice;
+        if (i < checkBoxs.length) {
+            $('#' + checkBoxs[i - 1]).slideToggle();
+            $('#' + checkBoxs[i]).slideToggle();
+        }
+        if (i === checkBoxs.length - 1) {
+            $('#' + checkBoxs[i] + 'Next').html('Finish');
+            $('#' + checkBoxs[i] + 'Next').click(function () {
+                console.log(total, days);
+            });
+        }
+    });
+    return total;
 }
 
 $(document).ready(function () {
@@ -87,17 +145,6 @@ $(document).ready(function () {
         var icon = $(this).html();
         $(this).html('<img src="https://png.icons8.com/color/' + icon + '">');
     });
-
-    function parseDate(str) {
-        var mdy = str.split('/');
-        return new Date(mdy[2], mdy[0] - 1, mdy[1]);
-    }
-
-    function datediff(first, second) {
-        first = parseDate(first);
-        second = parseDate(second);
-        return Math.round(Math.abs((second.getTime() - first.getTime()) / (86400000)));
-    }
 
     //People
     var totalAdults = 0,
