@@ -46,114 +46,166 @@
     </nav>
     <main>
         <div class="container">
-<!--            <div class="row">-->
-                <!--People Travel-->
-                <div id="mainDiv1" class="mainDiv row">
-                    <div class="col s12 m5 offset-m4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="images/travel2.jpg">
-                                <span class="card-title">How many people are travelling?</span>
-                            </div>
-                            <div class="card-content">
-                                <div class="row center">
-                                    <div class="offset-s2 col s2">
-                                        <a onclick="removeGuest()" class="btn-floating btn-small waves-effect waves-light red fabBtn"><i class="material-icons">remove</i></a>
-                                    </div>
-                                    <div class="col s4">
-                                        <input id="totalGuest" disabled value="1" id="disabled" type="number">
-                                    </div>
-                                    <div class="col s1">
-                                        <a onclick="addGuest()" class="btn-floating btn-small waves-effect waves-light red fabBtn"><i class="material-icons">add</i></a>
-                                    </div>
+            <!--            <div class="row">-->
+            <!--People Travel-->
+            <div id="mainDiv1" class="mainDiv row" hidden>
+                <div class="col s12 m5 offset-m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/travel2.jpg">
+                            <span class="card-title">How many people are travelling?</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="row center">
+                                <div class="offset-s2 col s2">
+                                    <a onclick="removeGuest()" class="btn-floating btn-small waves-effect waves-light red fabBtn"><i class="material-icons">remove</i></a>
                                 </div>
-                                <div class="row center">
-                                    <div class="offset-s1 col s2">
-                                        <div class="icon user1">user</div>
-                                    </div>
-                                    <div class="col s2">
-                                        <div class="icon user2 disabled">user</div>
-                                    </div>
-                                    <div class="col s2">
-                                        <div class="icon user3 disabled">user</div>
-                                    </div>
-                                    <div class="col s2">
-                                        <div class="icon user4 disabled">user</div>
-                                    </div>
-                                    <div class="col s2">
-                                        <div class="icon user5 disabled">add-user-male</div>
-                                    </div>
+                                <div class="col s4">
+                                    <input id="totalGuest" disabled value="1" id="disabled" type="number">
+                                </div>
+                                <div class="col s1">
+                                    <a onclick="addGuest()" class="btn-floating btn-small waves-effect waves-light red fabBtn"><i class="material-icons">add</i></a>
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <a id="mainNextDiv1" class="waves-effect waves-light btn">Next</a>
+                            <div class="row center">
+                                <div class="offset-s1 col s2">
+                                    <div class="icon user1">user</div>
+                                </div>
+                                <div class="col s2">
+                                    <div class="icon user2 disabled">user</div>
+                                </div>
+                                <div class="col s2">
+                                    <div class="icon user3 disabled">user</div>
+                                </div>
+                                <div class="col s2">
+                                    <div class="icon user4 disabled">user</div>
+                                </div>
+                                <div class="col s2">
+                                    <div class="icon user5 disabled">add-user-male</div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="card-action">
+                            <a id="mainNextDiv1" class="waves-effect waves-light btn">Next</a>
                         </div>
                     </div>
                 </div>
-                <!--How Many Days-->
-                <div id="mainDiv2" class="mainDiv row" hidden>
-                    <div class="col s12 m5 offset-m4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="images/travel3.jpg">
-                                <span class="card-title">How many days are you going for?</span>
-                            </div>
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="text" id="startingDate" class="datepicker">
-                                        <label for="startingDate">Date From</label>
-                                    </div>
-                                    <div class="input-field col s12">
-                                        <input type="text" id="endingDate" class="datepicker" disabled>
-                                        <label for="endingDate">Date To</label>
-                                    </div>
+            </div>
+            <!--How Many Days-->
+            <div id="mainDiv2" class="mainDiv row" hidden>
+                <div class="col s12 m5 offset-m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/travel3.jpg">
+                            <span class="card-title">How many days are you going for?</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" id="startingDate" class="datepicker">
+                                    <label for="startingDate">Date From</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input type="text" id="endingDate" class="datepicker" disabled>
+                                    <label for="endingDate">Date To</label>
                                 </div>
                             </div>
-                            <div class="card-action">
-                                <a id="mainNextDiv2" class="waves-effect waves-light btn">Next</a>
-                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a id="mainNextDiv2" class="waves-effect waves-light btn">Next</a>
                         </div>
                     </div>
                 </div>
-                <!--how you go-->
-                <div id="mainDiv3" class="mainDiv row" hidden>
-                    <div class="col s12 m5 offset-m4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="images/travel4.jpg">
-                                <span class="card-title">How many days are you going for?</span>
-                            </div>
-                            <div class="card-content">
-                                <div class="row">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>Hotel?:</td>
-                                                <td><var class="switch"> <label><input id="hotelEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Vehicle/Trasportation?:</td>
-                                                <td><var class="switch"> <label><input id="vehicleEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Food?:</td>
-                                                <td><var class="switch"> <label><input id="foodEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+            </div>
+            <!--how you go-->
+            <div id="mainDiv3" class="mainDiv row" hidden>
+                <div class="col s12 m5 offset-m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/travel4.jpg">
+                            <span class="card-title">How many days are you going for?</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hotel?:</td>
+                                            <td><var class="switch"> <label><input id="hotelEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vehicle/Trasportation?:</td>
+                                            <td><var class="switch"> <label><input id="vehicleEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Food?:</td>
+                                            <td><var class="switch"> <label><input id="foodEnable" type="checkbox" /> <span class="lever"></span></label> </var></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
 
-                                </div>
                             </div>
-                            <div class="card-action">
-                                <a id="mainNextDiv3" class="waves-effect waves-light btn">Next</a>
-                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a id="mainNextDiv3" class="waves-effect waves-light btn">Next</a>
                         </div>
                     </div>
                 </div>
-<!--            </div>-->
+            </div>
+            <!--            </div>-->
+            <!--write hotel-->
+            <div id="hotel" class="row" hidden>
+                <div class="col s12 m5 offset-m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/travel5.jpg">
+                            <span class="card-title">Hotel</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="hotelPrice" min="1" type="number">
+                                    <label for="hotelPrice">Hotel Price / Night</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a id="next2" class="waves-effect waves-light btn">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--write food-->
+            <div id="food" class="row" hidden>
+                <div class="col s12 m5 offset-m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="images/travel6.jpg">
+                            <span class="card-title">Food</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="rateBreakfast" type="number" min="1" value="100">
+                                    <label for="rateBreakfast">Breakfast</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="rateLunch" type="number" min="1" value="200">
+                                    <label for="rateLunch">Lunch</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="rateDinner" type="number" min="1" value="200">
+                                    <label for="rateDinner">Dinner</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a id="next2" class="waves-effect waves-light btn">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--write destination-->
             <div id="destination" class="row" hidden>
                 <div class="col s12 m5 offset-m4">

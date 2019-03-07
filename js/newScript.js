@@ -44,7 +44,7 @@ $(document).ready(function () {
         $('#mainDiv3').slideToggle();
         var total = addDetails(hotel,vehicle,food);
         console.log(total);
-        //        $('#mainDiv2').slideToggle();
+        //$('#mainDiv2').slideToggle();
     });
 
 
