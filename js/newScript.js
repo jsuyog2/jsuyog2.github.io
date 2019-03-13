@@ -236,16 +236,16 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
     });
 }
 $('.switcher').change(function () {
-    if($('#hotelEnable').prop("checked")){
-    if (this.id === "hotelEnable") {
+    if ($('#hotelEnable').prop("checked")) {
+        if (this.id === "hotelEnable") {
 
-    }
-    if (this.id === "vehicleEnable") {
+        }
+        if (this.id === "vehicleEnable") {
 
-    }
-    if (this.id === "foodEnable") {
+        }
+        if (this.id === "foodEnable") {
 
-    }
+        }
     }
 });
 
