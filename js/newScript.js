@@ -70,7 +70,7 @@ $(document).ready(function () {
                 format: "mm/dd/yyyy",
                 autoClose: true,
                 minDate: date,
-                onSelect:function(){
+                onSelect: function () {
                     $('#2').attr('onclick', 'toggleNextDiv(this)');
                 }
             });
@@ -235,6 +235,19 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
         $('#totalHotel').html(hotelPrice);
     });
 }
+$('.switcher').change(function () {
+    if($('#hotelEnable').prop("checked")){
+    if (this.id === "hotelEnable") {
+
+    }
+    if (this.id === "vehicleEnable") {
+
+    }
+    if (this.id === "foodEnable") {
+
+    }
+    }
+});
 
 $('.btn').click(function () {
     var id = parseInt(this.id, 10);
@@ -247,11 +260,12 @@ $('.btn').click(function () {
             endingDate = $('#endingDate').val();
             break;
         case 3:
-            startingDate = $('#startingDate').val();
-            endingDate = $('#endingDate').val();
+            hotel = $('#hotelEnable').prop("checked");
+            vehicle = $('#vehicleEnable').prop("checked");
+            food = $('#foodEnable').prop("checked");
             break;
     }
-})
+});
 
 function toggleNextDiv(context) {
     var id = parseInt(context.id, 10);
