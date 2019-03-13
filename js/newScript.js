@@ -69,7 +69,10 @@ $(document).ready(function () {
             $('#endingDate').datepicker({
                 format: "mm/dd/yyyy",
                 autoClose: true,
-                minDate: date
+                minDate: date,
+                onSelect:function(){
+                    $('#2').attr('onclick', 'toggleNextDiv(this)');
+                }
             });
         }
     });
@@ -96,7 +99,6 @@ $(document).ready(function () {
         vehicle = false,
         food = false;
     $('#mainNextDiv1').click(function () {
-        totalAdults = parseInt($('#totalGuest').val(), 10);
         $('#mainDiv1').slideToggle();
         $('#mainDiv2').slideToggle();
     });
@@ -135,11 +137,6 @@ $(document).ready(function () {
     });
 });
 
-function toggleNextDiv(context) {
-    var id = parseInt(context.id, 10);
-    $('#mainDiv' + id).slideToggle();
-    $('#mainDiv' + (id + 1)).slideToggle();
-}
 
 function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
     var i = 0;
@@ -239,193 +236,28 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
     });
 }
 
-$(document).ready(function () {
+$('.btn').click(function () {
+    var id = parseInt(this.id, 10);
+    switch (id) {
+        case 1:
+            totalAdults = parseInt($('#totalGuest').val(), 10);
+            break;
+        case 2:
+            startingDate = $('#startingDate').val();
+            endingDate = $('#endingDate').val();
+            break;
+        case 3:
+            startingDate = $('#startingDate').val();
+            endingDate = $('#endingDate').val();
+            break;
+    }
+})
 
-
-
-    //submit click
-    $("#submit").click(function () {
-        //People
-        totalAdults = $("#totalAdults").val();
-        startingDate = $('#startingDate').val();
-        endingDate = $('#endingDate').val();
-        extraMoney = $('#exMoney').val();
-
-
-        if (totalAdults !== null && startingDate !== "" && endingDate !== "" && extraMoney !== "") {
-            $('#error').html("");
-            $('.modal').modal();
-            //days
-
-            days = datediff(startingDate, endingDate);
-            if (days === 0) {
-                stay = 1;
-            } else {
-                stay = days;
-            }
-
-            //hotel
-            if ($("#hotelEnable").prop("checked") === false) {
-                hotelPricePerPerson = 0;
-
-            } else if ($("#hotelEnable").prop("checked") === true) {
-                hotelPrice = $("#hotelPrice").val();
-                if (hotelPrice !== null || hotelPrice !== "") {
-                    hotelPricePerDay = hotelPrice * stay;
-                    hotelPricePerPerson = Math.round(hotelPricePerDay / totalAdults);
-                }
-
-            }
-
-
-
-            //Vehicle
-            if ($("#vehicleEnable").prop("checked") === false) {
-                totalVehicleCost = 0;
-            } else {
-                if ($('#car').prop("checked") === true) {
-                    $('#errorCar').html("");
-                    totalBikesCar = $("#totalBikesCar").val();
-                    if (totalBikesCar !== null) {
-                        if ($("#pdAvg").val() !== null && $("#pdAvg").val() !== '') {
-                            pdAvg = $("#pdAvg").val();
-                            $('#pdAvgError').html("");
-
-                        } else {
-                            pdAvg = 1;
-                            $('#pdAvgError').html("This Petrol/Diesel Avg. is required.");
-                        }
-                        if ($("#km").val() !== null && $("#km").val() !== '') {
-                            km = $("#km").val();
-                            $('#kmError').html("");
-                        } else {
-                            km = 0;
-                            $('#kmError').html("This Total Km is required.");
-                        }
-                        if ($("#rate").val() !== null && $("#rate").val() !== '') {
-                            rate = $("#rate").val();
-                            $('#rateError').html("");
-
-                        } else {
-                            rate = 0;
-                            $('#rateError').html("This Petrol/Diesel Rate is required.");
-                        }
-                        totalVehicleCost = Math.round(((((km * 2) / pdAvg) * rate) / parseInt(totalAdults, 10)) * parseInt(totalBikesCar, 10));
-                    } else if (totalBikesCar === null) {
-                        $('#errorCar').html("This Total car is required.");
-                    }
-                } else if ($('#diffVehicle').prop("checked") === true) {
-
-                    if ($("#ticketPrice").val() !== null && $("#ticketPrice").val() !== '') {
-                        ticketPrice = $("#ticketPrice").val();
-                        $('#ticketPriceError').html("");
-
-                    } else {
-                        $('#ticketPriceError').html("This Ticket Price is required.");
-                    }
-
-                    if ($("#returnTicketPrice").val() !== null && $("#returnTicketPrice").val() !== '') {
-                        returnTicketPrice = $("#returnTicketPrice").val();
-                        $('#returnTicketPriceError').html("");
-
-                    } else {
-                        $('#returnTicketPriceError').html("This Ticket Price is required.");
-                    }
-                    totalVehicleCost = Math.round(parseInt(ticketPrice, 10) + parseInt(returnTicketPrice, 10));
-                }
-            }
-
-
-            //food
-            if ($("#foodEnable").prop("checked") === false) {
-                foodCostPerPerson = 0;
-            } else {
-
-                if ($("#rateBreakfast").val() !== null && $("#rateBreakfast").val() !== '') {
-                    breakfast = $("#rateBreakfast").val();
-                } else {
-                    breakfast = $("#rateBreakfast").val(0);
-                    breakfast = 0;
-                }
-                if ($("#rateLunch").val() !== null && $("#rateLunch").val() !== '') {
-                    lunch = $("#rateLunch").val();
-                } else {
-                    lunch = $("#rateLunch").val(0);
-                    lunch = 0;
-                }
-                if ($("#rateDinner").val() !== null && $("#rateDinner").val() !== '') {
-                    dinner = $("#rateDinner").val();
-                } else {
-                    dinner = $("#rateDinner").val(0);
-                    dinner = 0;
-                }
-
-
-
-                var foodStay;
-                if (stay === 0 || stay === 1) {
-                    foodStay = 1;
-                } else {
-                    foodStay = (stay + 1);
-                }
-                foodCostPerPerson = Math.round((parseInt(breakfast, 10) + parseInt(lunch, 10) + parseInt(dinner, 10)) * foodStay);
-            }
-
-            //extra Money 
-            //            extraMoney = Math.round(500 * stay / totalAdults);
-            extraMoney = parseInt(extraMoney, 10);
-            //total
-
-            perPersonCostPerDay = foodCostPerPerson + totalVehicleCost + hotelPricePerPerson + extraMoney;
-
-
-
-            // console.log("foodCostPerPerson:" + foodCostPerPerson);
-            // console.log("totalVehicleCost:" + totalVehicleCost);
-            // console.log("hotelPricePerPerson:" + hotelPricePerPerson);
-            // console.log("stay:" + stay);
-
-            totalCost = perPersonCostPerDay * totalAdults;
-
-
-            $('#totalBudget').html(totalCost);
-            $('#extraMoney').html(extraMoney);
-            $('#total').html(perPersonCostPerDay);
-            $('#totalFood').html(foodCostPerPerson);
-            $('#totalTrasportation').html(totalVehicleCost);
-            $('#totalHotel').html(hotelPricePerPerson);
-
-
-        } else if (totalAdults === null) {
-            $('#error').html("This Total Adults is required.");
-        } else if (startingDate === "") {
-            $('#error').html("This 'Date From' is required.");
-        } else if (endingDate === "") {
-            $('#error').html("This 'Date To' is required.");
-        } else if (extraMoney === "") {
-            $('#error').html("This 'Extra Money' is required.");
-        }
-    });
-
-
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 350) {
-            $('#submitBtn').addClass("fixed-action-btn");
-            $('#submit').addClass("btn-floating btn-large");
-            $('#submit').removeClass("btn");
-            $("#submit").empty();
-            $("#submit").append('<i class="material-icons right">send</i>');
-        } else {
-            $('#submitBtn').removeClass("fixed-action-btn");
-            $('#submit').addClass("btn");
-            $('#submit').removeClass("btn-floating btn-large");
-            $("#submit").empty();
-            $("#submit").append('Submit <i class="material-icons right">send</i>');
-        }
-    });
-
-
-});
+function toggleNextDiv(context) {
+    var id = parseInt(context.id, 10);
+    $('#mainDiv' + id).slideToggle();
+    $('#mainDiv' + (id + 1)).slideToggle();
+}
 
 function foodCost(breakfast, lunch, dinner, stay) {
     breakfast = parseInt(breakfast, 10);
@@ -449,6 +281,7 @@ function privateVehicleCost(totalVehicle, KM, pdAvg, rate) {
     return totalVehicleCost;
 }
 
-function publicVehicleCost() {
-
+function publicVehicleCost(TicketPrice, returnTicketPrice) {
+    var totalVehicleCost = Math.round(TicketPrice + returnTicketPrice);
+    return totalVehicleCost;
 }
