@@ -135,6 +135,12 @@ $(document).ready(function () {
     });
 });
 
+function toggleNextDiv(context) {
+    var id = parseInt(context.id, 10);
+    $('#mainDiv' + id).slideToggle();
+    $('#mainDiv' + (id + 1)).slideToggle();
+}
+
 function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
     var i = 0;
     var perPersonCostPerDay = 0,
@@ -420,3 +426,29 @@ $(document).ready(function () {
 
 
 });
+
+function foodCost(breakfast, lunch, dinner, stay) {
+    breakfast = parseInt(breakfast, 10);
+    lunch = parseInt(lunch, 10);
+    dinner = parseInt(dinner, 10);
+    var foodPrice = (breakfast + lunch + dinner) + stay;
+    return foodPrice;
+}
+
+function hotelCost(hotelCost, stay) {
+    var hotelPrice = (hotelCost, 10) * stay;
+    return hotelPrice;
+}
+
+function privateVehicleCost(totalVehicle, KM, pdAvg, rate) {
+    var roundTripKM = parseInt(KM, 10) * 2;
+    pdAvg = parseInt(pdAvg, 10);
+    rate = parseInt(rate, 10);
+    var oneVehicleCost = (roundTripKM / pdAvg) * rate;
+    var totalVehicleCost = Math.round(oneVehicleCost * totalVehicle);
+    return totalVehicleCost;
+}
+
+function publicVehicleCost() {
+
+}
