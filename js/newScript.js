@@ -105,7 +105,7 @@ function privateVehicleCost(totalVehicle, KM, pdAvg, rate) {
 }
 
 function publicVehicleCost(TicketPrice, returnTicketPrice) {
-    var totalVehicleCost = Math.round(parseInt(TicketPrice,10) + parseInt(returnTicketPrice,10));
+    var totalVehicleCost = Math.round(parseInt(TicketPrice, 10) + parseInt(returnTicketPrice, 10));
     $('#totalTrasportation').html(totalVehicleCost);
     return totalVehicleCost;
 }
@@ -150,6 +150,15 @@ $(document).ready(function () {
 });
 var divIds = ["userDiv", "daysDiv", "extraDiv"];
 $('.switcher').change(function () {
+    if ($('.switcher:checked').length > 0) {
+        $('.addFinish').attr('onclick', 'toggleNextDiv(this)');
+        $('.addFinish').click(function () {
+            $('#' + divIds[divIds.length - 1] + ' .btn').html('Finish');
+        });
+    } else {
+        $('.addFinish').attr('onclick', '');
+        $(".addFinish").unbind("click");
+    }
     if ($(this).prop("checked") === true) {
         switch (this.id) {
             case "hotelEnable":
@@ -192,9 +201,7 @@ $('.vehicleType').change(function () {
 
 });
 
-$('.addFinish').click(function () {
-    $('#' + divIds[divIds.length - 1] + ' .btn').html('Finish');
-});
+
 
 $('#hotelDiv input').keyup(function () {
     if ($(this).val()) {
