@@ -105,7 +105,7 @@ function privateVehicleCost(totalVehicle, KM, pdAvg, rate) {
 }
 
 function publicVehicleCost(TicketPrice, returnTicketPrice) {
-    var totalVehicleCost = Math.round(TicketPrice + returnTicketPrice);
+    var totalVehicleCost = Math.round(parseInt(TicketPrice,10) + parseInt(returnTicketPrice,10));
     $('#totalTrasportation').html(totalVehicleCost);
     return totalVehicleCost;
 }
@@ -140,6 +140,7 @@ $(document).ready(function () {
     $('.sidenav').sidenav();
     $('.parallax').parallax();
     $('.collapsible').collapsible();
+    $('.tabs').tabs();
     //display icon         
     $(".icon").each(function () {
         var icon = $(this).html();
@@ -220,15 +221,32 @@ $('#foodDiv input').keyup(function () {
 });
 
 $('#vehicleDiv input').keyup(function () {
-    if ($('#rate').val() && $('#km').val() && $('#pdAvg').val()) {
-        if (divIds.indexOf('vehicleDiv') != divIds.length - 1) {
-            $('#vehicleDiv .next').attr('onclick', 'toggleNextDiv(this)');
-        } else {
-            $('#vehicleDiv .next').attr('onclick', 'finish(this)');
-        }
-    } else {
-        $('#vehicleDiv .next').attr('onclick', '');
+    var idVehicle = $('li .active').attr("id");
+    switch (idVehicle) {
+        case 'car':
+            if ($('#rate').val() && $('#km').val() && $('#pdAvg').val()) {
+                if (divIds.indexOf('vehicleDiv') != divIds.length - 1) {
+                    $('#vehicleDiv .next').attr('onclick', 'toggleNextDiv(this)');
+                } else {
+                    $('#vehicleDiv .next').attr('onclick', 'finish(this)');
+                }
+            } else {
+                $('#vehicleDiv .next').attr('onclick', '');
+            }
+            break;
+        case 'diffVehicle':
+            if ($('#ticketPrice').val() && $('#returnTicketPrice').val()) {
+                if (divIds.indexOf('vehicleDiv') != divIds.length - 1) {
+                    $('#vehicleDiv .next').attr('onclick', 'toggleNextDiv(this)');
+                } else {
+                    $('#vehicleDiv .next').attr('onclick', 'finish(this)');
+                }
+            } else {
+                $('#vehicleDiv .next').attr('onclick', '');
+            }
+            break;
     }
+
 });
 
 function removeArrayElement(array, value) {
@@ -264,7 +282,7 @@ function finish(context) {
 
     //Vehicle
     if ($('#vehicleEnable').prop("checked") === true) {
-        var idVehicle = $('.vehicleType:checked').attr("id");
+        var idVehicle = $('li .active').attr("id");
         switch (idVehicle) {
             case 'car':
                 var totalVehicle = $("#totalCar").val();

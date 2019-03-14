@@ -224,17 +224,97 @@
                             <span class="card-title">Vehicle</span>
                         </div>
                         <div class="card-content">
-                            <table>
-                                <p></p>
-                                <tbody>
-                                    <tr>
-                                        <td><label> <input id="car" class="vehicleType" name="tripVehicle" type="radio" checked /> <span>Car/Bike</span> </label></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label> <input id="diffVehicle" class="vehicleType" name="tripVehicle" type="radio" /> <span>Bus/Train/Flight</span> </label></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="row">
+                                <div class="col s12">
+                                    <ul class="tabs">
+                                        <li class="tab col s3"><a id=car class="active" href="#test1">Car/Bike</a></li>
+                                        <li class="tab col s3"><a id="diffVehicle" href="#test2">Bus/Train/Flight</a></li>
+                                    </ul>
+                                </div>
+                                <div id="test1" class="col s12">
+                                    <div class="row">
+                                        <blockquote>
+                                            Car count
+                                        </blockquote>
+                                        <div class="row center">
+                                            <div class="offset-s2 col s2">
+                                                <a onclick="removeVehicle()" class="btn-floating btn-small waves-effect waves-light red fabBtn"><i class="material-icons">remove</i></a>
+                                            </div>
+                                            <div class="col s4">
+                                                <input id="totalCar" disabled value="1" id="disabled" type="number">
+                                            </div>
+                                            <div class="col s1">
+                                                <a onclick="addVehicle()" class="btn-floating btn-small waves-effect waves-light red fabBtn"><i class="material-icons">add</i></a>
+                                            </div>
+                                        </div>
+                                        <div class="row center">
+                                            <div class="offset-s1 col s2">
+                                                <div class="icon car1">motorcycle</div>
+                                            </div>
+                                            <div class="col s2">
+                                                <div class="icon car2 disabled">motorcycle</div>
+                                            </div>
+                                            <div class="col s2">
+                                                <div class="icon car3 disabled">fiat-500</div>
+                                            </div>
+                                            <div class="col s2">
+                                                <div class="icon car4 disabled">suv</div>
+                                            </div>
+                                            <div class="col s2">
+                                                <div class="icon car5 disabled">tour-bus</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="row">
+                                        <blockquote>
+                                            Destination
+                                        </blockquote>
+                                        <div class="input-field col s12">
+                                            <input type="text" id="autocomplete-input1" class="autocomplete">
+                                            <label for="autocomplete-input">From</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input type="text" id="autocomplete-input2" class="autocomplete" disabled>
+                                            <label for="autocomplete-input">To</label>
+                                        </div>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="row">
+                                        <blockquote>
+                                            Car Avg
+                                        </blockquote>
+                                        <div class="input-field col s12">
+                                            <input id="pdAvg" min="1" type="number">
+                                            <label for="pdAvg">Petrol/Diesel Avg. km/l</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="km" min="1" type="number">
+                                            <label for="km">Total Km of One Way</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="rate" min="1" type="number">
+                                            <label for="rate">Petrol/Diesel Rate</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="test2" class="col s12">
+                                    <div class="row">
+                                        <blockquote>
+                                            Public Transport
+                                        </blockquote>
+                                        <div class="input-field col s12">
+                                            <input id="ticketPrice" min="1" type="number">
+                                            <label for="ticketPrice">Ticket Price From Origin to Destination</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input id="returnTicketPrice" min="1" type="number">
+                                            <label for="returnTicketPrice">Ticket Price From Destination to Origin</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
                         </div>
                         <div class="card-action">
                             <a id="6" onclick="" class="waves-effect waves-light btn next">Next</a>
@@ -242,6 +322,7 @@
                     </div>
                 </div>
                 <!--if select car vehicle-->
+                <!--
                 <div class="col s12 m5 offset-m4 privateVehicle">
                     <div class="card">
                         <div class="card-image">
@@ -280,6 +361,8 @@
                         </div>
                     </div>
                 </div>
+-->
+                <!--
                 <div class="col s12 m5 offset-m4 privateVehicle">
                     <div class="card">
                         <div class="card-image">
@@ -300,6 +383,8 @@
                         </div>
                     </div>
                 </div>
+-->
+                <!--
                 <div class="col s12 m5 offset-m4 privateVehicle">
                     <div class="card">
                         <div class="card-image">
@@ -324,7 +409,9 @@
                         </div>
                     </div>
                 </div>
+-->
                 <!--if select diffVehicle-->
+                <!--
                 <div class="col s12 m5 offset-m4 publicVehicle" hidden>
                     <div class="card">
                         <div class="card-image">
@@ -345,6 +432,7 @@
                         </div>
                     </div>
                 </div>
+-->
             </div>
 
             <!--end-->
