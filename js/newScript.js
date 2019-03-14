@@ -235,19 +235,43 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
         $('#totalHotel').html(hotelPrice);
     });
 }
+
+var divIds = ["userDiv","daysDiv","extraDiv"];
 $('.switcher').change(function () {
-    if ($('#hotelEnable').prop("checked")) {
-        if (this.id === "hotelEnable") {
-
+    if ($(this).prop("checked") === true) {
+        switch (this.id) {
+            case "hotelEnable":
+                divIds.push('hotelDiv');
+                break;
+            case "vehicleEnable":
+                divIds.push('vehicleDiv');
+                break;
+            case "foodEnable":
+                divIds.push('foodDiv');
+                break;
         }
-        if (this.id === "vehicleEnable") {
-
-        }
-        if (this.id === "foodEnable") {
-
+    } else {
+        switch (this.id) {
+            case "hotelEnable":
+                removeArrayElement(divIds, 'hotelDiv');
+                break;
+            case "vehicleEnable":
+                removeArrayElement(divIds, 'vehicleDiv');
+                break;
+            case "foodEnable":
+                removeArrayElement(divIds, 'foodDiv');
+                break;
         }
     }
 });
+
+function removeArrayElement(array, value) {
+    var index = array.indexOf(value);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+    return array;
+}
 
 $('.btn').click(function () {
     var id = parseInt(this.id, 10);
@@ -268,9 +292,17 @@ $('.btn').click(function () {
 });
 
 function toggleNextDiv(context) {
-    var id = parseInt(context.id, 10);
-    $('#mainDiv' + id).slideToggle();
-    $('#mainDiv' + (id + 1)).slideToggle();
+    var id = $(context).closest('.mainDiv').attr('id');
+    var index = divIds.indexOf(id);
+    $('#'+id).slideToggle();
+    $('#'+divIds[index+1]).slideToggle();
+}
+
+function togglePrevDiv(context) {
+    var id = $(context).closest('.mainDiv').attr('id');
+    var index = divIds.indexOf(id);
+    $('#'+id).slideToggle();
+    $('#'+divIds[index-1]).slideToggle();
 }
 
 function foodCost(breakfast, lunch, dinner, stay) {
