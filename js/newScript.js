@@ -54,8 +54,62 @@ function parseDate(str) {
 function datediff(first, second) {
     first = parseDate(first);
     second = parseDate(second);
-    return Math.round(Math.abs((second.getTime() - first.getTime()) / (86400000)));
+    var days = Math.round(Math.abs((second.getTime() - first.getTime()) / (86400000)));
+    var stay = 1;
+    if (days === 0) {
+        stay = 1;
+    } else {
+        stay = days;
+    }
+    return stay;
 }
+
+
+function toggleNextDiv(context) {
+    var id = $(context).closest('.mainDiv').attr('id');
+    var index = divIds.indexOf(id);
+    $('#' + id).slideToggle();
+    $('#' + divIds[index + 1]).slideToggle();
+}
+
+function togglePrevDiv(context) {
+    var id = $(context).closest('.mainDiv').attr('id');
+    var index = divIds.indexOf(id);
+    $('#' + id).slideToggle();
+    $('#' + divIds[index - 1]).slideToggle();
+}
+
+function foodCost(breakfast, lunch, dinner, stay) {
+    breakfast = parseInt(breakfast, 10);
+    lunch = parseInt(lunch, 10);
+    dinner = parseInt(dinner, 10);
+    var foodPrice = (breakfast + lunch + dinner) * stay;
+    $('#totalFood').html(foodPrice);
+    return foodPrice;
+}
+
+function hotelCost(hotelCost, stay, people) {
+    var hotelPrice = (parseInt(hotelCost, 10) * stay) / parseInt(people, 10);
+    $('#totalHotel').html(hotelPrice);
+    return hotelPrice;
+}
+
+function privateVehicleCost(totalVehicle, KM, pdAvg, rate) {
+    var roundTripKM = parseInt(KM, 10) * 2;
+    pdAvg = parseInt(pdAvg, 10);
+    rate = parseInt(rate, 10);
+    var oneVehicleCost = (roundTripKM / pdAvg) * rate;
+    var totalVehicleCost = Math.round(oneVehicleCost * totalVehicle);
+    $('#totalTrasportation').html(totalVehicleCost);
+    return totalVehicleCost;
+}
+
+function publicVehicleCost(TicketPrice, returnTicketPrice) {
+    var totalVehicleCost = Math.round(TicketPrice + returnTicketPrice);
+    $('#totalTrasportation').html(totalVehicleCost);
+    return totalVehicleCost;
+}
+
 
 $(document).ready(function () {
     "use strict";
@@ -161,11 +215,7 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
         totalVehicleCost = 0;
     $('#' + checkBoxs[i]).slideToggle();
     days = datediff(startingDate, endingDate);
-    if (days === 0) {
-        stay = 1;
-    } else {
-        stay = days;
-    }
+
     if (i === checkBoxs.length - 1) {
         $('#' + checkBoxs[i] + 'Next').html('Finish');
         $('#' + checkBoxs[i] + 'Next').addClass('Finish');
@@ -182,7 +232,7 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
             foodPrice = (breakfast + lunch + dinner) * stay;
         }
         if (this.id === 'vehicleNext') {
-            car = $('#car').prop("checked"), 10;
+            car = $('#car').prop("checked");
             diffVehicle = $('#diffVehicle').prop("checked");
             var index = checkBoxs.indexOf("vehicle");
             if (car === true) {
@@ -224,19 +274,10 @@ function addDetails(totalAdults, startingDate, endingDate, checkBoxs) {
             $('#' + checkBoxs[i] + 'Next').addClass('Finish');
         }
     });
-    $('.Finish').click(function () {
-        $('#' + checkBoxs[checkBoxs.length - 1]).slideToggle();
-        $('#endDiv').slideToggle();
-        totalCost = perPersonCostPerDay * totalAdults;
-        $('#totalBudget').html(totalCost);
-        $('#total').html(perPersonCostPerDay);
-        $('#totalFood').html(foodPrice);
-        $('#totalTrasportation').html(totalVehicleCost);
-        $('#totalHotel').html(hotelPrice);
-    });
+
 }
 
-var divIds = ["userDiv","daysDiv","extraDiv"];
+var divIds = ["userDiv", "daysDiv", "extraDiv"];
 $('.switcher').change(function () {
     if ($(this).prop("checked") === true) {
         switch (this.id) {
@@ -265,6 +306,26 @@ $('.switcher').change(function () {
     }
 });
 
+$('.vehicleType').change(function () {
+    if (this.id == 'car') {
+        $('.privateVehicle').slideToggle();
+    } else {
+        $('.privateVehicle').slideToggle();
+    }
+
+    if (this.id == 'diffVehicle') {
+        $('.publicVehicle').slideToggle();
+    } else {
+        $('.publicVehicle').slideToggle();
+    }
+
+});
+
+$('.addFinish').click(function () {
+    $('#' + divIds[divIds.length - 1] + ' .btn').html('Finish');
+    $('#' + divIds[divIds.length - 1] + ' .btn').attr('onclick', 'finish(this)');
+});
+
 function removeArrayElement(array, value) {
     var index = array.indexOf(value);
     if (index > -1) {
@@ -273,61 +334,59 @@ function removeArrayElement(array, value) {
     return array;
 }
 
-$('.btn').click(function () {
-    var id = parseInt(this.id, 10);
-    switch (id) {
-        case 1:
-            totalAdults = parseInt($('#totalGuest').val(), 10);
-            break;
-        case 2:
-            startingDate = $('#startingDate').val();
-            endingDate = $('#endingDate').val();
-            break;
-        case 3:
-            hotel = $('#hotelEnable').prop("checked");
-            vehicle = $('#vehicleEnable').prop("checked");
-            food = $('#foodEnable').prop("checked");
-            break;
+function finish(context) {
+    var id = $(context).closest('.mainDiv').attr('id');
+    var index = divIds.indexOf(id);
+    $('#' + id).slideToggle();
+    $('#endDiv').slideToggle();
+    var hotelBudget = 0,
+        vehicleBudget = 0,
+        foodBudget = 0;
+    //total Adults
+    var totalAdults = parseInt($('#totalGuest').val(), 10);
+    var exMoney = parseInt($('#exMoney').val(), 10);
+
+    //Days
+    var startingDate = $('#startingDate').val();
+    var endingDate = $('#endingDate').val();
+    var stay = datediff(startingDate, endingDate);
+
+    //Hotel 
+    if ($('#hotelEnable').prop("checked") === true) {
+        var hotelPrice = $('#hotelPrice').val();
+        hotelBudget = hotelCost(hotelPrice, stay, totalAdults);
     }
-});
 
-function toggleNextDiv(context) {
-    var id = $(context).closest('.mainDiv').attr('id');
-    var index = divIds.indexOf(id);
-    $('#'+id).slideToggle();
-    $('#'+divIds[index+1]).slideToggle();
-}
+    //Vehicle
+    if ($('#vehicleEnable').prop("checked") === true) {
+        var idVehicle = $('.vehicleType:checked').attr("id");
+        switch (idVehicle) {
+            case 'car':
+                var totalVehicle = $("#totalCar").val();
+                var KM = $("#km").val();
+                var pdAvg = $("#pdAvg").val();
+                var rate = $("#rate").val();
+                vehicleBudget = privateVehicleCost(totalVehicle, KM, pdAvg, rate);
+                break;
+            case 'diffVehicle':
+                var TicketPrice = $("#ticketPrice").val();
+                var returnTicketPrice = $("#returnTicketPrice").val();
+                vehicleBudget = publicVehicleCost(TicketPrice, returnTicketPrice);
+                break;
+        }
+    }
 
-function togglePrevDiv(context) {
-    var id = $(context).closest('.mainDiv').attr('id');
-    var index = divIds.indexOf(id);
-    $('#'+id).slideToggle();
-    $('#'+divIds[index-1]).slideToggle();
-}
+    //Food
+    if ($('#foodEnable').prop("checked") === true) {
+        var breakfast = $("#rateBreakfast").val();
+        var lunch = $("#rateLunch").val();
+        var dinner = $("#rateDinner").val();
+        foodBudget = foodCost(breakfast, lunch, dinner, stay);
+    }
+    $('#extraMoney').html(exMoney);
+    var perPersonCost = hotelBudget + vehicleBudget + foodBudget + exMoney;
+    $('#total').html(perPersonCost);
+    var totalCost = perPersonCost * totalAdults;
+    $('#totalBudget').html(totalCost);
 
-function foodCost(breakfast, lunch, dinner, stay) {
-    breakfast = parseInt(breakfast, 10);
-    lunch = parseInt(lunch, 10);
-    dinner = parseInt(dinner, 10);
-    var foodPrice = (breakfast + lunch + dinner) + stay;
-    return foodPrice;
-}
-
-function hotelCost(hotelCost, stay) {
-    var hotelPrice = (hotelCost, 10) * stay;
-    return hotelPrice;
-}
-
-function privateVehicleCost(totalVehicle, KM, pdAvg, rate) {
-    var roundTripKM = parseInt(KM, 10) * 2;
-    pdAvg = parseInt(pdAvg, 10);
-    rate = parseInt(rate, 10);
-    var oneVehicleCost = (roundTripKM / pdAvg) * rate;
-    var totalVehicleCost = Math.round(oneVehicleCost * totalVehicle);
-    return totalVehicleCost;
-}
-
-function publicVehicleCost(TicketPrice, returnTicketPrice) {
-    var totalVehicleCost = Math.round(TicketPrice + returnTicketPrice);
-    return totalVehicleCost;
 }

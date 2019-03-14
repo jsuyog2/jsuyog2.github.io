@@ -130,6 +130,12 @@
                         </div>
                         <div class="card-content">
                             <div class="row">
+                                <div class="input-field">
+                                    <input id="exMoney" min="1" type="number" value="0">
+                                    <label for="exMoney">Extra Money</label>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <table>
                                     <tbody>
                                         <tr>
@@ -149,7 +155,7 @@
                             </div>
                         </div>
                         <div class="card-action">
-                            <a id="3" onclick="toggleNextDiv(this)" onclick="toggleNextDiv(this)" class="waves-effect waves-light btn">Next</a>
+                            <a id="3" onclick="toggleNextDiv(this)" onclick="toggleNextDiv(this)" class="waves-effect waves-light btn addFinish">Next</a>
                         </div>
                     </div>
                 </div>
@@ -159,7 +165,7 @@
                 <div class="col s12 m5 offset-m4">
                     <div class="card">
                         <div class="card-image">
-                            <a id="3" onclick="togglePrevDiv(this)" class="waves-effect waves-teal btn-flat"><i class="material-icons">arrow_back</i></a>
+                            <a id="3" onclick="togglePrevDiv(this)" class="waves-effect waves-teal btn-flat "><i class="material-icons">arrow_back</i></a>
                             <img src="images/travel5.jpg">
                             <span class="card-title">Hotel</span>
                         </div>
@@ -222,10 +228,10 @@
                                 <p></p>
                                 <tbody>
                                     <tr>
-                                        <td><label> <input id="car" name="tripVehicle" type="radio" checked /> <span>Car/Bike</span> </label></td>
+                                        <td><label> <input id="car" class="vehicleType" name="tripVehicle" type="radio" checked /> <span>Car/Bike</span> </label></td>
                                     </tr>
                                     <tr>
-                                        <td><label> <input id="diffVehicle" name="tripVehicle" type="radio" /> <span>Bus/Train/Flight</span> </label></td>
+                                        <td><label> <input id="diffVehicle" class="vehicleType" name="tripVehicle" type="radio" /> <span>Bus/Train/Flight</span> </label></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -235,10 +241,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--if select car vehicle-->
-            <div id="totalCarDiv" class="row elemDiv" hidden>
-                <div class="col s12 m5 offset-m4">
+                <!--if select car vehicle-->
+                <div class="col s12 m5 offset-m4 privateVehicle">
                     <div class="card">
                         <div class="card-image">
                             <img src="images/travel8.jpg">
@@ -274,14 +278,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-action">
-                            <a id="totalCarNext" class="waves-effect waves-light btn next">Next</a>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="destinationDiv" class="row elemDiv" hidden>
-                <div class="col s12 m5 offset-m4">
+                <div class="col s12 m5 offset-m4 privateVehicle">
                     <div class="card">
                         <div class="card-image">
                             <img src="images/travel1.jpg">
@@ -299,14 +298,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-action">
-                            <a id="destinationNext" class="waves-effect waves-light btn next">Next</a>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="carEstimDiv" class="row elemDiv" hidden>
-                <div class="col s12 m5 offset-m4">
+                <div class="col s12 m5 offset-m4 privateVehicle">
                     <div class="card">
                         <div class="card-image">
                             <img src="images/travel9.jpg">
@@ -328,15 +322,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-action">
-                            <a id="carEstimDivNext" class="waves-effect waves-light btn next">Next</a>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <!--if select diffVehicle-->
-            <div id="diffVehiDiv" class="row elemDiv" hidden>
-                <div class="col s12 m5 offset-m4">
+                <!--if select diffVehicle-->
+                <div class="col s12 m5 offset-m4 publicVehicle" hidden>
                     <div class="card">
                         <div class="card-image">
                             <img src="images/travel10.jpg">
@@ -354,12 +343,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-action">
-                            <a id="diffVehiDivNext" class="waves-effect waves-light btn next">Next</a>
-                        </div>
                     </div>
                 </div>
             </div>
+
             <!--end-->
             <div id="endDiv" class="row" hidden>
                 <div class="col s12 m5 offset-m4">
