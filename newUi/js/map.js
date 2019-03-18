@@ -1,3 +1,33 @@
+var mapContainer = document.getElementById('map'),
+    routeInstructionsContainer = document.getElementById('panel');
+
+var platform = new H.service.Platform({
+    'app_id': 'YLJimxqR6szOHWxWLhex',
+    'app_code': '8pP47klOkZKCj1XUUmWj4A',
+    useHTTPS: true
+});
+
+var pixelRatio = window.devicePixelRatio || 1;
+var defaultLayers = platform.createDefaultLayers({
+    tileSize: pixelRatio === 1 ? 256 : 512,
+    ppi: pixelRatio === 1 ? undefined : 320
+});
+
+var map = new H.Map(mapContainer,
+    defaultLayers.normal.map, {
+        center: {
+            lat: 21.191389540760312,
+            lng: 78.32599123583788
+        },
+        zoom: 5,
+        pixelRatio: pixelRatio
+    });
+
+var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+
+
 function calculateRouteFromAtoB(platform, startingPoint, endPoint) {
     var router = platform.getRoutingService(),
         routeRequestParams = {
@@ -27,34 +57,6 @@ function onSuccess(result) {
 function onError(error) {
     alert('Ooops!');
 }
-
-var mapContainer = document.getElementById('map'),
-    routeInstructionsContainer = document.getElementById('panel');
-
-var platform = new H.service.Platform({
-    'app_id': 'YLJimxqR6szOHWxWLhex',
-    'app_code': '8pP47klOkZKCj1XUUmWj4A',
-    useHTTPS: true
-});
-
-var pixelRatio = window.devicePixelRatio || 1;
-var defaultLayers = platform.createDefaultLayers({
-    tileSize: pixelRatio === 1 ? 256 : 512,
-    ppi: pixelRatio === 1 ? undefined : 320
-});
-
-var map = new H.Map(mapContainer,
-    defaultLayers.normal.map, {
-        center: {
-            lat: 21.191389540760312,
-            lng: 78.32599123583788
-        },
-        zoom: 5,
-        pixelRatio: pixelRatio
-    });
-
-var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 function addRouteShapeToMap(route) {
     var lineString = new H.geo.LineString(),

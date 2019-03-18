@@ -1,13 +1,12 @@
- // Initialize the platform object:
- var platform = new H.service.Platform({
-     'app_id': 'YLJimxqR6szOHWxWLhex',
-     'app_code': '8pP47klOkZKCj1XUUmWj4A'
- });
-
-
- var APPLICATION_ID = 'YLJimxqR6szOHWxWLhex';
+var APPLICATION_ID = 'YLJimxqR6szOHWxWLhex';
  var APPLICATION_CODE = '8pP47klOkZKCj1XUUmWj4A';
  var AUTOCOMPLETION_URL = '';
+
+ // Initialize the platform object:
+ var platform = new H.service.Platform({
+     'app_id': APPLICATION_ID,
+     'app_code': APPLICATION_CODE
+ });
 
  function autoCompleteListener(textBox, event) {
      if (query != textBox.value) {
