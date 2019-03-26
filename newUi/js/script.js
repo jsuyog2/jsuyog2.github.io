@@ -1,6 +1,6 @@
 $(document).ready(function () {
     "use strict";
-    $('select').formSelect();
+    $('.modal').modal();
     $('#startingDate').datepicker({
         format: "mm/dd/yyyy",
         autoClose: true,
