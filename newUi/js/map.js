@@ -26,9 +26,15 @@ var map = new H.Map(mapContainer,
         pixelRatio: pixelRatio
     });
 
+function hideMap(){
+     $('#map').hide();
+    console.log(true);
+     map.removeEventListener('mapviewchangestart',hideMap);
+}
+
 var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 var ui = H.ui.UI.createDefault(map, defaultLayers);
-
+map.addEventListener('mapviewchangestart',hideMap);
 function calculateRouteFromAtoB(platform, startingPoint, endPoint) {
     var router = platform.getRoutingService(),
         routeRequestParams = {

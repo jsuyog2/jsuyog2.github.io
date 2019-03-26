@@ -20,7 +20,7 @@ body {
     #map {
         top: 0px;
         left: 0px;
-        display: none;
+/*        display: none;*/
         width: 100%;
         height: 100%;
     }

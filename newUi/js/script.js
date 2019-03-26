@@ -28,11 +28,11 @@ $(document).ready(function () {
         var icon = $(this).html();
         $(this).html('<img src="https://png.icons8.com/color/' + icon + '">');
     });
-    
-    $('#showMap').click(function(){
+
+    $('#showMap').click(function () {
         $('#map').toggle();
         $('.card').toggle();
     });
-    
-    
+
+
 });
