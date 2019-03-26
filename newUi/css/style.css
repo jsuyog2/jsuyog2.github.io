@@ -1,6 +1,13 @@
 #map {
     position: fixed;
-    width: 50%;
-    height: 50%;
+    width: 90%;
+    height: 60%;
     background: grey;
+}
+
+#members_date_div {
+    display: none;
+}
+#location_div{
+    height: 100%;
 }
