@@ -27,7 +27,7 @@ var map = new H.Map(mapContainer,
     });
 
 function hideMap(){
-//     $('#map').hide();
+     $('#map').hide();
     console.log(true);
      map.removeEventListener('mapviewchangestart',hideMap);
 }
