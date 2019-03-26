@@ -258,8 +258,7 @@ Number.prototype.toMMSS = function () {
              var numDec = (String(temp/1000).split(".")[0].length)*10;
              var extraKM = one*numDec;
              var distance = Math.round((result.response.route[0].summary.distance / 1000));
-             $("#km").val(distance);
-             M.updateTextFields();
+             $("#distance").html("Total KM: "+distance);
          }
      });
  }
