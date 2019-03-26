@@ -32,29 +32,67 @@
 </head>
 
 <body>
-    <div class="row">
-        <div id="map"></div>
-        <div class="card" style="width: 23%;left: 10%;">
-            <div class="card-image">
-                <img src="images/travel1.jpg">
-                <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input type="text" id="from_input" class="autocomplete">
-                        <label for="from_input">From</label>
+    <div id="showMap" class="fixed-action-btn" hidden>
+        <a class="btn-floating btn-large red">
+            <i class="large material-icons">mode_edit</i>
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/travel1.jpg">
+                        <span class="card-title">Card Title</span>
                     </div>
-                    <div class="input-field col s12">
-                        <input type="text" id="to_input" class="autocomplete" disabled>
-                        <label for="to_input">To</label>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" id="from_input" class="autocomplete">
+                                <label for="from_input">From</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" id="to_input" class="autocomplete" disabled>
+                                <label for="to_input">To</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Next</a>
+                        <span id="distance"></span>
                     </div>
                 </div>
             </div>
-            <div class="card-action">
-                <a href="#">Next</a>
-                <span id="distance"></span>
+            <div class="col s12 m8">
+                <div id="map"></div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/travel1.jpg">
+                        <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" id="from_input" class="autocomplete">
+                                <label for="from_input">From</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" id="to_input" class="autocomplete" disabled>
+                                <label for="to_input">To</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Next</a>
+                        <span id="distance"></span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <!--js files-->
