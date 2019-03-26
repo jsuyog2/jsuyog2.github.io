@@ -1,13 +1,7 @@
 #map {
     position: fixed;
     width: 100%;
-    height: 65%;
+    height: 60%;
     background: grey;
-}
-
-#members_date_div {
-    display: none;
-}
-#location_div{
-    height: 100%;
+    top:40%;
 }

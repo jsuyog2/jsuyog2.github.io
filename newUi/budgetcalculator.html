@@ -32,41 +32,25 @@
 </head>
 
 <body>
-
-
-    <div class="all" action="" method="POST" id="myform">
-        <fieldset id="location_div" class="">
+    <div class="container">
+        <div class="row center">
             <div class="row">
                 <div class="input-field col s12">
-                    <input type="text" id="autocomplete-input1" class="autocomplete">
+                    <input type="text" id="from_input" class="autocomplete">
                     <label for="autocomplete-input">From</label>
                 </div>
                 <div class="input-field col s12">
-                    <input type="text" id="autocomplete-input2" class="autocomplete" disabled>
+                    <input type="text" id="to_input" class="autocomplete" disabled>
                     <label for="autocomplete-input">To</label>
                 </div>
-                 <p id="distance" class="flow-text">Total KM:</p>
+                <p id="distance" class="flow-text"></p>
                 <p><a class="btn btn-primary" id="next">next</a></p>
             </div>
-        </fieldset>
-        <div class="row">
-            <div id="map"></div>
         </div>
-
-        <fieldset id="members_date_div" class="">
-            <label for="name" class="col-lg-4 control-label">Name</label>
-            <input type="email" class="form-control" id="name" name="name" placeholder="Email">
-            ………
-            <p><a class="btn btn-primary" id="previous">Previous</a></p>
-            <p><input class="btn btn-success" type="submit" value="submit"></p>
-        </fieldset>
     </div>
-
-
-
-
-
-
+    <div class="row">
+        <div id="map"></div>
+    </div>
     <!--js files-->
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-1.11.3.min.js"></script>
@@ -75,6 +59,7 @@
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <!--/js files-->
 </body>
