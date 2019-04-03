@@ -1,1 +1,0 @@
-# jsuyog2.github.io
