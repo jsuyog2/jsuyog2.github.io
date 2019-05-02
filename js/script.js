@@ -310,7 +310,7 @@ $(document).ready(function () {
         }
     });
 
-
+if (screen.width <= 699) {
     $(window).scroll(function () {
         if ($(this).scrollTop() > 350) {
             $('#submitBtn').addClass("fixed-action-btn");
@@ -326,6 +326,6 @@ $(document).ready(function () {
             $("#submit").append('Submit <i class="material-icons right">send</i>');
         }
     });
-
+}
 
 });
