@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kalpi</title>
     <style>
         .startanimation {
             animation: shake 0.5s;
@@ -55,18 +56,9 @@
             }
         }
 
-        /* Centered text */
-        .centered {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            right: 0%;
-            transform: translate(-50%, -50%);
-        }
-
         .line {
             text-transform: uppercase;
-            margin-top: 5%;
+            margin-top: 2%;
             font-size: 20px;
         }
 
@@ -80,9 +72,12 @@
 
         #lines {
             position: absolute;
-            top: 25%;
+            top:25%;
+            left: 0%;
+            right: 0%;
         }
-        .icon{
+
+        .icon {
             position: absolute;
         }
 
@@ -94,16 +89,16 @@
         <h1>WHEN YOU SAY YOU LOVE ME. </h1>
         <h2>MY HEART</h2>
         <div class="container">
-            <img id="heart" src="pineapple.jpg" alt="Pineapple" width="300" height="300" style="display: none">
+            <img id="heart" src="heart.png" width="300" height="300" style="display: none">
             <img id="tap" herf="#tap" src="tap.png" width="200" height="200" />
         </div>
     </div>
     <div id="lines" style="text-align:center" class="container">
-        <div id="1" class="line" style="display: none">Mere dil, jigar, liver mein ho tum.</div>
-        <div id="2" class="line" style="display: none">waqt bewaqt aaye woh fever ho tum.</div>
-        <div id="3" class="line" style="display: none">ab toh meri life mein forever ho tum.</div>
-        <div id="4" class="line" style="display: none">Kalpana I Love You <div class="icon">hearts</div>
-        </div>
+        <h5 id="1" class="line" style="display: none">Mere dil, jigar, liver mein ho tum.</h5>
+        <h5 id="2" class="line" style="display: none">waqt bewaqt aaye woh fever ho tum.</h5>
+        <h5 id="3" class="line" style="display: none">ab toh meri life mein forever ho tum.</h5>
+        <h5 id="4" class="line" style="display: none">Kalpana I Love You <div class="icon">hearts</div>
+        </h5>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
