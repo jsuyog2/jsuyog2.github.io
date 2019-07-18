@@ -60,14 +60,33 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            right: 0%;
             transform: translate(-50%, -50%);
+        }
+
+        .line {
+            text-transform: uppercase;
+            margin-top: 5%;
+            font-size: 20px;
+        }
+
+        .line div {
+            display: inline-block;
+        }
+
+        .line img {
+            width: 70%;
+        }
+
+        #lines {
+            top: 50%;
         }
 
     </style>
 </head>
 
 <body>
-    <div style="text-align:center" class="container">
+    <div id='allpage' style="text-align:center" class="container">
         <h1>WHEN YOU SAY YOU LOVE ME. </h1>
         <h2>MY HEART</h2>
         <div class="container">
@@ -75,14 +94,40 @@
             <img id="tap" herf="#tap" src="tap.png" width="200" height="200" />
         </div>
     </div>
+    <div id="lines" style="text-align:center" class="container">
+        <div id="1" class="line" style="display: none">Mere dil, jigar, liver mein ho tum.</div>
+        <div id="2" class="line" style="display: none">waqt bewaqt aaye woh fever ho tum.</div>
+        <div id="3" class="line" style="display: none">ab toh meri life mein forever ho tum.</div>
+        <div id="4" class="line" style="display: none">Kalpana I Love You <div class="icon">hearts</div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-    $("#heart").hide();
-    $("#tap").click(function(){
-       $(this).hide();
-        $("#heart").addClass('startanimation');
-         $("#heart").show();
-    });
+    <script>
+        $(".icon").each(function() {
+            var icon = $(this).html();
+            $(this).html('<img src="https://png.icons8.com/color/' + icon + '">');
+        });
+        $("#heart").hide();
+        $("#tap").click(function() {
+            $(this).hide();
+            $("#heart").addClass('startanimation');
+            $("#heart").show();
+            setTimeout(function() {
+                $('#allpage').fadeOut();
+                $('#1').fadeIn();
+                setTimeout(function() {
+                    showStepbyStep(2)
+                }, 1000);
+            }, 1000);
+        });
+
+        function showStepbyStep(id) {
+            $("#" + (id)).fadeIn();
+            setTimeout(function() {
+                showStepbyStep(id + 1)
+            }, 1000);
+        }
+
     </script>
 </body>
 
