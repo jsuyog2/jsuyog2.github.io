@@ -71,15 +71,17 @@
         <h1>WHEN YOU SAY YOU LOVE ME. </h1>
         <h2>MY HEART</h2>
         <div class="container">
-            <img id="heart" src="pineapple.jpg" alt="Pineapple" width="300" height="300">
-            <img id="tap" herf="#tap" src="tap.png" class="centered" width="200" height="200" />
+            <img id="heart" src="pineapple.jpg" alt="Pineapple" width="300" height="300" style="display: none">
+            <img id="tap" herf="#tap" src="tap.png" width="200" height="200" />
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
+    $("#heart").hide();
     $("#tap").click(function(){
        $(this).hide();
         $("#heart").addClass('startanimation');
+         $("#heart").show();
     });
     </script>
 </body>
