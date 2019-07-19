@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="native-toast.css">
     <title>Kalpi</title>
     <style>
         .startanimation {
@@ -72,7 +73,15 @@
 
         #lines {
             position: absolute;
-            top:25%;
+            top: 15%;
+            left: 0%;
+            right: 0%;
+        }
+
+        #last {
+            text-align: center;
+            position: absolute;
+            top: 15%;
             left: 0%;
             right: 0%;
         }
@@ -97,10 +106,20 @@
         <h5 id="1" class="line" style="display: none">Mere dil, jigar, liver mein ho tum.</h5>
         <h5 id="2" class="line" style="display: none">waqt bewaqt aaye woh fever ho tum.</h5>
         <h5 id="3" class="line" style="display: none">ab toh meri life mein forever ho tum.</h5>
-        <h5 id="4" class="line" style="display: none">Kalpana I Love You <div class="icon">hearts</div>
-        </h5>
+        <h5 id="4" class="line" style="display: none">Kalpana</h5>
+        <h5 id="5" class="line" style="display: none">Will You Marry Me?</h5>
+        <h5 id="6" class="line" style="display: none"><input type="radio" name="ans" value="Y">Yes <input type="radio" name="ans" value="N"> No</h5>
     </div>
+    <div id="last" style="display: none">
+        <h5 class="line">Kalpana I Love You</h5>
+        <br><br>
+        <img id="heart" src="heart.png" width="300" height="300">
+    </div>
+
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="native-toast.js"></script>
     <script>
         $(".icon").each(function() {
             var icon = $(this).html();
@@ -116,15 +135,31 @@
                 $('#1').fadeIn();
                 setTimeout(function() {
                     showStepbyStep(2)
-                }, 1000);
+                }, 1500);
             }, 1000);
+        });
+
+        $('input[name=ans]').change(function() {
+            if ($(this).val() == "Y") {
+                $('#lines').fadeOut();
+                $('#last').fadeIn();
+            } else if ($(this).val() == "N") {
+                 $(this).prop("checked", false);
+                nativeToast({
+                    message: "Kalpi ab asa karegi kya",
+                    position: 'center',
+                    // Self destroy in 5 seconds
+                    timeout: 5000,
+                    type: 'error'
+                })
+            }
         });
 
         function showStepbyStep(id) {
             $("#" + (id)).fadeIn();
             setTimeout(function() {
                 showStepbyStep(id + 1)
-            }, 1000);
+            }, 1500);
         }
 
     </script>
