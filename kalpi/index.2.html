@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <title>Kalpi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Muli:300,400,700');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000;
+            height: 200vh;
+            font-family: 'Muli', sans-serif;
+        }
+
+        .text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            list-style: none;
+            border-bottom: 0;
+        }
+
+        .text.hidden {
+            border-bottom: 1px solid #fff;
+        }
+
+        .text li {
+            display: inline-block;
+            float: left;
+            font-weight: 700;
+            font-size: 2em;
+            color: #fff;
+            opacity: 1;
+            transition: all 0.5s ease-in-out;
+            max-width: 2em;
+        }
+
+        .text.hidden li.spaced {
+            padding-left: 0;
+        }
+
+        .text li.spaced {
+            padding-left: 0.5em;
+        }
+
+        .text.hidden li.ghost {
+            opacity: 0;
+            max-width: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <ul class="text hidden">
+       
+        <li>K</li>
+        
+        <li class="ghost">a</li>
+        <li class="ghost">l</li>
+        <li class="ghost">p</li>
+        <li class="ghost">i</li>
+        <li class="spaced">I</li>
+        
+        <li class="spaced">L</li>
+        
+        <li class="ghost">o</li>
+        <li class="ghost">v</li>
+        <li class="ghost">e</li>
+        
+        <li class="spaced">Y</li>
+        
+        <li class="ghost">o</li>
+        <li class="ghost">u</li>
+    </ul>
+    <!--
+        Mere dil, jigar, liver mein ho tum.
+        waqt bewaqt aaye woh fever ho tum.
+        ab toh meri life mein forever ho tum.
+        Kalpana
+        Will You Marry Me?
+        Kalpana I Love You
+-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        $(function() {
+            var text = $(".text");
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+
+                if (scroll >= 200) {
+                    text.removeClass("hidden");
+                } else {
+                    text.addClass("hidden");
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
