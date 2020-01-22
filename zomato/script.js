@@ -10,8 +10,6 @@ $('#totalFollowBack').html('Not Follow Back (' + NOT_FOLLOW_ME_BACK.length + ')'
 displayCard('follow_back', NOT_FOLLOW_ME_BACK);
 displayCard('fan', FAN);
 
-
-
 function displayCard(id, array) {
     if (array.length !== 0) {
         array.forEach(function (data) {
