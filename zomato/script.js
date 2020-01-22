@@ -1,5 +1,5 @@
-var followedby = 'http://localhost/GitHub/ZomatoFollowers/followedby.json';
-var follows = 'http://localhost/GitHub/ZomatoFollowers/follows.json';
+var followedby = 'https://www.zomato.com/php/social_load_more.php';
+var follows = 'https://www.zomato.com/php/social_load_more.php';
 var followsArray = getUSER(follows);
 var followedbyArray = getUSER(followedby);
 var NOT_FOLLOW_ME_BACK = comapare(followsArray, followedbyArray);
@@ -48,7 +48,14 @@ function comapare(json1, json2) {
 function getUSER(url) {
     var array = [];
     $.ajax({
+        type: 'POST',
         url: url,
+        data: {
+            entity_id: 37710027,
+            profile_action: 'followedby',
+            page: 1,
+            limit: 9,
+        },
         dataType: 'json',
         async: false,
         success: function (data) {
