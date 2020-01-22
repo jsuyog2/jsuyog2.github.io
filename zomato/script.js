@@ -50,6 +50,7 @@ function getUSER(url) {
     $.ajax({
         type: 'POST',
         url: url,
+        crossDomain: true,
         data: {
             entity_id: 37710027,
             profile_action: 'followedby',
@@ -58,6 +59,7 @@ function getUSER(url) {
         },
         dataType: 'json',
         async: false,
+        beforeSend: setHeader,
         success: function (data) {
             $(data.html).each(function (index) {
                 if ($(this).find('a')[1] !== undefined) {
@@ -68,7 +70,15 @@ function getUSER(url) {
                     });
                 }
             });
+        },
+        error: function () {
+            alert('Failed!');
         }
     });
     return array;
+}
+
+function setHeader(xhr) {
+  xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+  xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
 }
