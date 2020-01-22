@@ -56,7 +56,7 @@ function getUSER(url) {
             page: 0,
             limit: 1000,
         },
-        dataType: 'json',
+        dataType: 'jsonp',
         async: false,
         success: function (data) {
             $(data.html).each(function (index) {
