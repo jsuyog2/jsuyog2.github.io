@@ -54,7 +54,7 @@ function getUSER(url) {
             entity_id: 37710027,
             profile_action: 'followedby',
             page: 0,
-            limit: 1001,
+            limit: 1000,
         },
         dataType: 'json',
         async: false,
