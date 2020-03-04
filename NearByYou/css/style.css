@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.box {
+    position: fixed;
+    background: aliceblue;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 500px;
+    top: 30px;
+    left: 50px;
+}
+
+.elem {
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#Search {
+    border-bottom-color: aliceblue;
+}
+
+#elem1 {
+    margin-right: 10px;
+    margin-left: 15px;
+}
+
+#elem2 {
+    width: 75%;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+.searchBtn {
+    cursor: pointer;
+}
+
+.material-icons {
+    color: gray;
+}
+
+.card-panel {
+    position: fixed;
+    width: 400px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#registerCard {
+    height: 620px;
+}
+
+#loginCard {
+    height: 450px;
+}
+
+#loginLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: 40%;
+}
+
+.changeCard {
+    cursor: pointer;
+}
+
+.autocomplete:focus {
+  border-bottom: none!important;
+  box-shadow: none!important;
+}
+
+@media screen and (max-width: 600px) {
+    .card-panel {
+        width: 300px;
+    }
+
+    #loginLogo {
+        width: 20%;
+        height: 20%;
+    }
+
+    #registerCard {
+        height: 520px;
+    }
+    
+    .box{
+        top:5px;
+        left: 5px;
+        width: 250px;
+    }
+}

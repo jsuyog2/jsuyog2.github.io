@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>NearBy You</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body style="background: gray;">
+    <div id="loginCard" class="card-panel white hoverable scale-transition">
+        <div class="row">
+            <img id="loginLogo" class="circle z-depth-3" src="images/Profile.jpg">
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <i class="material-icons prefix">mail_outline</i>
+                <input id="log_email" type="email" class="validate">
+                <label for="log_email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <i class="material-icons prefix">lock_outline</i>
+                <input id="log_password" type="password" class="validate">
+                <label for="log_password">Password</label>
+            </div>
+        </div>
+        <div class="row valign-wrapper">
+            <div class="col s9">
+                <a onclick="switchLogin('log')" class="changeCard">New to NearByYou?</a>
+            </div>
+            <div class="col s3">
+                <a class="right waves-effect waves-light btn">Login</a>
+            </div>
+        </div>
+    </div>
+    <div id="registerCard" class="card-panel white hoverable scale-transition scale-out">
+        <div class="row">
+            <img id="loginLogo" class="circle z-depth-3" src="images/Profile.jpg">
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="reg_name" type="text" class="validate">
+                <label for="reg_name">Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <i class="material-icons prefix">mail_outline</i>
+                <input id="reg_email" type="email" class="validate">
+                <label for="reg_email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <i class="material-icons prefix">lock_outline</i>
+                <input id="reg_password" type="password" class="validate">
+                <label for="reg_password">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <i class="material-icons prefix">lock_outline</i>
+                <input id="reg_confirm_password" type="password" class="validate">
+                <label for="reg_confirm_password">Confirm Password</label>
+            </div>
+        </div>
+        <div class="row valign-wrapper">
+            <div class="col s9">
+                <a onclick="switchLogin('reg')" class="changeCard">Already a user?</a>
+            </div>
+            <div class="col s3">
+                <a class="right waves-effect waves-light btn">Register</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>
