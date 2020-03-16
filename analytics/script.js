@@ -74,7 +74,8 @@ function getUsername() {
 }
 
 function callApi(name, date1, date2) {
-    var url = 'http://overpass-api.de/api/interpreter';
+//    var url = 'http://overpass-api.de/api/interpreter';
+    var url = 'https://lz4.overpass-api.de/api/interpreter';
     var data = '';
     if (date1 !== undefined && date2 !== undefined) {
         data += '[diff:"' + date1 + 'T00:00:00Z","' + date2 + 'T00:00:00Z"]'
