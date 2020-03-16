@@ -6,12 +6,14 @@ upadateField();
 $('#picker1').datepicker({
     format: "yyyy-mm-dd",
     autoClose: true,
+    maxDate:new Date(),
     onSelect: function (date) {
         $("#picker2").prop('disabled', false);
         $('#picker2').datepicker({
             format: "yyyy-mm-dd",
             autoClose: true,
-            minDate: date
+            minDate: date,
+            maxDate:new Date()
         });
     }
 });
