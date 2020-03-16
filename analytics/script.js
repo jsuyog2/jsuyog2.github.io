@@ -65,10 +65,10 @@ function getUsername() {
         var location = '';
         location += "?name=" + username;
         location += '&date1=' + date1 + '&date2=' + date2;
+        window.location = location.trim();
     } else {
         console.log('fill full Details');
     }
-    window.location = location.trim();
 }
 
 function callApi(name, date1, date2) {
