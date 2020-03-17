@@ -69,6 +69,11 @@ function getUsername() {
         location += '&date1=' + date1 + '&date2=' + date2;
         window.location = location.trim();
     } else {
+        Swal.fire({title: 'Error!',
+  text: 'fill full Details',
+  icon: 'error',
+  confirmButtonText: 'Cool'
+})
         console.log('fill full Details');
     }
 }
