@@ -6,14 +6,14 @@ upadateField();
 $('#picker1').datepicker({
     format: "yyyy-mm-dd",
     autoClose: true,
-    maxDate:new Date(),
+    maxDate: new Date(),
     onSelect: function (date) {
         $("#picker2").prop('disabled', false);
         $('#picker2').datepicker({
             format: "yyyy-mm-dd",
             autoClose: true,
             minDate: date,
-            maxDate:new Date()
+            maxDate: new Date()
         });
     }
 });
@@ -73,15 +73,44 @@ function getUsername() {
     }
 }
 
+function getCount(json, name, type) {
+    var name = name.toLowerCase();
+    var value = 0;
+    var length = 1;
+    var uid = '';
+    var user = '';
+    json.forEach(function (elem) {
+        var tag = elem.tag;
+        user = elem.user;
+        uid = elem.uid;
+        if (name in tag) {
+            if (type === 'way') {
+                var line = turf.lineString(elem.geom);
+                length = turf.lineDistance(line);
+            }
+            value = value + length;
+        }
+    });
+    if (value !== 0) {
+        array.push({
+            user: user,
+            uid: uid,
+            type: type,
+            layer: name,
+            total: value
+        })
+    }
+}
+
 function callApi(name, date1, date2) {
-//    var url = 'http://overpass-api.de/api/interpreter';
+    //    var url = 'http://overpass-api.de/api/interpreter';
     var url = 'https://lz4.overpass-api.de/api/interpreter';
     var data = '';
     if (date1 !== undefined && date2 !== undefined) {
         data += '[diff:"' + date1 + 'T00:00:00Z","' + date2 + 'T00:00:00Z"]'
     }
     data += '[bbox:10.6795321,75.8255821,11.5292791, 76.5453213];'
-    data += '(node[building](user:"' + name + '");way[building](user:"' + name + '");rel[building](user:"' + name + '");way[highway](user:"' + name + '");way[waterway](user:"' + name + '");way[railway](user:"' + name + '");node[amenity](user:"' + name + '");way[amenity](user:"' + name + '");rel[amenity](user:"' + name + '");)->.result;'
+    data += '(node[building](user:"' + name + '");way[building](user:"' + name + '");rel[building](user:"' + name + '");way[highway](user:"' + name + '");way[waterway](user:"' + name + '");way[railway](user:"' + name + '");node[amenity](user:"' + name + '");way[amenity](user:"' + name + '");rel[amenity](user:"' + name + '");way[aerialway](user:"' + name + '");rel[aerialway](user:"' + name + '");way[aeroway](user:"' + name + '");rel[aeroway](user:"' + name + '");way[barrier](user:"' + name + '");rel[barrier](user:"' + name + '");way[boundary](user:"' + name + '");rel[boundary](user:"' + name + '");node[craft](user:"' + name + '");rel[craft](user:"' + name + '");node[Emergency](user:"' + name + '");rel[Emergency](user:"' + name + '");node[geological](user:"' + name + '");rel[geological](user:"' + name + '");node[historic](user:"' + name + '");rel[historic](user:"' + name + '");rel[landuse](user:"' + name + '");rel[leisure](user:"' + name + '");node[leisure](user:"' + name + '");rel[man_made](user:"' + name + '");way[man_made](user:"' + name + '");node[military](user:"' + name + '");rel[military](user:"' + name + '");way[military](user:"' + name + '");node[natural](user:"' + name + '");rel[natural](user:"' + name + '");way[natural](user:"' + name + '");node[office](user:"' + name + '");rel[office](user:"' + name + '");way[place](user:"' + name + '");rel[place](user:"' + name + '");node[place](user:"' + name + '");rel[power](user:"' + name + '");node[power](user:"' + name + '");way[power](user:"' + name + '");rel[public_transport](user:"' + name + '");node[public_transport](user:"' + name + '");way[public_transport](user:"' + name + '");way[route](user:"' + name + '");node[shop](user:"' + name + '");rel[shop](user:"' + name + '");node[sport](user:"' + name + '");rel[sport](user:"' + name + '");rel[telecom](user:"' + name + '");node[telecom](user:"' + name + '");node[tourism](user:"' + name + '");rel[tourism](user:"' + name + '");)->.result;'
     data += '.result out 64 meta geom qt;'
     $.ajax({
         url: url,
@@ -91,85 +120,32 @@ function callApi(name, date1, date2) {
         async: false,
         success: function (data) {
             var json = getJson(data);
-            var send = {};
-            var building = 0;
-            var highway = 0;
-            var waterway = 0;
-            var railway = 0;
-            var amenity = 0;
-            var user = '';
-            var uid = '';
-            json.forEach(function (elem) {
-                var tag = elem.tag;
-                user = elem.user;
-                uid = elem.uid;
-                if ('highway' in tag) {
-                    var line = turf.lineString(elem.geom);
-                    var length = turf.lineDistance(line);
-                    highway = highway + length;
-                }
-                if ('building' in tag) {
-                    building = building + 1;
-                }
-                if ('amenity' in tag) {
-                    amenity = amenity + 1;
-                }
-                if ('waterway' in tag) {
-                    var line = turf.lineString(elem.geom);
-                    var length = turf.lineDistance(line);
-                    waterway = waterway + length;
-                }
-                if ('railway' in tag) {
-                    var line = turf.lineString(elem.geom);
-                    var length = turf.lineDistance(line);
-                    railway = railway + length;
-                }
-            });
-            if (highway !== 0) {
-                array.push({
-                    user: user,
-                    uid: uid,
-                    type: 'way',
-                    layer: "highway",
-                    total: highway
-                });
-            }
-            if (building !== 0) {
-                array.push({
-                    user: user,
-                    uid: uid,
-                    type: 'node',
-                    layer: "building",
-                    total: building
-                });
-            }
-            if (amenity !== 0) {
-                array.push({
-                    user: user,
-                    uid: uid,
-                    type: 'node',
-                    layer: "amenity",
-                    total: amenity
-                });
-            }
-            if (waterway !== 0) {
-                array.push({
-                    user: user,
-                    uid: uid,
-                    type: 'way',
-                    layer: "waterway",
-                    total: waterway
-                });
-            }
-            if (railway !== 0) {
-                array.push({
-                    user: user,
-                    uid: uid,
-                    type: 'way',
-                    layer: "railway",
-                    total: railway
-                });
-            }
+
+            //node
+            getCount(json, 'building', 'node');
+            getCount(json, 'amenity', 'node');
+            getCount(json, 'craft', 'node');
+            getCount(json, 'emergency', 'node');
+            getCount(json, 'geological', 'node');
+            getCount(json, 'historic', 'node');
+            getCount(json, 'landuse', 'node');
+            getCount(json, 'leisure', 'node');
+            getCount(json, 'man_made', 'node');
+            getCount(json, 'office', 'node');
+            getCount(json, 'shop', 'node');
+            getCount(json, 'sport', 'node');
+            getCount(json, 'telecom', 'node');
+            getCount(json, 'tourism', 'node');
+
+            //ways
+            getCount(json, 'highway', 'way');
+            getCount(json, 'waterway', 'way');
+            getCount(json, 'railway', 'way');
+            getCount(json, 'aerialway', 'way');
+            getCount(json, 'aeroway', 'way');
+            getCount(json, 'barrier', 'way');
+            getCount(json, 'boundary', 'way');
+            getCount(json, 'route', 'way');
         }
     });
 }
