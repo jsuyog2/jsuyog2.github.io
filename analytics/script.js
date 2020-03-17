@@ -70,9 +70,9 @@ function getUsername() {
         window.location = location.trim();
     } else {
         Swal.fire({title: 'Error!',
-  text: 'fill full Details',
+  text: 'Please Enter Username and date',
   icon: 'error',
-  confirmButtonText: 'Cool'
+  confirmButtonText: 'OK'
 })
         console.log('fill full Details');
     }
