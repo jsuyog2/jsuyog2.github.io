@@ -70,7 +70,7 @@ function getUsername() {
         window.location = location.trim();
     } else {
         Swal.fire({title: 'Error!',
-  text: 'Please Enter Username and date',
+  text: 'Please Enter the Username and Date',
   icon: 'error',
   confirmButtonText: 'OK'
 })
