@@ -69,11 +69,12 @@ function getUsername() {
         location += '&date1=' + date1 + '&date2=' + date2;
         window.location = location.trim();
     } else {
-        Swal.fire({title: 'Error!',
-  text: 'Please Enter the Username and Date',
-  icon: 'error',
-  confirmButtonText: 'OK'
-})
+        Swal.fire({
+            title: 'Error!',
+            text: 'Please Enter the Username and Date',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        })
         console.log('fill full Details');
     }
 }
@@ -260,6 +261,10 @@ function getTags(data) {
 function table(data) {
     $('#example').DataTable({
         data: data,
+        dom: 'Bfrtip',
+        buttons: [
+             'csv', 'excel', 'pdf', 'print'
+        ],
         columns: [
             {
                 data: 'user'
