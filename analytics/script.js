@@ -263,7 +263,7 @@ function table(data) {
         data: data,
         dom: 'Bfrtip',
         buttons: [
-             'csv', 'excel', 'pdf', 'print'
+             'csv'
         ],
         columns: [
             {
