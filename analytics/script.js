@@ -2,7 +2,10 @@ var name = decodeURIComponent(getUrlVars()['name']);
 var date1 = getUrlVars()['date1'];
 var date2 = getUrlVars()['date2'];
 var array = [];
+var names;
+var datatable;
 upadateField();
+
 $('#picker1').datepicker({
     format: "yyyy-mm-dd",
     autoClose: true,
@@ -17,13 +20,43 @@ $('#picker1').datepicker({
         });
     }
 });
-
+table(array);
 if (getUrlVars()['name'] !== undefined && date1 !== undefined && date2 !== undefined) {
-    var names = decodeURIComponent(getUrlVars()['name']).split(",");
+    names = decodeURIComponent(getUrlVars()['name']).split(",");
     names.forEach(function (user) {
-        callApi(user, date1, date2);
+        $('#users').append('<div id="' + user + '">' + user + ': <b>Getting Data</b></div>');
     });
-    table(array)
+    if (status().result == true) {
+        callApi(names, date1, date2, 0);
+    } else {
+        var time = status().seconds.trim() * 1000;
+        setTimeout(function () {
+            callApi(names, date1, date2, 0);
+        }, time);
+    }
+}
+
+function status() {
+    var result = false;
+    var seconds = 0;
+    $.ajax({
+        url: 'https://lz4.overpass-api.de/api/status',
+        async: false,
+        success: function (data) {
+            if (data.search("seconds") !== -1) {
+                var endIndex = data.search("seconds");
+                var startIndex = endIndex - 4
+                seconds = data.slice(startIndex, endIndex);
+            }
+            if (data.search("available now") !== -1) {
+                result = true;
+            }
+        }
+    });
+    return {
+        result,
+        seconds
+    };
 }
 
 $('#submit').click(function () {
@@ -79,36 +112,9 @@ function getUsername() {
     }
 }
 
-function getCount(json, name, type) {
-    var name = name.toLowerCase();
-    var value = 0;
-    var length = 1;
-    var uid = '';
-    var user = '';
-    json.forEach(function (elem) {
-        var tag = elem.tag;
-        user = elem.user;
-        uid = elem.uid;
-        if (name in tag) {
-            if (type === 'way') {
-                var line = turf.lineString(elem.geom);
-                length = turf.lineDistance(line);
-            }
-            value = value + length;
-        }
-    });
-    if (value !== 0) {
-        array.push({
-            user: user,
-            uid: uid,
-            type: type,
-            layer: name,
-            total: value
-        })
-    }
-}
 
-function callApi(name, date1, date2) {
+function callApi(names, date1, date2, i) {
+    var name = names[i];
     //    var url = 'http://overpass-api.de/api/interpreter';
     var url = 'https://lz4.overpass-api.de/api/interpreter';
     var data = '';
@@ -117,16 +123,17 @@ function callApi(name, date1, date2) {
     }
     data += '[bbox:10.6795321,75.8255821,11.5292791, 76.5453213];'
     data += '(';
-   data += 'node[building](user:"' + name + '");way[building](user:"' + name + '");rel[building](user:"' + name + '");way[highway](user:"' + name + '");way[waterway](user:"' + name + '");way[railway](user:"' + name + '");node[amenity](user:"' + name + '");way[amenity](user:"' + name + '");rel[amenity](user:"' + name + '");way[aerialway](user:"' + name + '");rel[aerialway](user:"' + name + '");way[aeroway](user:"' + name + '");rel[aeroway](user:"' + name + '");way[barrier](user:"' + name + '");rel[barrier](user:"' + name + '");way[boundary](user:"' + name + '");rel[boundary](user:"' + name + '");node[craft](user:"' + name + '");rel[craft](user:"' + name + '");node[Emergency](user:"' + name + '");rel[Emergency](user:"' + name + '");node[geological](user:"' + name + '");rel[geological](user:"' + name + '");node[historic](user:"' + name + '");rel[historic](user:"' + name + '");rel[landuse](user:"' + name + '");rel[leisure](user:"' + name + '");node[leisure](user:"' + name + '");rel[man_made](user:"' + name + '");way[man_made](user:"' + name + '");node[military](user:"' + name + '");rel[military](user:"' + name + '");way[military](user:"' + name + '");node[natural](user:"' + name + '");rel[natural](user:"' + name + '");way[natural](user:"' + name + '");node[office](user:"' + name + '");rel[office](user:"' + name + '");way[place](user:"' + name + '");rel[place](user:"' + name + '");node[place](user:"' + name + '");rel[power](user:"' + name + '");node[power](user:"' + name + '");way[power](user:"' + name + '");rel[public_transport](user:"' + name + '");node[public_transport](user:"' + name + '");way[public_transport](user:"' + name + '");way[route](user:"' + name + '");node[shop](user:"' + name + '");rel[shop](user:"' + name + '");node[sport](user:"' + name + '");rel[sport](user:"' + name + '");rel[telecom](user:"' + name + '");node[telecom](user:"' + name + '");node[tourism](user:"' + name + '");rel[tourism](user:"' + name + '");';
-    
+    data += 'node[building](user:"' + name + '");way[building](user:"' + name + '");rel[building](user:"' + name + '");way[highway](user:"' + name + '");way[waterway](user:"' + name + '");way[railway](user:"' + name + '");node[amenity](user:"' + name + '");way[amenity](user:"' + name + '");rel[amenity](user:"' + name + '");way[aerialway](user:"' + name + '");rel[aerialway](user:"' + name + '");way[aeroway](user:"' + name + '");rel[aeroway](user:"' + name + '");way[barrier](user:"' + name + '");rel[barrier](user:"' + name + '");way[boundary](user:"' + name + '");rel[boundary](user:"' + name + '");node[craft](user:"' + name + '");rel[craft](user:"' + name + '");node[Emergency](user:"' + name + '");rel[Emergency](user:"' + name + '");node[geological](user:"' + name + '");rel[geological](user:"' + name + '");node[historic](user:"' + name + '");rel[historic](user:"' + name + '");rel[landuse](user:"' + name + '");rel[leisure](user:"' + name + '");node[leisure](user:"' + name + '");rel[man_made](user:"' + name + '");way[man_made](user:"' + name + '");node[military](user:"' + name + '");rel[military](user:"' + name + '");way[military](user:"' + name + '");node[natural](user:"' + name + '");rel[natural](user:"' + name + '");way[natural](user:"' + name + '");node[office](user:"' + name + '");rel[office](user:"' + name + '");way[place](user:"' + name + '");rel[place](user:"' + name + '");node[place](user:"' + name + '");rel[power](user:"' + name + '");node[power](user:"' + name + '");way[power](user:"' + name + '");rel[public_transport](user:"' + name + '");node[public_transport](user:"' + name + '");way[public_transport](user:"' + name + '");way[route](user:"' + name + '");node[shop](user:"' + name + '");rel[shop](user:"' + name + '");node[sport](user:"' + name + '");rel[sport](user:"' + name + '");rel[telecom](user:"' + name + '");node[telecom](user:"' + name + '");node[tourism](user:"' + name + '");rel[tourism](user:"' + name + '");';
+
     data += ')->.result;'
     data += '.result out 64 meta geom qt;'
     $.ajax({
+        //        url: name + '.xml',
         url: url,
         type: "POST",
         contentType: 'text/plain',
         data: data,
-        async: false,
+        async: true,
         success: function (data) {
             var json = getJson(data);
 
@@ -155,8 +162,56 @@ function callApi(name, date1, date2) {
             getCount(json, 'barrier', 'way');
             getCount(json, 'boundary', 'way');
             getCount(json, 'route', 'way');
+        },
+        complete: function () {
+            datatable.clear();
+            datatable.rows.add(array);
+            datatable.draw();
+            $('#' + name + ' b').html('Loaded');
+            i = i + 1;
+            if (names.length > i) {
+                console.log(status())
+                if (status().result == true) {
+                    callApi(names, date1, date2, i);
+                } else {
+                    var time = status().seconds.trim() * 1000;
+                    setTimeout(function () {
+                        callApi(names, date1, date2, i);
+                    }, time);
+                }
+            }
         }
     });
+}
+
+
+function getCount(json, name, type) {
+    var name = name.toLowerCase();
+    var value = 0;
+    var length = 1;
+    var uid = '';
+    var user = '';
+    json.forEach(function (elem) {
+        var tag = elem.tag;
+        user = elem.user;
+        uid = elem.uid;
+        if (name in tag) {
+            if (type === 'way') {
+                var line = turf.lineString(elem.geom);
+                length = turf.lineDistance(line);
+            }
+            value = value + length;
+        }
+    });
+    if (value !== 0) {
+        array.push({
+            user: user,
+            uid: uid,
+            type: type,
+            layer: name,
+            total: value
+        })
+    }
 }
 
 function getJson(data) {
@@ -262,7 +317,7 @@ function getTags(data) {
 }
 
 function table(data) {
-    $('#example').DataTable({
+    datatable = $('#example').DataTable({
         data: data,
         dom: 'Bfrtip',
         buttons: [
