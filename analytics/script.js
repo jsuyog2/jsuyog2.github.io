@@ -4,27 +4,30 @@ var date2 = getUrlVars()['date2'];
 var array = [];
 var names;
 var datatable;
+table(array);
 upadateField();
-
+$('.sidenav').sidenav();
 $('#picker1').datepicker({
     format: "yyyy-mm-dd",
     autoClose: true,
+    container: "body",
     maxDate: new Date(),
     onSelect: function (date) {
         $("#picker2").prop('disabled', false);
         $('#picker2').datepicker({
             format: "yyyy-mm-dd",
             autoClose: true,
+            container: "body",
             minDate: date,
             maxDate: new Date()
         });
     }
 });
-table(array);
+
 if (getUrlVars()['name'] !== undefined && date1 !== undefined && date2 !== undefined) {
     names = decodeURIComponent(getUrlVars()['name']).split(",");
     names.forEach(function (user, i) {
-        $('#users').append('<div id="user' + i + '">' + user + ': <b>Getting Data</b></div>');
+        $('#users').append('<div id="user' + i + '" class="row">' + user + ': <b>Getting Data</b></div>');
     });
     if (status().result == true) {
         callApi(names, date1, date2, 0);
@@ -170,7 +173,6 @@ function callApi(names, date1, date2, i) {
             $('#user' + i + ' b').html('Loaded');
             i = i + 1;
             if (names.length > i) {
-                console.log(status())
                 if (status().result == true) {
                     callApi(names, date1, date2, i);
                 } else {
@@ -321,7 +323,11 @@ function table(data) {
         data: data,
         dom: 'Bfrtip',
         buttons: [
-             'csv'
+            {
+                "extend": 'csv',
+                "text": 'Export',
+                "className": 'waves-effect waves-light btn'
+            }
         ],
         columns: [
             {
@@ -343,7 +349,10 @@ function table(data) {
                     return row.total
                 }
             }
-                ]
+                ],
+
+        "pagingType": "simple",
+        responsive: true
     });
 }
 
