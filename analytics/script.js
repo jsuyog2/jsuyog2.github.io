@@ -62,6 +62,15 @@ function status() {
     };
 }
 
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+    console.log(status().seconds)
+    if(status().seconds==0){
+        clearInterval(myVar);
+    }
+}
+
 $('#submit').click(function () {
     getUsername()
 });
@@ -180,6 +189,7 @@ function callApi(names, date1, date2, i) {
                     setTimeout(function () {
                         callApi(names, date1, date2, i);
                     }, time);
+                    myVar = setInterval(myTimer, 1000);
                 }
             }
         }
