@@ -32,7 +32,7 @@ $('#picker1').datepicker({
 if (getUrlVars()['name'] !== undefined && date1 !== undefined && date2 !== undefined) {
     names = decodeURIComponent(getUrlVars()['name']).split(",");
     names.forEach(function (user, i) {
-        $('#users').append('<div id="user' + i + '" class="row"><b>' + user + '</b>: <div class="progress"><div class="determinate" style="width: 0%"></div></div></div>');
+        $('#users').append('<div id="user' + i + '" class="row"><b>' + user + '</b>: Loading... <div class="progress"><div class="determinate" style="width: 0%"></div></div></div>');
     });
     if (status().result == true) {
         callApi(names, date1, date2, 0);
