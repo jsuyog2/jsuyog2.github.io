@@ -145,7 +145,7 @@ function getUsername() {
 
 function callApi(names, date1, date2, i) {
     activeLoader('#user' + i);
-    var name = names[i];
+    var name = names[i].trim();
     //    var url = 'http://overpass-api.de/api/interpreter';
     var url = 'https://lz4.overpass-api.de/api/interpreter';
     var data = '';
