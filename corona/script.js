@@ -3,8 +3,8 @@ var brew = new classyBrew();
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/dark-v10',
-    center: [-96, 37.8],
-    zoom: 3,
+    center: [0, 0],
+    zoom: 2,
     attributionControl: false,
     preserveDrawingBuffer: true
 });
