@@ -198,7 +198,7 @@ function callApi(names, date1, date2, i) {
             datatable.clear();
             datatable.rows.add(array);
             datatable.draw();
-            $('#user' + i).html('<b>' + name + '</b> : Loaded');
+            $('#user' + i).html('<b>' + name + ' : Loaded</b>');
             i = i + 1;
             if (names.length > i) {
                 if (status().result == true) {
