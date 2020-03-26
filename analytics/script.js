@@ -83,7 +83,6 @@ function status() {
 function myTimer(time) {
     time = time / 1000;
     timer = setInterval(function () {
-        console.log(time);
         time = time - 1;
         if (time == 0) {
             clearInterval(timer);
