@@ -1,0 +1,11 @@
+@media only screen and (max-width: 720px) {
+    .header {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    h5.header{
+        font-size: 1em;
+    }
+}

@@ -27,7 +27,7 @@ $('#picker1').datepicker({
 if (getUrlVars()['name'] !== undefined && date1 !== undefined && date2 !== undefined) {
     names = decodeURIComponent(getUrlVars()['name']).split(",");
     names.forEach(function (user, i) {
-        $('#users').append('<div id="user' + i + '" class="row">' + user + ': <b>Getting Data</b></div>');
+        $('#users').append('<div id="user' + i + '" class="row"><b>' + user + '</b>: <div class="progress"><div class="indeterminate"></div></div></div>');
     });
     if (status().result == true) {
         callApi(names, date1, date2, 0);
@@ -170,7 +170,7 @@ function callApi(names, date1, date2, i) {
             datatable.clear();
             datatable.rows.add(array);
             datatable.draw();
-            $('#user' + i + ' b').html('Loaded');
+            $('#user' + i).html('<b>'+name+'</b> : Loaded');
             i = i + 1;
             if (names.length > i) {
                 if (status().result == true) {
