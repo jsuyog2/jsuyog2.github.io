@@ -4,9 +4,14 @@ var date2 = getUrlVars()['date2'];
 var array = [];
 var names;
 var datatable;
+var timer;
 table(array);
 upadateField();
 $('.sidenav').sidenav();
+$('.tooltipped').tooltip({
+    html: "Export To CSV",
+    position: "bottom"
+});
 $('#picker1').datepicker({
     format: "yyyy-mm-dd",
     autoClose: true,
@@ -27,7 +32,7 @@ $('#picker1').datepicker({
 if (getUrlVars()['name'] !== undefined && date1 !== undefined && date2 !== undefined) {
     names = decodeURIComponent(getUrlVars()['name']).split(",");
     names.forEach(function (user, i) {
-        $('#users').append('<div id="user' + i + '" class="row"><b>' + user + '</b>: <div class="progress"><div class="indeterminate"></div></div></div>');
+        $('#users').append('<div id="user' + i + '" class="row"><b>' + user + '</b>: <div class="progress"><div class="determinate" style="width: 0%"></div></div></div>');
     });
     if (status().result == true) {
         callApi(names, date1, date2, 0);
@@ -36,7 +41,19 @@ if (getUrlVars()['name'] !== undefined && date1 !== undefined && date2 !== undef
         setTimeout(function () {
             callApi(names, date1, date2, 0);
         }, time);
+        myTimer(time);
     }
+}
+
+function activeLoader(id) {
+    var load = 0;
+    setInterval(function () {
+        load = load + 1;
+        $(id+" .determinate").css("width", load + "%");
+        if (load == 100) {
+            load = 0
+        }
+    }, 1000);
 }
 
 function status() {
@@ -48,7 +65,7 @@ function status() {
         success: function (data) {
             if (data.search("seconds") !== -1) {
                 var endIndex = data.search("seconds");
-                var startIndex = endIndex - 4
+                var startIndex = data.search("Z, in") + 5
                 seconds = data.slice(startIndex, endIndex);
             }
             if (data.search("available now") !== -1) {
@@ -62,6 +79,17 @@ function status() {
     };
 }
 
+
+function myTimer(time) {
+    time = time / 1000;
+    timer = setInterval(function () {
+        console.log(time);
+        time = time - 1;
+        if (time == 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+}
 $('#submit').click(function () {
     getUsername()
 });
@@ -117,6 +145,7 @@ function getUsername() {
 
 
 function callApi(names, date1, date2, i) {
+    activeLoader('#user' + i);
     var name = names[i];
     //    var url = 'http://overpass-api.de/api/interpreter';
     var url = 'https://lz4.overpass-api.de/api/interpreter';
@@ -170,7 +199,7 @@ function callApi(names, date1, date2, i) {
             datatable.clear();
             datatable.rows.add(array);
             datatable.draw();
-            $('#user' + i).html('<b>'+name+'</b> : Loaded');
+            $('#user' + i).html('<b>' + name + '</b> : Loaded');
             i = i + 1;
             if (names.length > i) {
                 if (status().result == true) {
@@ -180,6 +209,7 @@ function callApi(names, date1, date2, i) {
                     setTimeout(function () {
                         callApi(names, date1, date2, i);
                     }, time);
+                    myTimer(time);
                 }
             }
         }
@@ -326,7 +356,7 @@ function table(data) {
             {
                 "extend": 'csv',
                 "text": 'Export',
-                "className": 'waves-effect waves-light btn'
+                "className": 'waves-effect waves-light btn tooltipped'
             }
         ],
         columns: [
