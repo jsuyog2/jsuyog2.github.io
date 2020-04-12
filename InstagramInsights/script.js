@@ -17,7 +17,7 @@ if (getUrlVars()["code"] === undefined) {
 
 $.ajax({
     url: 'https://api.instagram.com/oauth/access_token',
-    type:"POST",
+    type: "POST",
     async: false,
     data: {
         client_id: appid,
@@ -30,3 +30,6 @@ $.ajax({
         console.log(response)
     }
 });
+
+
+console.log("curl -X POST https://api.instagram.com/oauth/access_token -F client_id=" + appid + " -F client_secret=" + client_secret + " -F grant_type=authorization_code -F redirect_uri=" + redirect_uri + " -F code=" + getUrlVars()["code"]);
