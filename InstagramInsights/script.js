@@ -11,6 +11,9 @@
 //         console.log(response)
 //     }
 // });
+var appid = "491767988111690";
+var redirect_uri = "https://jsuyog2.github.io";
+
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
@@ -19,6 +22,7 @@ function getUrlVars() {
     return vars;
 }
 
-if(getUrlVars()["code"]===undefined){
-    window.location.href = "http://www.w3schools.com";
+if (getUrlVars()["code"] === undefined) {
+    var url = "https://api.instagram.com/oauth/authorize?client_id=" + appid + "&redirect_uri=" + redirect_uri + "&scope=user_profile,user_media&response_type=code"
+    window.location.href = url;
 }
