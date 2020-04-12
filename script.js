@@ -1,5 +1,5 @@
 var appid = "491767988111690";
-var redirect_uri = "https://jsuyog2.github.io/InstagramInsights";
+var redirect_uri = "https://jsuyog2.github.io/";
 var client_secret = "41e83aee7b9f0a25983a3a9685f8e3c8";
 
 function getUrlVars() {
