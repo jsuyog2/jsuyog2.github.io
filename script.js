@@ -14,7 +14,7 @@ if (getUrlVars()["code"] === undefined) {
     var url = "https://api.instagram.com/oauth/authorize?client_id=" + appid + "&redirect_uri=" + redirect_uri + "&scope=user_profile,user_media&response_type=code";
     window.location.href = url;
 }
-
+console.log(localStorage.getItem("InstaAceessToken"))
 $.ajax({
     url: 'https://api.instagram.com/oauth/access_token',
     type: "POST",
