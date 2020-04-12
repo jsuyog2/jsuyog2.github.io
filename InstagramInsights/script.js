@@ -12,7 +12,7 @@
 //     }
 // });
 var appid = "491767988111690";
-var redirect_uri = "https://jsuyog2.github.io";
+var redirect_uri = "https://jsuyog2.github.io/InstagramInsights";
 
 function getUrlVars() {
     var vars = {};
