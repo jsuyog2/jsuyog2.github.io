@@ -24,7 +24,7 @@ $.ajax({
         client_secret: client_secret,
         grant_type: "authorization_code",
         redirect_uri: redirect_uri,
-        code: getUrlVars()["code"].slice(0, -2); 
+        code: getUrlVars()["code"].slice(0, -2)
     },
     success: function (response) {
         console.log(response)
