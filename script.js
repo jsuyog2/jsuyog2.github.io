@@ -28,8 +28,9 @@ $.ajax({
     },
     success: function (response) {
         console.log(response)
+        localStorage.setItem("InstaAceessToken", response.access_token);
+    },
+    error: function (xhr) {
+        console.log(xhr)
     }
 });
-
-
-console.log("curl -X POST https://api.instagram.com/oauth/access_token -F client_id=" + appid + " -F client_secret=" + client_secret + " -F grant_type=authorization_code -F redirect_uri=" + redirect_uri + " -F code=" + getUrlVars()["code"]);
