@@ -30,7 +30,11 @@ $.ajax({
         console.log(response)
         localStorage.setItem("InstaAceessToken", response.access_token);
     },
-    error: function (xhr,error) {
+    error: function (xhr,status,error) {
         console.log(xhr.responseJSON)
+        if(xhr.responseJSON.code==400){
+            console.log(status)
+            console.log(error)
+        }
     }
 });
