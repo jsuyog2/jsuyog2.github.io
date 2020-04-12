@@ -39,5 +39,6 @@ if (!access_token) {
         });
     }
 } else {
+    localStorage.removeItem("InstaAceessToken");
     console.log("Login Successful");
 }
