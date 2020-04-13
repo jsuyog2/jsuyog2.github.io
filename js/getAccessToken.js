@@ -1,8 +1,15 @@
+var userId;
 if (access_token === null && getUrlVars()["code"] !== undefined) {
     getAccessToken();
 }
 if (access_token !== null && graphAccessToken === null) {
     getFBAccessToken();
+}
+
+if (access_token !== null && graphAccessToken !== null) {
+    userId = getUserId();
+    $("#loginBtn").html("Logout");
+    $("#loginBtn").attr("href", "logout.html");
 }
 
 function getAccessToken() {
@@ -62,7 +69,7 @@ function FBLogin(response) {
     if (response.authResponse) {
         graphAccessToken = response.authResponse.accessToken;
         localStorage.setItem("FBAceessToken", response.authResponse.accessToken);
-        window.location.href="/";
+        window.location.href = "/";
     } else {
         console.log('User cancelled login or did not fully authorize.');
     }
