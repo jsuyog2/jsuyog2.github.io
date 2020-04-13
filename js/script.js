@@ -1,5 +1,3 @@
-
-
 console.log(access_token);
 console.log(graphAccessToken);
 console.log(userId);
