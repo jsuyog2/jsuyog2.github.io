@@ -1,5 +1,9 @@
 <script>
     localStorage.removeItem("InstaAceessToken");
     localStorage.removeItem("FBAceessToken");
-    window.location.href="/";
+    window.location.href = "/";
+    window.fbAsyncInit = function() {
+        FB.logout();
+    }
+
 </script>
