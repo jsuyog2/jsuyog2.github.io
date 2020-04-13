@@ -7,6 +7,7 @@ if (access_token !== null && graphAccessToken !== null) {
         url: graphUrl + userId + "?fields=" + fields.join() + "&access_token=" + graphAccessToken,
         async: false,
         success: function (response) {
+            $("#introduction").empty();
             $(".header").html(response.name);
             $("title").html(response.name + " | Social Vision");
             addProfilePic(response.profile_picture_url);
@@ -31,7 +32,7 @@ if (access_token !== null && graphAccessToken !== null) {
 function addElem(elem, class_name) {
     var li = document.createElement("li");
     li.classList.add(class_name);
-    document.getElementById("slide-out").appendChild(li).appendChild(elem);
+    document.getElementById("introduction").appendChild(li).appendChild(elem);
 }
 
 function addProfilePic(src) {
