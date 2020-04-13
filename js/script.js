@@ -16,9 +16,9 @@ if (access_token !== null && graphAccessToken !== null && userId !== undefined) 
             $(".bio").html(bio);
             $(".web").html("<a href=" + response.website + ">" + response.website + "</a>");
 
-            $(".post").html("<b>" + response.media_count + "</b> Posts");
-            $(".following").html("<b>" + response.follows_count + "</b> followers");
-            $(".followers").html("<b>" + response.followers_count + "</b> following");
+            $(".post").html("<b>" + response.media_count + "</b>");
+            $(".following").html("<b>" + response.follows_count + "</b>");
+            $(".followers").html("<b>" + response.followers_count + "</b>");
         },
         error: function (xhr, status, error) {
             switch (xhr.responseJSON.error.code) {

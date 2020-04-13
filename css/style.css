@@ -20,6 +20,11 @@ footer {
 
 .user_name {
     font-weight: 100;
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
 }
 
 .bio {
@@ -28,11 +33,22 @@ footer {
 
 .web {
     font-weight: 500;
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.post,
+.followers,
+.following {
+    display: inline;
 }
 
 .count {
     display: inline;
-    margin-right: 1%;
+    margin-right: 2%;
 }
 
 .post_img {
@@ -50,4 +66,22 @@ footer {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.followers_count.section {
+    display: none;
+}
+
+.followers_count.row {
+    display: block;
+}
+
+@media only screen and (max-width: 600px) {
+    .followers_count.row {
+        display: none;
+    }
+
+    .followers_count.section {
+        display: block;
+    }
 }
