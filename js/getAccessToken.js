@@ -50,7 +50,8 @@ function getUserId() {
             id = response.id;
         },
         error: function (xhr, status, error) {
-            console.log(xhr)
+            localStorage.removeItem("InstaAceessToken");
+            localStorage.removeItem("FBAceessToken");
         }
     });
     return id;

@@ -39,13 +39,13 @@
                                     <div class="profile_pic"></div>
                                 </div>
                                 <div class="col s8">
-                                   <div class="row">
-                                       <h4 class="user_name"></h4>
-                                   </div>
-                                   <div class="row">
-                                   <div class="post count"></div>
-                                   <div class="followers count"></div>
-                                   <div class="following count"></div>
+                                    <div class="row">
+                                        <h4 class="user_name"></h4>
+                                    </div>
+                                    <div class="row">
+                                        <div class="post count"></div>
+                                        <div class="followers count"></div>
+                                        <div class="following count"></div>
                                     </div>
                                 </div>
                             </div>
@@ -56,6 +56,11 @@
                                     <div class="web"></div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div id="media" class="section">
+                        <div class="container">
+                            <div class="row"></div>
                         </div>
                     </div>
                 </div>
@@ -84,6 +89,12 @@
     <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
     <script src="js/init.js"></script>
     <script src="js/getAccessToken.js"></script>
+    <script>
+        if (access_token === null && graphAccessToken === null && userId === undefined) {
+            window.location.href = "/";
+        }
+
+    </script>
     <script src="js/script.js"></script>
 </body>
 
