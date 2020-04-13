@@ -1,8 +1,12 @@
+var userId;
 if (getUrlVars()["code"] !== undefined) {
     getAccessToken();
+    userId = getUserId();
     $("#loginBtn").hide();
+} else {
+
 }
-var userId = getUserId();
+
 
 function getAccessToken() {
     $.ajax({
