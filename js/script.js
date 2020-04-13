@@ -36,7 +36,8 @@ function addElem(elem, class_name) {
 
 function addUsername(username) {
     var elem = document.createElement("p");
-    elem.html = username
+    var textnode = document.createTextNode(username);   
+    elem.appendChild(textnode);   
     addElem(elem, "user_name")
 }
 
