@@ -50,12 +50,12 @@ function getUserId() {
 }
 
 function getFBAccessToken() {
-//    window.fbAsyncInit = function () {
+    window.fbAsyncInit = function () {
         FB.init(FBInit);
         FB.login(function (response) {
             FBLogin(response)
         });
-//    };
+    };
 }
 
 function FBLogin(response) {
