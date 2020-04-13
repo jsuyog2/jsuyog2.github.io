@@ -7,17 +7,17 @@ if (access_token !== null && graphAccessToken !== null) {
         url: graphUrl + userId + "?fields=" + fields.join() + "&access_token=" + graphAccessToken,
         async: false,
         success: function (response) {
-            $("#introduction").empty();
-            $(".header").html(response.name);
             $("title").html(response.name + " | Social Vision");
-            addProfilePic(response.profile_picture_url);
-            addUsername(response.username)
-            addBio(response.biography)
-            addWebsite(response.website)
+            $('.profile_pic').append('<img class="circle height="100" width="100" id="profile_pic" src="' + response.profile_picture_url + '" />');
+            $(".user_name").html(response.username);
+            $(".name").html(response.name);
+            var bio = response.biography.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            $(".bio").html(bio);
+            $(".web").html("<a href=" + response.website + ">" + response.website + "</a>");
 
-            $("#media_count").html(response.media_count);
-            $("#follows_count").html(response.follows_count);
-            $("#followers_count").html(response.followers_count);
+            $(".post").html("<b>"+response.media_count+"</b> Posts");
+            $(".following").html("<b>"+response.follows_count+"</b> followers");
+            $(".followers").html("<b>"+response.followers_count+"</b> following");
         },
         error: function (xhr, status, error) {
             switch (xhr.responseJSON.error.code) {
@@ -27,42 +27,4 @@ if (access_token !== null && graphAccessToken !== null) {
             }
         }
     });
-}
-
-function addElem(elem, class_name) {
-    var li = document.createElement("li");
-    li.classList.add(class_name);
-    document.getElementById("introduction").appendChild(li).appendChild(elem);
-}
-
-function addProfilePic(src) {
-    var elem = document.createElement("img");
-    elem.classList.add("circle");
-    elem.setAttribute("src", src);
-    elem.setAttribute("height", "100");
-    elem.setAttribute("width", "100");
-    addElem(elem, "profile_pic")
-}
-
-function addUsername(username) {
-    var elem = document.createElement("p");
-    var textnode = document.createTextNode(username);
-    elem.appendChild(textnode);
-    addElem(elem, "user_name")
-}
-
-function addBio(text) {
-    var elem = document.createElement("div");
-    text = text.replace(/↵/g, "<br>");
-    var textnode = document.createTextNode(text);
-    elem.appendChild(textnode);
-    addElem(elem, "user_bio")
-}
-
-function addWebsite(text) {
-    var elem = document.createElement("a");
-    var textnode = document.createTextNode(text);
-    elem.href = text;
-    elem.appendChild(textnode);
-    addElem(elem, "user_web")
 }

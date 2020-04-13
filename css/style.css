@@ -2,29 +2,26 @@ header, main, footer {
     padding-left: 0;
 }
 
-#loginBtn {
+#loginBtn,#dashBtn {
     margin-top: 44px;
 }
 
-.profile_pic {
-    padding-left: 5%;
-    margin-top: 10%;
+.name {
+    font-weight: 600;
 }
-
 .user_name {
-    margin: 0;
-    padding-left: 5%;
-    font-weight: 700;
-}
-
-.user_bio {
-    margin: 0;
-    padding-left: 5%;
     font-weight: 100;
 }
 
-.user_web {
-    margin: 0;
-    padding-left: 5%;
-    font-weight: 700;
+.bio {
+    font-weight: 100;
+}
+
+.web {
+    font-weight: 500;
+}
+
+.count{
+    display: inline;
+    margin-left: 1%;
 }
