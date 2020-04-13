@@ -1,4 +1,12 @@
+var userId;
 
+console.log(access_token);
+console.log(graphAccessToken);
+
+if (access_token !== null && graphAccessToken !== null) {
+    userId = getUserId();
+    $("#loginBtn").hide();
+}
 //var fields = ["biography", "id", "website", "follows_count", "profile_picture_url", "media_count", "name", "followers_count", "username", "ig_id"];
 //$.ajax({
 //    url: graphUrl + userId + "?fields=" + fields.join() + "&access_token=" + graphAccessToken,

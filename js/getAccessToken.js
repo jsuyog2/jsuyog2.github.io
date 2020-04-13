@@ -1,10 +1,3 @@
-var userId;
-if (getUrlVars()["code"] !== undefined) {
-    userId = getUserId();
-    $("#loginBtn").hide();
-}
-console.log(access_token);
-console.log(graphAccessToken);
 if (access_token === null && getUrlVars()["code"] !== undefined) {
     getAccessToken();
 }
