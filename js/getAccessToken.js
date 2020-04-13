@@ -1,12 +1,16 @@
 var userId;
 if (getUrlVars()["code"] !== undefined) {
-    getAccessToken();
     userId = getUserId();
     $("#loginBtn").hide();
-} else {
-
 }
-
+console.log(access_token);
+console.log(graphAccessToken);
+if (access_token===null && getUrlVars()["code"]!== undefined) {
+    getAccessToken();
+}
+if (access_token!==null && graphAccessToken===null) {
+    getFBAccessToken();
+}
 
 function getAccessToken() {
     $.ajax({
@@ -55,5 +59,20 @@ function getUserId() {
 function getFBAccessToken() {
     window.fbAsyncInit = function () {
         FB.init(FBInit);
+        FB.login(function (response) {
+            FBLogin(response)
+        });
     };
+}
+
+function FBLogin(response) {
+    if (response.authResponse) {
+        graphAccessToken = response.authResponse.accessToken;
+        localStorage.setItem("FBAceessToken", response.authResponse.accessToken);
+        FB.api('/me', function (response) {
+            console.log(response);
+        });
+    } else {
+        console.log('User cancelled login or did not fully authorize.');
+    }
 }
