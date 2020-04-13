@@ -8,9 +8,11 @@ if (access_token !== null && graphAccessToken !== null) {
         async: false,
         success: function (response) {
             $(".header").html(response.name);
+            $("title").html(response.name + " | Social Vision");
+            addProfilePic(response.profile_picture_url);
             $("h5").html(response.biography);
             $("h6").html(response.website);
-            $("#profile_pic").html("<img src='" + response.profile_picture_url + "'/>");
+
             $("#media_count").html(response.media_count);
             $("#follows_count").html(response.follows_count);
             $("#followers_count").html(response.followers_count);
@@ -23,4 +25,13 @@ if (access_token !== null && graphAccessToken !== null) {
             }
         }
     });
+}
+
+function addProfilePic(src) {
+    var elem = document.createElement("img");
+    elem.classList.add("circle");
+    elem.setAttribute("src", src);
+    elem.setAttribute("height", "768");
+    elem.setAttribute("width", "1024");
+    document.getElementById("slide-out").appendChild("elem");
 }

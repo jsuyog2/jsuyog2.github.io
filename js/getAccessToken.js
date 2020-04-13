@@ -43,7 +43,7 @@ function getUserId() {
         url: ApiUrl,
         async: false,
         data: {
-            fields: "id,username",
+            fields: "id,account_type,username,media_count",
             access_token: access_token
         },
         success: function (response) {
