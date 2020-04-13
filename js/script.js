@@ -11,7 +11,7 @@ if (access_token !== null && graphAccessToken !== null) {
             $("title").html(response.name + " | Social Vision");
             addProfilePic(response.profile_picture_url);
             addUsername(response.username)
-            $("h5").html(response.biography);
+            addBio(response.biography)
             $("h6").html(response.website);
 
             $("#media_count").html(response.media_count);
@@ -34,13 +34,6 @@ function addElem(elem, class_name) {
     document.getElementById("slide-out").appendChild(li).appendChild(elem);
 }
 
-function addUsername(username) {
-    var elem = document.createElement("p");
-    var textnode = document.createTextNode(username);   
-    elem.appendChild(textnode);   
-    addElem(elem, "user_name")
-}
-
 function addProfilePic(src) {
     var elem = document.createElement("img");
     elem.classList.add("circle");
@@ -48,4 +41,18 @@ function addProfilePic(src) {
     elem.setAttribute("height", "100");
     elem.setAttribute("width", "100");
     addElem(elem, "profile_pic")
+}
+
+function addUsername(username) {
+    var elem = document.createElement("p");
+    var textnode = document.createTextNode(username);   
+    elem.appendChild(textnode);   
+    addElem(elem, "user_name")
+}
+
+function addBio(text) {
+    var elem = document.createElement("p");
+    var textnode = document.createTextNode(text);   
+    elem.appendChild(textnode);   
+    addElem(elem, "user_bio")
 }

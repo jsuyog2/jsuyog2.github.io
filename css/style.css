@@ -4,6 +4,13 @@
 }
 
 .user_name {
+    margin: 0;
     padding-left: 5%;
     font-weight: 700;
+}
+
+.user_bio {
+    margin: 0;
+    padding-left: 5%;
+    font-weight: 100;
 }
