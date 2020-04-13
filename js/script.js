@@ -52,6 +52,7 @@ function addUsername(username) {
 
 function addBio(text) {
     var elem = document.createElement("div");
+    text = text.replace(/↵/g, "<br>");
     var textnode = document.createTextNode(text);
     elem.appendChild(textnode);
     addElem(elem, "user_bio")
