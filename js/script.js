@@ -10,6 +10,7 @@ if (access_token !== null && graphAccessToken !== null) {
             $(".header").html(response.name);
             $("title").html(response.name + " | Social Vision");
             addProfilePic(response.profile_picture_url);
+            addUsername(response.username)
             $("h5").html(response.biography);
             $("h6").html(response.website);
 
@@ -27,13 +28,23 @@ if (access_token !== null && graphAccessToken !== null) {
     });
 }
 
+function addElem(elem, class_name) {
+    var li = document.createElement("li");
+    li.classList.add(class_name);
+    document.getElementById("slide-out").appendChild(li).appendChild(elem);
+}
+
+function addUsername(username) {
+    var elem = document.createElement("p");
+    elem.html = username
+    addElem(elem, "user_name")
+}
+
 function addProfilePic(src) {
     var elem = document.createElement("img");
-    var li = document.createElement("li");
     elem.classList.add("circle");
-    li.classList.add("profile_pic");
     elem.setAttribute("src", src);
     elem.setAttribute("height", "100");
     elem.setAttribute("width", "100");
-    document.getElementById("slide-out").appendChild(li).appendChild(elem);
+    addElem(elem, "profile_pic")
 }
