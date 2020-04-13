@@ -33,5 +33,5 @@ function addProfilePic(src) {
     elem.setAttribute("src", src);
     elem.setAttribute("height", "768");
     elem.setAttribute("width", "1024");
-    document.getElementById("slide-out").appendChild("elem");
+    document.getElementById("slide-out").appendChild(elem);
 }
