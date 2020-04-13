@@ -62,7 +62,7 @@ function FBLogin(response) {
     if (response.authResponse) {
         graphAccessToken = response.authResponse.accessToken;
         localStorage.setItem("FBAceessToken", response.authResponse.accessToken);
-        location.reload();
+        window.location.href="/";
     } else {
         console.log('User cancelled login or did not fully authorize.');
     }
