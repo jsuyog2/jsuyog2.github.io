@@ -5,6 +5,7 @@ console.log(graphAccessToken);
 
 if (access_token !== null && graphAccessToken !== null) {
     userId = getUserId();
+    $("#loginBtn").html("Logout");
     $("#loginBtn").attr("href", "logout.html");
 }
 //var fields = ["biography", "id", "website", "follows_count", "profile_picture_url", "media_count", "name", "followers_count", "username", "ig_id"];
