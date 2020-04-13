@@ -1,3 +1,11 @@
+header, main, footer {
+    padding-left: 0;
+}
+
+#loginBtn {
+    margin-top: 44px;
+}
+
 .profile_pic {
     padding-left: 5%;
     margin-top: 10%;
