@@ -5,10 +5,10 @@ if (getUrlVars()["code"] !== undefined) {
 }
 console.log(access_token);
 console.log(graphAccessToken);
-if (access_token===null && getUrlVars()["code"]!== undefined) {
+if (access_token === null && getUrlVars()["code"] !== undefined) {
     getAccessToken();
 }
-if (access_token!==null && graphAccessToken===null) {
+if (access_token !== null && graphAccessToken === null) {
     getFBAccessToken();
 }
 
@@ -69,9 +69,6 @@ function FBLogin(response) {
     if (response.authResponse) {
         graphAccessToken = response.authResponse.accessToken;
         localStorage.setItem("FBAceessToken", response.authResponse.accessToken);
-        FB.api('/me', function (response) {
-            console.log(response);
-        });
     } else {
         console.log('User cancelled login or did not fully authorize.');
     }
