@@ -6,51 +6,47 @@
     <title>Social Vision</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://materializecss.com/css/ghpages-materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <nav class="top-nav">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <div class="row">
-                        <div class="col s10 m10">
-                            <h1 class="header">Social Vision</h1>
-                        </div>
-                        <div class="col s2 m2">
-                            <a id="loginBtn" class="waves-effect waves-light btn">Login</a>
-                        </div>
-                    </div>
-                </div>
+        <nav>
+            <div class="nav-wrapper white">
+                <a href="#" class="brand-logo black-text">Social Vision</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down black-text">
+                    <li><a class="loginBtn black-text">Login</a></li>
+                </ul>
             </div>
         </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a class="loginBtn black-text">Login</a></li>
+        </ul>
     </header>
     <main>
         <div class="container">
             <div class="row">
                 <div class="col s12">
                     <div id="profile" class="section">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col s2 offset-s2">
+                        <div class="row">
+                            <div class="col s3 m2 l3 offset-l2 offset-m2">
+                                <div class="row">
                                     <div class="profile_pic"></div>
                                 </div>
-                                <div class="col s8">
-                                    <div class="row">
-                                        <h4 class="user_name"></h4>
-                                    </div>
-                                    <div class="row">
-                                        <div class="post count"></div>
-                                        <div class="followers count"></div>
-                                        <div class="following count"></div>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col s8 offset-s4">
+                            <div class="col s6 offset-s1">
+                                <div class="row">
+                                    <h4 class="user_name"></h4>
+                                </div>
+                                <div class="row">
+                                    <div class="post count"></div>
+                                    <div class="followers count"></div>
+                                    <div class="following count"></div>
+                                </div>
+                                <div class="row">
                                     <div class="name"></div>
                                     <div class="bio"></div>
                                     <div class="web"></div>
@@ -58,30 +54,29 @@
                             </div>
                         </div>
                     </div>
+                    <div id="followers_count" class="section">
+                        <div class="post count"></div>
+                        <div class="followers count"></div>
+                        <div class="following count"></div>
+                    </div>
                     <div id="media" class="section">
-                        <div class="container">
-                            <div class="row"></div>
-                        </div>
+                        <div class="row"></div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <footer class="page-footer docs-footer">
-        <div class="container">
-            <div class="row" style="margin-bottom: 0;">
-                <div class="col s12 m10 offset-m1">
-                    <div class="footer-copyright">
-                        © <noscript>2020</noscript>
-                        <script type="text/javascript">
-                            document.write(new Date().getFullYear());
+    <footer class="page-footer white">
+        <div class="footer-copyright white">
+            <div class="container black-text">
+                © <noscript>2020</noscript>
+                <script type="text/javascript">
+                    document.write(new Date().getFullYear());
 
-                        </script> Social Vision, All rights reserved.
-                    </div>
-                </div>
+                </script> Copyright
+                <a class="black-text right" href="#!">More Links</a>
             </div>
         </div>
-
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

@@ -9,6 +9,11 @@ footer {
     margin-top: 44px;
 }
 
+#profile_pic {
+    margin-top: 1.52rem;
+    width: 90%;
+}
+
 .name {
     font-weight: 600;
 }
@@ -27,7 +32,7 @@ footer {
 
 .count {
     display: inline;
-    margin-left: 1%;
+    margin-right: 1%;
 }
 
 .post_img {

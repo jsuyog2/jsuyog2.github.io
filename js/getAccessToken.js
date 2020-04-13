@@ -8,8 +8,8 @@ if (access_token !== null && graphAccessToken === null) {
 
 if (access_token !== null && graphAccessToken !== null) {
     userId = getUserId();
-    $("#loginBtn").html("Logout");
-    $("#loginBtn").attr("href", "logout.html");
+    $(".loginBtn").html("Logout");
+    $(".loginBtn").attr("href", "logout.html");
 }
 
 function getAccessToken() {

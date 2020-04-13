@@ -9,7 +9,7 @@ if (access_token !== null && graphAccessToken !== null && userId !== undefined) 
         async: false,
         success: function (response) {
             $("title").html(response.name + " | Social Vision");
-            $('.profile_pic').append('<img class="circle height="100" width="100" id="profile_pic" src="' + response.profile_picture_url + '" />');
+            $('.profile_pic').append('<img class="circle" id="profile_pic" src="' + response.profile_picture_url + '" />');
             $(".user_name").html(response.username);
             $(".name").html(response.name);
             var bio = response.biography.replace(/(?:\r\n|\r|\n)/g, '<br>');

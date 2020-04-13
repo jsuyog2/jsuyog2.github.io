@@ -13,20 +13,19 @@
 
 <body>
     <header>
-        <nav class="top-nav">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <div class="row">
-                        <div class="col s10 m10">
-                            <h1 class="header">Social Vision</h1>
-                        </div>
-                        <div class="col s2 m2">
-                            <a id="loginBtn" class="waves-effect waves-light btn">Login</a>
-                        </div>
-                    </div>
-                </div>
+        <nav>
+            <div class="nav-wrapper white">
+                <a href="#" class="brand-logo black-text">Social Vision</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down black-text">
+                    <li><a class="loginBtn black-text">Login</a></li>
+                </ul>
             </div>
         </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a class="loginBtn black-text">Login</a></li>
+        </ul>
     </header>
     <main>
         <div class="container bsa">
@@ -41,21 +40,17 @@
             </div>
         </div>
     </main>
-    <footer class="page-footer docs-footer">
-        <div class="container">
-            <div class="row" style="margin-bottom: 0;">
-                <div class="col s12 m10 offset-m1">
-                    <div class="footer-copyright">
-                        © <noscript>2020</noscript>
-                        <script type="text/javascript">
-                            document.write(new Date().getFullYear());
+    <footer class="page-footer white">
+        <div class="footer-copyright white">
+            <div class="container black-text">
+                © <noscript>2020</noscript>
+                <script type="text/javascript">
+                    document.write(new Date().getFullYear());
 
-                        </script> Social Vision, All rights reserved.
-                    </div>
-                </div>
+                </script> Copyright
+                <a class="black-text right" href="#!">More Links</a>
             </div>
         </div>
-
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -67,6 +62,7 @@
         if (access_token !== null && graphAccessToken !== null) {
             window.location.href = "/user.html";
         }
+
     </script>
 </body>
 
