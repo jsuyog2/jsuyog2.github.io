@@ -1,4 +1,5 @@
 if (getUrlVars()["code"] !== undefined) {
+    getAccessToken();
     $("#loginBtn").hide();
 }
 var userId = getUserId();
@@ -18,6 +19,7 @@ function getAccessToken() {
         success: function (response) {
             localStorage.setItem("InstaAceessToken", response.access_token);
             access_token = response.access_token;
+            getFBAccessToken();
         },
         error: function (xhr, status, error) {
             if (xhr.responseJSON.code == 400) {
@@ -39,7 +41,15 @@ function getUserId() {
         success: function (response) {
             id = response.id;
         },
-        error: function (xhr, status, error) {}
+        error: function (xhr, status, error) {
+            console.log(xhr)
+        }
     });
     return id;
+}
+
+function getFBAccessToken() {
+    window.fbAsyncInit = function () {
+        FB.init(FBInit);
+    };
 }
