@@ -29,9 +29,11 @@ if (access_token !== null && graphAccessToken !== null) {
 
 function addProfilePic(src) {
     var elem = document.createElement("img");
+    var li = document.createElement("li");
     elem.classList.add("circle");
+    li.classList.add("profile_pic");
     elem.setAttribute("src", src);
-    elem.setAttribute("height", "768");
-    elem.setAttribute("width", "1024");
-    document.getElementById("slide-out").appendChild(elem);
+    elem.setAttribute("height", "100");
+    elem.setAttribute("width", "100");
+    document.getElementById("slide-out").appendChild(li).appendChild(elem);
 }
