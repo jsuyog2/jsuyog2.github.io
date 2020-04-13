@@ -12,7 +12,7 @@ if (access_token !== null && graphAccessToken !== null) {
             addProfilePic(response.profile_picture_url);
             addUsername(response.username)
             addBio(response.biography)
-            $("h6").html(response.website);
+            addWebsite(response.website)
 
             $("#media_count").html(response.media_count);
             $("#follows_count").html(response.follows_count);
@@ -45,14 +45,22 @@ function addProfilePic(src) {
 
 function addUsername(username) {
     var elem = document.createElement("p");
-    var textnode = document.createTextNode(username);   
-    elem.appendChild(textnode);   
+    var textnode = document.createTextNode(username);
+    elem.appendChild(textnode);
     addElem(elem, "user_name")
 }
 
 function addBio(text) {
-    var elem = document.createElement("p");
-    var textnode = document.createTextNode(text);   
-    elem.appendChild(textnode);   
+    var elem = document.createElement("div");
+    var textnode = document.createTextNode(text);
+    elem.appendChild(textnode);
     addElem(elem, "user_bio")
+}
+
+function addWebsite(text) {
+    var elem = document.createElement("a");
+    var textnode = document.createTextNode(text);
+    elem.href = text;
+    elem.appendChild(textnode);
+    addElem(elem, "user_web")
 }
