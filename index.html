@@ -5,11 +5,56 @@
     <meta charset="utf-8" />
     <title>Social Vision</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://materializecss.com/css/ghpages-materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
+    <header>
+        <nav class="top-nav">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="row">
+                        <div class="col s10 m10 offset-m1 offset-s1">
+                            <h1 class="header">Getting Started</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container"><a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only"><i class="red-text text-accent-4 material-icons">menu</i></a></div>
+        <ul id="slide-out" class="sidenav sidenav-fixed">
+            <li class="logo" style="margin-bottom: 0">
+                <a id="logo-container" href="/" class="brand-logo">
+                    <object id="front-page-logo" type="image/svg+xml" data="images/instagram.svg">Your browser does not support SVG</object>
+                </a>
+                Social Vision For Instagram
+            </li>
+            <li>
+                <a id="loginBtn" class="waves-effect waves-light btn">Login To Instagram</a>
+            </li>
+        </ul>
+    </header>
+    <main></main>
+    <a class="waves-effect waves-light btn"><img src="images/instagram.svg">button</a>
+    <h3></h3>
+    <h5></h5>
+    <h6></h6>
+    <div id="profile_pic"></div>
+    <div id="media_count"></div>
+    <div id="follows_count"></div>
+    <div id="followers_count"></div>
+    <footer>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/config.js"></script>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/getAccessToken.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
