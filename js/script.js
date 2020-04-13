@@ -19,6 +19,8 @@ if (access_token !== null && graphAccessToken !== null && userId !== undefined) 
             $(".post").html("<b>" + response.media_count + "</b>");
             $(".following").html("<b>" + response.follows_count + "</b>");
             $(".followers").html("<b>" + response.followers_count + "</b>");
+            $(".followers_count.row").show();
+//            $(".file_upload").show();
         },
         error: function (xhr, status, error) {
             switch (xhr.responseJSON.error.code) {
