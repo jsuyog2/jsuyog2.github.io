@@ -85,3 +85,9 @@ footer {
         display: block;
     }
 }
+
+@media only screen and (max-width: 350px) {
+    nav .brand-logo {
+        font-size: 1.8rem;
+    }
+}

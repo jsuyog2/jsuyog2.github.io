@@ -29,6 +29,20 @@
     <main>
         <div class="container">
             <div class="row">
+                <div class="file_upload center section" style="display: none;">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Upload Image</span>
+                            <input type="file" id="imgInp">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                            <a id="confirmUp" class="waves-effect waves-light btn" style="float: right;">Confirm Upload</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="profile_row" class="row">
                 <div class="col s12">
                     <div id="profile" class="section">
                         <div class="row">
@@ -57,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="followers_count center section">
+                    <div class="followers_count center section" style="display: none;">
                         <div class="col s4">
                             <div class="post"></div>
                             <div>Posts</div>
@@ -71,22 +85,104 @@
                             <div>following</div>
                         </div>
                     </div>
-                    <div class="file_upload center section" style="display: none;">
-                        <form action="#">
-                            <div class="file-field input-field">
-                                <div class="btn">
-                                    <span>Upload Image</span>
-                                    <input type="file">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
                     <div id="media" class="section">
                         <div class="row"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="upload_row" class="row" style="display: none;">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Caption</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user1" type="text" class="tagUser">
+                        <label for="user1">1.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user2" type="text" class="tagUser">
+                        <label for="user2">2.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user3" type="text" class="tagUser">
+                        <label for="user3">3.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user4" type="text" class="tagUser">
+                        <label for="user4">4.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user5" type="text" class="tagUser">
+                        <label for="user5">5.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user6" type="text" class="tagUser">
+                        <label for="user6">6.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user7" type="text" class="tagUser">
+                        <label for="user7">7.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user8" type="text" class="tagUser">
+                        <label for="user8">8.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user9" type="text" class="tagUser">
+                        <label for="user9">9.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user10" type="text" class="tagUser">
+                        <label for="user10">10.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user11" type="text" class="tagUser">
+                        <label for="user11">11.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user12" type="text" class="tagUser">
+                        <label for="user12">12.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user13" type="text" class="tagUser">
+                        <label for="user13">13.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user14" type="text" class="tagUser">
+                        <label for="user14">14.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user15" type="text" class="tagUser">
+                        <label for="user15">15.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user16" type="text" class="tagUser">
+                        <label for="user16">16.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user17" type="text" class="tagUser">
+                        <label for="user17">17.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user18" type="text" class="tagUser">
+                        <label for="user18">18.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user19" type="text" class="tagUser">
+                        <label for="user19">19.Tag User</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="user20" type="text" class="tagUser">
+                        <label for="user20">20.Tag User</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">location_on</i>
+                        <input type="text" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Location</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <a id="upload" class="waves-effect waves-light btn">Upload</a>
                     </div>
                 </div>
             </div>
