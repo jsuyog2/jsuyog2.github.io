@@ -12,7 +12,6 @@ var uiConfig = {
                     database.ref('users/' + userId).set({
                         username: name,
                         coins: 0,
-                        media_url: "",
                         email: email
                     }, function (error) {
                         if (error) {

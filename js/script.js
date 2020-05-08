@@ -29,11 +29,13 @@ function currentStatus() {
 function verifyAccessToken(userId) {
     database.ref('users/' + userId).once('value').then(function (snapshot) {
         $("#coins").html('Your Coins: ' + snapshot.val().coins + ' <a class="btn-floating btn-small red"><i class="large material-icons">add</i></a>');
-        addMediaUrl(snapshot.val().post.media_url);
         if (snapshot.val().insta_token === undefined) {
             addInstaAccount(userId)
         } else {
             getUserId(userId, snapshot.val().insta_token);
+            if (snapshot.val().post !== undefined) {
+                addMediaUrl(snapshot.val().post.media_url);
+            }
         }
     });
 }
