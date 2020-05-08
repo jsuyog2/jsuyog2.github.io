@@ -138,7 +138,9 @@ $("#addMediaModel").modal({
         $(".square").css("border", "5px solid #00000000");
         var user = firebase.auth().currentUser;
         database.ref('users/' + user.uid).once('value').then(function (snapshot) {
-            $("#" + snapshot.val().post.media_id).css("border", "5px solid blue");
+            if (snapshot.val().post !== undefined) {
+                $("#" + snapshot.val().post.media_id).css("border", "5px solid blue");
+            }
         });
     }
 });
