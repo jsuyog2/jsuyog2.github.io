@@ -34,17 +34,15 @@ function verifyAccessToken(userId) {
         } else {
             getUserId(userId, snapshot.val().insta_token);
             if (snapshot.val().post !== undefined) {
-                addMediaUrl(snapshot.val().post.media_url);
+                addMediaUrl();
             }
         }
     });
 }
 
-function addMediaUrl(id) {
-    if (id !== "") {
-        $("#addMediaModel h4").html("Change Media");
-        $("#addUrl").html("Change Media");
-    }
+function addMediaUrl() {
+    $("#addMediaModel h4").html("Change Media");
+    $("#addUrl").html("Change Media");
 }
 
 function addInstaAccount(userId) {
@@ -155,5 +153,6 @@ function tryClick(context) {
         media_url: link,
         like: 0
     });
+    addMediaUrl();
     $("#addMediaModel").modal("close");
 }
