@@ -1,43 +1,107 @@
-console.log(access_token);
-console.log(graphAccessToken);
-console.log(userId);
-var userFields = ["biography", "id", "website", "follows_count", "profile_picture_url", "media_count", "name", "followers_count", "username", "ig_id"];
-var mediaFields = ["media_type", "thumbnail_url", "media_url", "like_count", "comments_count"];
-if (access_token !== null && graphAccessToken !== null && userId !== undefined) {
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        var userId = user.uid;
+        var name = user.displayName;
+        var email = user.email;
+        $("title").html(name.toUpperCase() + " - SocialLike4Like");
+        $("#head").html(currentStatus().toUpperCase() + ", " + name.toUpperCase());
+        $("#addAcc").attr("href", oauthUrl);
+        $("#addAcc").show();
+        verifyAccessToken(userId);
+    } else {
+        // No user is signed in.
+    }
+});
+
+function currentStatus() {
+    var today = new Date()
+    var curHr = today.getHours()
+
+    if (curHr < 10) {
+        return 'Good Morning';
+    } else if (curHr < 20) {
+        return 'Good day';
+    } else {
+        return 'Good Evening';
+    }
+}
+
+function verifyAccessToken(userId) {
+    database.ref('users/' + userId).once('value').then(function (snapshot) {
+        $("#coins").html('Your Coins: ' + snapshot.val().coins + ' <a class="btn-floating btn-small red"><i class="large material-icons">add</i></a>');
+        addMediaUrl(snapshot.val().post.media_url);
+        if (snapshot.val().insta_token === undefined) {
+            addInstaAccount(userId)
+        } else {
+            getUserId(userId, snapshot.val().insta_token);
+        }
+    });
+}
+
+function addMediaUrl(id) {
+    if (id !== "") {
+        $("#addMediaModel h4").html("Change Media");
+        $("#addUrl").html("Change Media");
+    }
+}
+
+function addInstaAccount(userId) {
+    if (getUrlVars()["code"] !== undefined) {
+        getAccessToken(userId);
+    }
+}
+
+function getUserId(userId, access_token) {
+    var id;
     $.ajax({
-        url: graphUrl + userId + "?fields=" + userFields.join() + "&access_token=" + graphAccessToken,
+        url: ApiUrl,
         async: false,
+        data: {
+            fields: "id,account_type,username,media_count",
+            access_token: access_token
+        },
         success: function (response) {
-            $("title").html(response.name + " | Social Vision");
-            $('.profile_pic').append('<img class="circle" id="profile_pic" src="' + response.profile_picture_url + '" />');
-            $(".user_name").html(response.username);
-            $(".name").html(response.name);
-            var bio = response.biography.replace(/(?:\r\n|\r|\n)/g, '<br>');
-            $(".bio").html(bio);
-            $(".web").html("<a href=" + response.website + ">" + response.website + "</a>");
-
-            $(".post").html("<b>" + response.media_count + "</b>");
-            $(".following").html("<b>" + response.follows_count + "</b>");
-            $(".followers").html("<b>" + response.followers_count + "</b>");
-
-            if (window.matchMedia('(max-width: 767px)').matches) {
-                $(".followers_count.section").show();
-            } else {
-                $(".followers_count.row").show();
-            }
-            $(".file_upload").show();
+            $("#addAcc").remove();
+            $("#addUrl").show();
+            $("#addUrl").parent().prepend("<h5 class='center'>@" + response.username + "</h5>");
+            addMediaImg(access_token);
         },
         error: function (xhr, status, error) {
-            switch (xhr.responseJSON.error.code) {
-                case 190:
-                    console.log(true)
-                    break;
+            getAccessToken(userId);
+        }
+    });
+    return id;
+}
+
+function getAccessToken(userId) {
+    $.ajax({
+        url: 'https://api.instagram.com/oauth/access_token',
+        type: "POST",
+        async: false,
+        data: {
+            client_id: appid,
+            client_secret: client_secret,
+            grant_type: "authorization_code",
+            redirect_uri: redirect_uri,
+            code: getUrlVars()["code"].slice(0, -2)
+        },
+        success: function (response) {
+            database.ref('users/' + userId).update({
+                insta_token: response.access_token
+            });
+        },
+        error: function (xhr, status, error) {
+            if (xhr.responseJSON.code == 400) {
+                window.location.href = oauthUrl;
             }
         }
     });
+}
 
+function addMediaImg(access_token) {
+    var mediaFields = ["id", "username", "permalink", "media_url", "media_type", "thumbnail_url"];
     $.ajax({
-        url: graphUrl + userId + "/media?fields=" + mediaFields.join() + "&limit=17&access_token=" + graphAccessToken,
+        url: ApiUrl + "/media?fields=" + mediaFields.join() + "&access_token=" + access_token,
         async: false,
         success: function (response) {
             response.data.forEach(function (post) {
@@ -53,10 +117,9 @@ if (access_token !== null && graphAccessToken !== null && userId !== undefined) 
                         src = post.media_url;
                         break;
                 }
-                var img = '<img class="post_img" src="' + src + '"/>'
                 var style = "background-image: url(" + src + ");";
-                var div = '<div class="square" style="' + style + '"></div>';
-                $("#media .row").append(div);
+                var div = '<div class="square" id="' + post.id + '" data-para="' + post.permalink + '" style="' + style + '" onclick="tryClick(this)"></div>';
+                $("#addMediaModel #media_content").append(div);
             });
         },
         error: function (xhr, status, error) {
@@ -68,147 +131,24 @@ if (access_token !== null && graphAccessToken !== null && userId !== undefined) 
         }
     });
 }
-
-$("#imgInp").change(function (e) {
-    src = URL.createObjectURL(e.target.files[0]);
-    var style = "background-image: url(" + src + ");";
-    var div = '<div class="square" style="' + style + '"></div>';
-    $("#media .row").prepend(div);
-});
-$("#confirmUp").click(function () {
-    if (document.getElementById("imgInp").value != "") {
-        $("#profile_row").toggle();
-        $("#upload_row").toggle();
-        if ($('#profile_row').css('display') == 'none') {
-            $("#confirmUp").html("Cancel Upload");
-        } else {
-            $("#confirmUp").html("Confirm Upload");
-        }
-    } else {
-        console.log(false)
-    }
-});
-
-$(".autocomplete").keyup(function () {
-    if ($(this).val() !== "") {
-        autoCompleteProduct(this);
-    }
-});
-
-//get data for autocomplete
-function autoCompleteProduct(context) {
-    $.ajax({
-        async: true,
-        method: 'GET',
-        url: 'https://graph.facebook.com/search',
-        data: {
-            type: 'place',
-            q: context.value,
-            fields: "name",
-            access_token: graphAccessToken
-        },
-        success: function (result) {
-            if ($(context).val() != '') {
-                autoCompleteSuccess(result, context);
-            }
-        }
-    });
-}
-
-//set data into autocomplete
-function autoCompleteSuccess(response, elem) {
-    var values = {};
-    var data = response.data;
-    data.forEach(function (a) {
-        values[a.name] = null;
-    });
-    const autocomplete = document.querySelector('#' + elem.id);
-    var instance = M.Autocomplete.getInstance(autocomplete);
-    instance.updateData(values);
-}
-
-$(".tagUser").focusout(function () {
-    if ($(this).val() !== "") {
-        userExist(this, $(this).val());
-    }
-})
-
-$("textarea").on("input", function () {
-    var text = $(this).val();
-    var hashCount = (text.match(/(^|\W)(#[a-z\d][\w-]*)/g) || []).length;
-    var atCount = (text.match(/(^|\W)(@[a-z\d][\w-]*)/g) || []).length;
-    if (hashCount <= 30 && atCount <= 20) {
-        $(this).addClass("valid");
-        $(this).removeClass("invalid");
-    } else {
-        $(this).addClass("invalid");
-        $(this).removeClass("valid");
-    }
-}).trigger('input');
-
-$("#upload").click(function () {
-    var caption = "";
-    var users = [];
-    var location = "";
-    var captionData = true;
-    var tagData = true;
-    var locationData = true;
-
-    if ($(".tagUser.invalid").length === 0) {
-        $.each($(".tagUser"), function (i, item) {
-            if ($(item).val() !== "") {
-                var user = $(item).val();
-                users.push({
-                    username: user,
-                    x: 0.5,
-                    y: 0.8
-                });
-            }
+$("#addMediaModel").modal({
+    onOpenStart: function () {
+        $(".square").css("border", "5px solid #00000000");
+        var user = firebase.auth().currentUser;
+        database.ref('users/' + user.uid).once('value').then(function (snapshot) {
+            $("#" + snapshot.val().post.media_id).css("border", "5px solid blue");
         });
-        tagData = true;
-    } else {
-        tagData = false;
-    }
-    for (var i = 0; i < users.length - 1; i++) {
-        for (var j = i + 1; j < users.length; j++) {
-            if (users[i].username === users[j].username) {
-                tagData = false;
-            }
-        }
-    }
-
-    if ($("textarea.invalid").length === 0) {
-        caption = $("#textarea1").val();
-        captionData = true;
-    } else {
-        captionData = false;
-    }
-
-    if ($(".autocomplete").val() !== "") {
-        location = oncomplete($(".autocomplete").val());
-        if (location === false) {
-            locationData = false;
-        } else {
-            locationData = true;
-        }
-    }
-
-    if (captionData === true && tagData === true && locationData === true) {
-        var imgUrl = "";
-        var uploadUrl = "graph.facebook.com/";
-        uploadUrl += userId + "/media?";
-        uploadUrl += "image_url=" + imgUrl;
-        if (caption !== "") {
-            uploadUrl += "&caption=" + caption;
-        }
-        if (users.length !== 0) {
-            uploadUrl += "&user_tags=" + JSON.stringify(users);
-        }
-        if (location !== "") {
-            uploadUrl += "&location_id=" + location;
-        }
-        console.log(uploadUrl)
-    } else {
-        console.log(false)
     }
 });
+
+function tryClick(context) {
+    var link = $(context).data().para;
+    var id = context.id;
+    var user = firebase.auth().currentUser;
+    database.ref('users/' + user.uid + "/post").update({
+        media_id: id,
+        media_url: link,
+        like: 0
+    });
+    $("#addMediaModel").modal("close");
+}

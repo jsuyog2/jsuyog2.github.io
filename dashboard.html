@@ -2,7 +2,7 @@
 <html>
 
 <head>
-   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
@@ -17,26 +17,31 @@
                 <a href="index.html" class="brand-logo">SocialLike4Like</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="Login.html">Login</a></li>
+                    <li><a href="logout.html">logout</a></li>
                 </ul>
             </div>
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="login.html">Login</a></li>
+            <li><a href="logout.html">logout</a></li>
         </ul>
     </header>
 
     <main>
         <div class="container">
             <div class="row">
-                <div class="col s12">
-                    <h3 class="center">Welcome To SocialLike4Like</h3>
+                <div class="col s6">
+                    <h5 id="head"></h5>
+                </div>
+                <div class="col s6">
+                    <p id="coins" class="center"></p>
                 </div>
             </div>
             <div class="row">
-
-
+                <div class="col s12">
+                    <a id="addAcc" class="waves-effect waves-light btn" style="display: none;width: 100%;">Add Account</a>
+                    <a id="addUrl" class="waves-effect waves-light btn modal-trigger" href="#addMediaModel" style="display: none;width: 100%;">Add Media</a>
+                </div>
             </div>
         </div>
     </main>
@@ -63,6 +68,21 @@
         </div>
     </footer>
 
+    <!-- Modal Structure -->
+    <div id="addMediaModel" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <h4>Add Media</h4>
+            </div>
+            <div class="row">
+                <div id="media_content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
@@ -72,9 +92,15 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
     <script src="js/config.js"></script>
     <script>
-        loginStatus()
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (!user) {
+                window.location.href = "login.html"
+            }
+        });
 
     </script>
+    <script src="js/script.js"></script>
+
 </body>
 
 </html>
