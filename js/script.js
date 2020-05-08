@@ -89,7 +89,7 @@ function getAccessToken(userId) {
             database.ref('users/' + userId).update({
                 insta_token: response.access_token
             });
-            location.reload();
+            window.location.href = "dashboard.html";
         },
         error: function (xhr, status, error) {
             if (xhr.responseJSON.code == 400) {
