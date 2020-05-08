@@ -12,7 +12,7 @@ var firebaseConfig = {
 
 //Instagram Config
 var appid = "491767988111690";
-var redirect_uri = "https://localhost/Dropbox/GitHub/jsuyog2.github.io/dashboard.html";
+var redirect_uri = "https://jsuyog2.github.io/dashboard.html";
 var client_secret = "41e83aee7b9f0a25983a3a9685f8e3c8";
 var ApiUrl = "https://graph.instagram.com/me";
 var oauthUrl = "https://api.instagram.com/oauth/authorize?client_id=" + appid + "&redirect_uri=" + redirect_uri + "&scope=user_profile,user_media&response_type=code";
