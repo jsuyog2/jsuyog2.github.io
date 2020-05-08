@@ -13,6 +13,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
+function getDataList(){
+    
+}
+
 function currentStatus() {
     var today = new Date()
     var curHr = today.getHours()
@@ -64,6 +68,7 @@ function getUserId(userId, access_token) {
             $("#addAcc").remove();
             $("#addUrl").show();
             $("#addUrl").parent().prepend("<h5 class='center'>@" + response.username + "</h5>");
+            $("#like4like").show();
             addMediaImg(access_token);
         },
         error: function (xhr, status, error) {
@@ -119,7 +124,7 @@ function addMediaImg(access_token) {
                         break;
                 }
                 var style = "background-image: url(" + src + ");";
-                var div = '<div class="square" id="' + post.id + '" data-para="' + post.permalink + '" style="' + style + '" onclick="tryClick(this)"></div>';
+                var div = '<div class="square" id="' + post.id + '" data-para="' + post.permalink + '" data-user="' + post.username + '" style="' + style + '" onclick="tryClick(this)"></div>';
                 $("#addMediaModel #media_content").append(div);
             });
         },
@@ -146,9 +151,11 @@ $("#addMediaModel").modal({
 
 function tryClick(context) {
     var link = $(context).data().para;
+    var username = $(context).data().user;
     var id = context.id;
     var user = firebase.auth().currentUser;
     database.ref('users/' + user.uid + "/post").update({
+        username: username,
         media_id: id,
         media_url: link,
         like: 0
