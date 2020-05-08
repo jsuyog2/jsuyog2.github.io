@@ -13,8 +13,27 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
-function getDataList(){
-    
+function getDataList() {
+    var query = firebase.database().ref("users").orderByKey();
+    query.on("value", function (snapshot) {
+        var array = [];
+        var user = firebase.auth().currentUser;
+        snapshot.forEach(function (childSnapshot) {
+            var key = childSnapshot.key;
+            var childData = childSnapshot.val();
+            if (key !== user.uid) {
+                array.push({
+                    id: key,
+                    media_id: childData.post.media_id,
+                    media_url: childData.post.media_url,
+                    username: childData.post.username
+                })
+            }
+        });
+        $("#like4like h6").html("@"+array[0].username);
+        $("#like4like #open").attr("href",array[0].media_url);
+        
+    });
 }
 
 function currentStatus() {
@@ -70,6 +89,7 @@ function getUserId(userId, access_token) {
             $("#addUrl").parent().prepend("<h5 class='center'>@" + response.username + "</h5>");
             $("#like4like").show();
             addMediaImg(access_token);
+            getDataList();
         },
         error: function (xhr, status, error) {
             getAccessToken(userId);
