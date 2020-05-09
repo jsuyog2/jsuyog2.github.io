@@ -1,80 +1,272 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trip Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <title>SocialLike4Like</title>
+    <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134833126-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-134833126-1');
+
+    </script>
+
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo">SocialLike4Like</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="login.html">Login</a></li>
-                </ul>
-            </div>
-        </nav>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="index.html" class="brand-logo">Trip Expense Manager</a>
+            <ul class="right hide-on-med-and-down navbarData">
+<!--                <li><a href="index.html">Home</a></li>-->
+<!--                <li><a href="TripCalculator.html">Trip Calculator</a></li>-->
+            </ul>
 
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </header>
-
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <h3 class="center">Welcome To SocialLike4Like</h3>
+            <ul id="nav-mobile" class="sidenav navbarData">
+<!--                <li><a href="index.html">Home</a></li>-->
+<!--                <li><a href="TripCalculator.html">Trip Calculator</a></li>-->
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s12 l12">
+                <div class="row">
+                    <div class="col s12 l12">
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal">
+                            <div class="container">
+                                <div class="modal-header right"><a class="modal-close waves-effect waves-green btn-flat "> <i class="material-icons">close</i></a></div>
+                                <div class="modal-content">
+                                    <div class="row">
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">bill</div>
+                                                <div class="costTitle">Total Budget</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="totalBudget">0</b></div>
+                                        </div>
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">refund</div>
+                                                <div class="costTitle">Total</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="total">0</b>
+                                                /Person
+                                            </div>
+                                        </div>
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">rupee</div>
+                                                <div class="costTitle">Extra Money</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="extraMoney">0</b>
+                                                /Person
+                                            </div>
+                                        </div>
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">hotel-information</div>
+                                                <div class="costTitle">Hotel</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="totalHotel">0</b>
+                                                /Person
+                                            </div>
+                                        </div>
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">gas-station</div>
+                                                <div class="costTitle">Trasportation</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="totalTrasportation">0</b>
+                                                /Person
+                                            </div>
+                                        </div>
+                                        <div class="col l4 s12">
+                                            <div class="col s4 l12">
+                                                <div class="icon">dining-room</div>
+                                                <div class="costTitle">Food</div>
+                                            </div>
+                                            <div class="col s8 l12">₹<b class="cost" id="totalFood">0</b>
+                                                /Person
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <div class="input-field col s10">
+                                            <input id="trip_name" type="text" class="validate">
+                                            <label for="trip_name">Trip Name</label>
+                                        </div>
+                                        <div class="input-field col s2">
+                                            <a id="saveTripBtn" onclick="saveTrip()" class="waves-effect waves-green btn-flat">Save</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-
-
+            <div class="col s12 l12">
+                <div class="card">
+                    <div class="card-content black-text">
+                        <div class="row">
+                            <div class="input-field col s6 m6 l6"> <select id="totalAdults">
+                                    <option value="" disabled selected>Total Adults</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select> <label>Total Adults</label></div>
+                            <div class="col s6 m6 l6">
+                                <div class="input-field"> <input id="exMoney" min="1" type="number" value="0"> <label for="exMoney">Extra Money</label></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s6 m6 l6">
+                                <div class="input-field"> <input type="text" id="startingDate" class="datepicker"> <label for="startingDate">Date From</label></div>
+                                <div class="input-field"> <input type="text" id="endingDate" class="datepicker" disabled> <label for="endingDate">Date To</label></div>
+                            </div>
+                            <div class="col s6 m6 l6 ">
+                                <p> Hotel?:<var class="switch"> <label><input id="hotelEnable" type="checkbox" /> <span class="lever"></span></label> </var> <br /> <br /> Vehicle/Trasportation?:<var class="switch"> <label><input id="vehicleEnable" type="checkbox" /> <span class="lever"></span></label> </var> <br /> <br /> Food?: <var class="switch"> <label><input id="foodEnable" type="checkbox" /> <span class="lever"></span></label> </var> <br /> <br /></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p id="error"></p> <br>
+                            <div id="submitBtn" class="">
+                                <a id="submit" class="btn waves-effect waves-light modal-trigger orange darken-1" href="#modal1">Submit
+                                    <i class="material-icons right">send</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="forHotel" class="col s12 l4" hidden>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="input-field col s12"> <input id="hotelPrice" min="1" type="number"> <label for="hotelPrice">Hotel Price / Night</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="forVehicle" class="col s12 l4" hidden>
+                <div class="card">
+                    <div class="card-content">
+                        <p> <label> <input id="car" name="tripVehicle" type="radio" checked /> <span>Car/Bike</span> </label><label> <input id="diffVehicle" name="tripVehicle" type="radio" /> <span>Bus/Train/Flight</span> </label></p> <br />
+                        <div id="carDiv">
+                            <div class="row">
+                                <div class="input-field col s12 m12"> <select id="totalBikesCar">
+                                        <option value="" disabled selected>Total Bikes/Car</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                    </select> <label>Total Bikes/Car</label></div>
+                                <p id="errorCar"></p>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" id="autocomplete-input1" class="autocomplete">
+                                    <label for="autocomplete-input">From</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input type="text" id="autocomplete-input2" class="autocomplete" disabled>
+                                    <label for="autocomplete-input">To</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12"> <input id="pdAvg" min="1" type="number"> <label for="pdAvg">Petrol/Diesel Avg. km/l</label></div>
+                                <p id="pdAvgError"></p>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12"> <input id="km" min="1" type="number"> <label for="km">Total Km of One Way</label></div>
+                                <p id="kmError"></p>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12"> <input id="rate" min="1" type="number"> <label for="rate">Petrol/Diesel Rate</label></div>
+                                <p id="rateError"></p>
+                            </div>
+                        </div>
+                        <div id="diffVehicleDiv" hidden>
+                            <div class="row">
+                                <div class="input-field col s12"> <input id="ticketPrice" min="1" type="number"> <label for="ticketPrice">Ticket Price From Origin to Destination</label></div>
+                                <p id="ticketPriceError"></p>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12"> <input id="returnTicketPrice" min="1" type="number"> <label for="returnTicketPrice">Ticket Price From Destination to Origin</label></div>
+                                <p id="returnTicketPriceError"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="forFood" class="col s12 l4" hidden>
+                <div class="card">
+                    <div class="card-content">
+                        <p> <label> <input id="defaultFood" name="foodRadio" type="radio" checked /> <span>Default</span> </label><label> <input id="changeFood" name="foodRadio" type="radio" /> <span>Change Food Rates</span> </label></p>
+                        <div id="foodDiv">
+                            <div class="row">
+                                <div class="input-field col s12"> <input id="rateBreakfast" type="number" value="100" min="1" disabled> <label for="rateBreakfast">Breakfast</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12"> <input id="rateLunch" type="number" min="1" value="200" disabled> <label for="rateLunch">Lunch</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12"> <input id="rateDinner" type="number" min="1" value="200" disabled> <label for="rateDinner">Dinner</label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+    <footer class="page-footer teal">
 
-    <footer class="page-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
+        <div class="footer-copyright teal">
             <div class="container">
-                © 2014 Copyright Text
+                Made by Suyog Jadhav.
             </div>
         </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
-    <script src="js/config.js"></script>
-    <script>
-        loginStatus()
-
-    </script>
+    <script src="https://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/map.js"></script>
+<!--    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>-->
+<!--    <script src="js/firebaseConfig.js"></script>-->
+<!--    <script src="js/firebaseScript.js"></script>-->
+<!--    <script src="js/firebaseDatabase.js"></script>-->
+    <script src="js/script.js"></script>
 </body>
 
 </html>
