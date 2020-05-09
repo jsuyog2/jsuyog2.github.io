@@ -53,7 +53,7 @@ $(document).ready(function () {
     //display icon         
     $(".icon").each(function () {
         var icon = $(this).html();
-        $(this).html('<img src="https://png.icons8.com/color/' + icon + '">');
+        $(this).html('<img src="https://img.icons8.com/color/' + icon + '">');
     });
 
     function parseDate(str) {
