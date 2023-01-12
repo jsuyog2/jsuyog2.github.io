@@ -3,7 +3,6 @@ init();
 function init() {
   addDate();
 }
-
 function addDate() {
   $(".container").html(`
     <div class="row date">
@@ -57,22 +56,30 @@ function increaseHeart() {
 }
 
 function addLines() {
-  $(".container").html(`<div class="row text">
-    <div class="row line l1">Having you by my side</div>
-    <div class="row line l2">is what completes me,</div>
-<div class="row line l3">makes me and fulfils me.</div>
-<div class="row line l4">You complete me.</div>
-<div class="row line l5">So marry me and complete the circle with me!</div>
-<div class="row line l6">Payal Amle Love You <span style="color: red;">♥</span></div>
-<div class="row line l7"><a style="margin-top: 50px;" id="retry" class="waves-effect waves-light btn" onClick="retry()">Retry</a></div>
-</div>`);
-  showLines(1);
+  var lines = [
+    "Having you by my side",
+    "is what completes me,",
+    "makes me and fulfils me.",
+    "You complete me.",
+    "So marry me and complete the circle with me!",
+    "Payal Amle Love You <span style='color: red;'>♥</span>",
+    '<a style="margin-top: 50px;" id="retry" class="waves-effect waves-light btn" onClick="retry()">Retry</a>',
+  ];
+  var html = `<div class="row text">`;
+  lines.forEach((element, i) => {
+    html += `<div class="row line l${i}">${element}</div>`;
+  });
+  html += `</div>`;
+  $(".container").html(html);
+  showLines(0, lines.length);
 }
 
-function showLines(i) {
+function showLines(i, length) {
   $(".line.l" + i).fadeIn("slow", "swing", () => {
-    i++;
-    showLines(i);
+    if (i < length) {
+      i++;
+      showLines(i, length);
+    }
   });
 }
 function retry() {
