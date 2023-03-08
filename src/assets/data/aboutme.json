@@ -1,0 +1,52 @@
+{
+    "description": "Looking forward for an opportunity which would provide me competitive as well as professional environment that would help me to flourish, hence achieving my as well as organizational goal.",
+    "values": [
+        {
+            "title": "Back-End Development",
+            "value": "80"
+        },
+        {
+            "title": "Front-End Development",
+            "value": "60"
+        },
+        {
+            "title": "Other Skills",
+            "value": "30"
+        }
+    ],
+    "totals": [
+        {
+            "title": "Projects completed",
+            "icon": "fire",
+            "value": "8"
+        },
+        {
+            "title": "Cup of coffee",
+            "icon": "cup-hot",
+            "value": "4250"
+        },
+        {
+            "title": "Experience",
+            "icon": "briefcase",
+            "value": "4"
+        }
+    ],
+    "contact": [
+        {
+            "title": "Location",
+            "icon": "geo-alt",
+            "value": "Panvel"
+        },
+        {
+            "title": "Email ID",
+            "icon": "envelope",
+            "value": "jsuyog2@gmail.com",
+            "href": "mailto:jsuyog2@gmail.com"
+        },
+        {
+            "title": "Contact No",
+            "icon": "phone",
+            "value": "+91 8879747105"
+        }
+    ]
+}

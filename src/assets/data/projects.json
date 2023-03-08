@@ -1,0 +1,201 @@
+[
+    {
+        "duration": "January 2023 - Till Date",
+        "title": "ICRA - Incident and Change Review Automation",
+        "description": "Service Now is complicated and long forms that take time to submit any request. ICRA is a tool that raise a change, incident request in easy way. You can approve any request in ICRA and send comment also. It reduces Human efforts and with User-Friendly UI it takes less time for submit a request. You can able to share with other just sharing access of request and link.",
+        "Link": "Internal use",
+        "tech": [
+            {
+                "title": "NodeJS",
+                "icon": "node-js",
+                "fill": "fluency"
+            },
+            {
+                "title": "Angular Cli",
+                "icon": "angularjs",
+                "fill": "color"
+            },
+            {
+                "title": "SQL Server",
+                "icon": "microsoft-sql-server",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "duration": "July 2021 - Till Date",
+        "title": "HSBC Telecom Service Portal",
+        "description": "Cramer, Splunk, SevOne, NNMi etc. are use for alerts and policy for devices and you need to open all these tools for only one alert or policy. HSBC Telecom Service Portal can reduce time to open these tools and combines into Portal. Corelation and analyse a alerts and policy of various tools side by side. Quick response to high level alerts and policy just sharing a link. Reduce efforts and time using only one tool.",
+        "Link": "Internal use",
+        "tech": [
+            {
+                "title": "NodeJS",
+                "icon": "node-js",
+                "fill": "fluency"
+            },
+            {
+                "title": "Angular Cli",
+                "icon": "angularjs",
+                "fill": "color"
+            },
+            {
+                "title": "Oracle",
+                "icon": "oracle-logo",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "duration": "March 2019 - July 2021",
+        "title": "MapDataLab",
+        "description": "MapDataLAB is a comprehensive data analytics platform built to help businesses make the most of their spatial or location-based data, which ultimately leads to better decisions, better customers and better business. In That website you will Data Upload & Visualization, Classify Your Data and also add experienced geoanalysts datasets including population, infrastructure penetration, urbanization and more.",
+        "Link": "https://www.mapdatalab.com/",
+        "tech": [
+            {
+                "title": "NodeJS",
+                "icon": "node-js",
+                "fill": "fluency"
+            },
+            {
+                "title": "Javascript",
+                "icon": "javascript",
+                "fill": "fluency"
+            },
+            {
+                "title": "JQuery",
+                "icon": "jquery",
+                "fill": "ios-filled"
+            },
+            {
+                "title": "PHP",
+                "icon": "php-logo",
+                "fill": "officel"
+            },
+            {
+                "title": "PostgreSQL",
+                "icon": "postgreesql",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "duration": "September 2018 - March 2019",
+        "title": "MyEdmate",
+        "description": "MyEdmate is a Website which provides a platform for students and parents where they can find, compare, locate and view every details of various education centres and provide an online marketing for various education centres.",
+        "Link": "https://www.myedmate.com/",
+        "tech": [
+            {
+                "title": "NodeJS",
+                "icon": "node-js",
+                "fill": "fluency"
+            },
+            {
+                "title": "Javascript",
+                "icon": "javascript",
+                "fill": "fluency"
+            },
+            {
+                "title": "JQuery",
+                "icon": "jquery",
+                "fill": "ios-filled"
+            },
+            {
+                "title": "PHP",
+                "icon": "php-logo",
+                "fill": "officel"
+            },
+            {
+                "title": "PostgreSQL",
+                "icon": "postgreesql",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "duration": "6 months",
+        "title": "Face Recognition System",
+        "description": "In this system, Recognize the face using images. In this system face recognition is using black and white images. We adding new faces with images and automatically crop faces. Also in that we using custom model for Face Detection with 30K images and train model with CNN algorithm. ",
+        "Link": "M.Sc. IT Project",
+        "tech": [
+            {
+                "title": "NodeJS",
+                "icon": "node-js",
+                "fill": "fluency"
+            },
+            {
+                "title": "Javascript",
+                "icon": "javascript",
+                "fill": "fluency"
+            },
+            {
+                "title": "JQuery",
+                "icon": "jquery",
+                "fill": "ios-filled"
+            },
+            {
+                "title": "PostgreSQL",
+                "icon": "postgreesql",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "duration": "6 months",
+        "title": "Car Rental Website",
+        "description": "This system will provide user-friendly interface to view car rental details. Scope of this project is Admin have personal login and view all the customer booking details, modify booking details.",
+        "Link": "B.Sc. IT Project",
+        "tech": [
+            {
+                "title": "PHP",
+                "icon": "php-logo",
+                "fill": "officel"
+            },
+            {
+                "title": "Javascript",
+                "icon": "javascript",
+                "fill": "fluency"
+            },
+            {
+                "title": "JQuery",
+                "icon": "jquery",
+                "fill": "ios-filled"
+            },
+            {
+                "title": "MySql",
+                "icon": "mysql-logo",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "duration": "3 months",
+        "title": "ChaiVala",
+        "description": "This project is focused on tea vendors so it will be easy for them to keep the track of which customer consumes which products and show their corresponding bill amount. Tea vendor can add customer, delete them, add specific products for the respective customer, add his own products and delete them.",
+        "Link": "https://play.google.com/store/apps/details?id=com.infinity9.chaivala&hl=en",
+        "tech": [
+            {
+                "title": "Android",
+                "icon": "android-os",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "duration": "",
+        "title": "Express PostgreSQL API",
+        "description": "The Express PostgreSQL API is make a secure and reliable API use to Login, Registration and Verify USER. This project is open source for everyone and easy to install. This project available on GitHub.",
+        "Link": "https://github.com/jsuyog2/express-postgresql-api",
+        "tech": [
+            {
+                "title": "NodeJS",
+                "icon": "node-js",
+                "fill": "fluency"
+            },
+            {
+                "title": "PostgreSQL",
+                "icon": "postgreesql",
+                "fill": "color"
+            }
+        ]
+    }
+]
