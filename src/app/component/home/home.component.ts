@@ -15,6 +15,7 @@ export class HomeComponent {
   experience: any;
   projects: any;
   achievements: any;
+  projectId: number = 0;
   title: string = 'Full Stack Developer';
   titleArray: any = [
     'Full Stack Developer',
@@ -63,5 +64,8 @@ export class HomeComponent {
       element.css('display', '-webkit-box');
       $(target).html('Show More');
     }
+  }
+  openModel(id: any) {
+    this.projectId = id;
   }
 }

@@ -3,6 +3,7 @@
         "duration": "January 2023 - Till Date",
         "title": "ICRA - Incident and Change Review Automation",
         "description": "Service Now is complicated and long forms that take time to submit any request. ICRA is a tool that raise a change, incident request in easy way. You can approve any request in ICRA and send comment also. It reduces Human efforts and with User-Friendly UI it takes less time for submit a request. You can able to share with other just sharing access of request and link.",
+        "responsibility": "Create an API in NodeJS and ExpressJS. Secure with JWT Token and LDAP implementation for accessing API and also implement access level roles in API. Implement Service NOW API in API for easy Submit Changes, Incident raise, approve and comment. Generate a report Implemented in API. Create a UI in angular Bootstrap for easy forms and User-friendly UI. Sharing, access a Request, Check Status for particular request for that route is implemented in UI.",
         "Link": "Internal use",
         "tech": [
             {
@@ -26,6 +27,7 @@
         "duration": "July 2021 - Till Date",
         "title": "HSBC Telecom Service Portal",
         "description": "Cramer, Splunk, SevOne, NNMi etc. are use for alerts and policy for devices and you need to open all these tools for only one alert or policy. HSBC Telecom Service Portal can reduce time to open these tools and combines into Portal. Corelation and analyse a alerts and policy of various tools side by side. Quick response to high level alerts and policy just sharing a link. Reduce efforts and time using only one tool.",
+        "responsibility": "Creating an API in NodeJS and ExpressJS. Secure with a JWT Token and LDAP implementation for accessing API and also implement access level roles in API. Implement 10 Tools API in 1 API for access various tools at one place. Get alerts and policy from various tools and combine in API. User-Friendly UI using Angular and Bootstrap makes easy to access Application and allow you to correlation between alerts and policies. Implement route also to share policy and alerts using link.",
         "Link": "Internal use",
         "tech": [
             {
@@ -49,6 +51,7 @@
         "duration": "March 2019 - July 2021",
         "title": "MapDataLab",
         "description": "MapDataLAB is a comprehensive data analytics platform built to help businesses make the most of their spatial or location-based data, which ultimately leads to better decisions, better customers and better business. In That website you will Data Upload & Visualization, Classify Your Data and also add experienced geoanalysts datasets including population, infrastructure penetration, urbanization and more.",
+        "responsibility": "Using NodeJS and PHP create an API that involves spatial Data and GIS analytics. add Google Login and RazorPay Payment gateway for premium users. Management of user roles. use Mapbox API for Map and spatial or location-based data.Front-end creation using Javascript, HTML, CSS, JQuery, and Bootstrap.",
         "Link": "https://www.mapdatalab.com/",
         "tech": [
             {

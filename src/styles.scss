@@ -121,7 +121,14 @@ input {
   border: none !important;
   box-shadow: $box-shadow;
 }
-
+.modal {
+  .modal-header {
+    border: none;
+  }
+  .modal-footer {
+    border: none;
+  }
+}
 .card {
   border: none;
   box-shadow: $box-shadow;

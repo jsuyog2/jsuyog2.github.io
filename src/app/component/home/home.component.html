@@ -147,7 +147,7 @@
     <div class="row">
       <div
         class="mb-3 col-md-6 col-12"
-        *ngFor="let item of projects"
+        *ngFor="let item of projects; let i = index"
         style="min-height: 100%"
       >
         <div class="card p-2">
@@ -156,23 +156,26 @@
             <h5 class="card-title">{{ item.title }}</h5>
             <p class="card-text hide-value">{{ item.description }}</p>
             <a
+              data-bs-toggle="modal"
+              data-bs-target="#projectModal"
               class="link-color"
               *ngIf="item.description.length > description_length"
-              (click)="showMore($event)"
+              (click)="openModel(i)"
               >Show More</a
             >
           </div>
           <div class="card-footer">
             <div class="row">
-              <div class="col-6" style="font-weight: 700;">
+              <div class="col-6" style="font-weight: 700">
                 <a
                   class="link-color"
+                  target="_blank"
                   href="{{ item.Link }}"
                   *ngIf="validURL(item.Link); else notLink"
                   >Visit</a
                 >
                 <ng-template #notLink>
-                    {{ item.Link }}
+                  {{ item.Link }}
                 </ng-template>
               </div>
               <div class="col-6 text-end">
@@ -349,6 +352,64 @@
             <input type="submit" class="btn btn-custom" value="Send message" />
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="projectModal"
+  tabindex="-1"
+  aria-labelledby="projectModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="projectModalLabel">
+          {{ projects[projectId].title }}
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li><b>Duration:</b> {{ projects[projectId].duration }}</li>
+          <li>
+            <b>Description:</b>
+            <p>{{ projects[projectId].description }}</p>
+          </li>
+          <li *ngIf="projects[projectId].responsibility">
+            <b>Responsibility:</b>
+            <p>{{ projects[projectId].responsibility }}</p>
+          </li>
+          <li>
+            <b>Technologies:</b>
+            <div class="row mt-2">
+              <div class="col-2" *ngFor="let tech of projects[projectId].tech">
+                <img
+                  class="mx-1"
+                  data-bs-toggle="tooltip"
+                  title="{{ tech.title }}"
+                  alt="{{ tech.title }}"
+                  src="https://img.icons8.com/{{ tech.fill }}/32/null/{{
+                    tech.icon
+                  }}.png"
+                />
+                <p style="font-size: 0.8rem">{{ tech.title }}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
       </div>
     </div>
   </div>
