@@ -48,8 +48,8 @@
 <div class="container">
   <div id="section01" class="px-5 my-5">
     <div class="row">
-      <div class="col-12 text-center text-md-start mb-2">
-        <h1>About Me</h1>
+      <div class="col-12 text-start mb-2">
+        <h1 class="section-text">About Me</h1>
       </div>
     </div>
     <div class="row">
@@ -67,6 +67,9 @@
                 <p class="card-text">
                   {{ aboutme.description }}
                 </p>
+                <a class="btn btn-custom" href="{{ aboutme.download }}"
+                  >Download CV</a
+                >
               </div>
               <div class="col-12 col-md-5 pt-2 pt-md-0">
                 <div class="row" *ngFor="let item of aboutme.values">
@@ -81,7 +84,7 @@
                       aria-valuemax="100"
                     >
                       <div
-                        class="progress-bar"
+                        class="progress-bar {{ item.type }}"
                         [style.width.%]="item.value"
                       ></div>
                     </div>
@@ -114,8 +117,8 @@
   </div>
   <div id="section03" class="px-5 my-5">
     <div class="row">
-      <div class="col-12 text-center text-md-start mb-2">
-        <h1>Skills</h1>
+      <div class="col-12 text-start mb-2">
+        <h1 class="section-text">Skills</h1>
       </div>
     </div>
     <div class="row">
@@ -127,7 +130,15 @@
           <div class="card-body">
             <div class="row">
               <div class="col-12 text-center">
-                <h5>{{ item.title }}</h5>
+                <img
+                  class="p-2"
+                  src="https://img.icons8.com/{{ item.fill }}/100/null/{{
+                    item.icon
+                  }}.png"
+                />
+                <h5>
+                  <b>{{ item.title }}</b>
+                </h5>
                 <p>
                   {{ item.description }}
                 </p>
@@ -140,8 +151,8 @@
   </div>
   <div id="section04" class="px-5 my-5">
     <div class="row">
-      <div class="col-12 text-center text-md-start mb-2">
-        <h1>Projects</h1>
+      <div class="col-12 text-start mb-2">
+        <h1 class="section-text">Projects</h1>
       </div>
     </div>
     <div class="row">
@@ -200,8 +211,8 @@
   </div>
   <div id="section05" class="px-5 my-5">
     <div class="row">
-      <div class="col-12 text-center text-md-start mb-2">
-        <h1>Experience</h1>
+      <div class="col-12 text-start mb-2">
+        <h1 class="section-text">Experience</h1>
       </div>
     </div>
     <div class="row">
@@ -239,8 +250,8 @@
   </div>
   <div id="section06" class="px-5 my-5">
     <div class="row">
-      <div class="col-12 text-center text-md-start mb-2">
-        <h1>Achievements</h1>
+      <div class="col-12 text-start mb-2">
+        <h1 class="section-text">Achievements</h1>
       </div>
     </div>
     <div class="row">
@@ -255,8 +266,8 @@
   </div>
   <div id="section07" class="px-5 my-5">
     <div class="row">
-      <div class="col-12 text-center text-md-start mb-2">
-        <h1>Get In Touch</h1>
+      <div class="col-12 text-start mb-2">
+        <h1 class="section-text">Get In Touch</h1>
       </div>
     </div>
     <div class="row">
@@ -300,48 +311,44 @@
           enctype="text/plain"
         >
           <div class="col-12">
-            <label>Full Name</label>
             <input
               id="form_name"
               type="text"
               name="name"
               class="form-control"
-              placeholder=""
+              placeholder="Full Name"
               required="required"
               data-error="Name is required."
             />
           </div>
           <div class="col-12">
-            <label>Email Address</label>
             <input
               id="form_email"
               type="email"
               name="email"
               class="form-control"
-              placeholder=""
+              placeholder="Email Address"
               required="required"
               data-error="Valid email is required."
             />
           </div>
           <div class="col-12">
-            <label>Subject</label>
             <input
               id="form_subject"
               type="text"
               name="subject"
               class="form-control"
-              placeholder=""
+              placeholder="Subject"
               required="required"
               data-error="Subject is required."
             />
           </div>
           <div class="col-12">
-            <label>Message</label>
             <textarea
               id="form_message"
               name="message"
               class="form-control"
-              placeholder=""
+              placeholder="Message"
               rows="7"
               required="required"
               data-error="Please, leave me a message."

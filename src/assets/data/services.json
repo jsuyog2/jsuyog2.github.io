@@ -1,14 +1,20 @@
 [
     {
         "title": "Back-End Development",
+        "icon": "backend-development",
+        "fill": "stickers",
         "description": "Experience in application design, development, testing and implementation of API's using with NodeJS, ExpressJS. Experience in implementation of LDAP for authentication and authorization and API's (Mapbox API, Google Login API, Razorpay Payment Gateway)."
     },
     {
         "title": "Front-End Development",
+        "icon": "web",
+        "fill": "stickers",
         "description": "Experience in design and development UI using Angular Cli, Javascript and Jquery. Hands-on in UI libraries such as Bootstrap."
     },
     {
         "title": "Other Skills",
+        "icon": "development-skill",
+        "fill": "stickers",
         "description": "Worked on Linux and Windows server for implement an application. Worked on multiple projects at the same time."
     }
 ]
