@@ -1,16 +1,20 @@
 {
     "description": "Looking forward for an opportunity which would provide me competitive as well as professional environment that would help me to flourish, hence achieving my as well as organizational goal.",
+    "download": "../../../assets/CV2023.pdf",
     "values": [
         {
             "title": "Back-End Development",
+            "type": "bg-warning",
             "value": "80"
         },
         {
             "title": "Front-End Development",
+            "type": "bg-danger",
             "value": "60"
         },
         {
             "title": "Other Skills",
+            "type": "bg-primary",
             "value": "30"
         }
     ],
