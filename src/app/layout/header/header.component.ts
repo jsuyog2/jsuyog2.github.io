@@ -20,6 +20,9 @@ export class HeaderComponent {
   }
   scroll(id: any) {
     const elmnt: any = document.getElementById(id);
+    $('#sidebar').removeClass('active-nav');
+    $('nav').removeClass('active-cont');
+    $('.main').removeClass('active-cont');
     elmnt.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
