@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+
+import {
+  ModalDismissReasons,
+  NgbDatepickerModule,
+  NgbModal,
+} from '@ng-bootstrap/ng-bootstrap';
 import projects from '../../../../assets/data/projects.json';
 @Component({
   selector: 'app-section03',
@@ -9,6 +15,7 @@ export class Section03Component {
   projects: any;
   description_length = 100;
   projectId: number = 0;
+  constructor(private modalService: NgbModal) {}
   ngOnInit() {
     this.projects = projects;
   }
@@ -35,7 +42,8 @@ export class Section03Component {
       $(target).html('Show More');
     }
   }
-  openModel(id: any) {
+  open(content: any, id: any) {
     this.projectId = id;
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 }

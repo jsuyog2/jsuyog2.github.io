@@ -16,13 +16,19 @@
           <h5 class="card-title">{{ item.title }}</h5>
           <p class="card-text hide-value">{{ item.description }}</p>
           <a
+            class="link-color"
+            *ngIf="item.description.length > description_length"
+            (click)="open(content, i)"
+          >
+            Show More
+          </a>
+          <!-- <a
             data-bs-toggle="modal"
             data-bs-target="#projectModal"
             class="link-color"
             *ngIf="item.description.length > description_length"
             (click)="openModel(i)"
-            >Show More</a
-          >
+          ></a> -->
         </div>
         <div class="card-footer">
           <div class="row">
@@ -58,7 +64,7 @@
     </div>
   </div>
 </div>
-<div
+<!-- <div
   class="modal fade"
   id="projectModal"
   tabindex="-1"
@@ -115,4 +121,50 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h1 class="modal-title fs-5" id="projectModalLabel">
+      {{ projects[projectId].title }}
+    </h1>
+    <a
+      class="btn-close"
+      (click)="modal.close()"
+    ></a>
+  </div>
+  <div class="modal-body">
+    <ul>
+      <li><b>Duration:</b> {{ projects[projectId].duration }}</li>
+      <li>
+        <b>Description:</b>
+        <p>{{ projects[projectId].description }}</p>
+      </li>
+      <li *ngIf="projects[projectId].responsibility">
+        <b>Responsibility:</b>
+        <p>{{ projects[projectId].responsibility }}</p>
+      </li>
+      <li>
+        <b>Technologies:</b>
+        <div class="row mt-2">
+          <div class="col-2" *ngFor="let tech of projects[projectId].tech">
+            <img
+              class="mx-1"
+              data-bs-toggle="tooltip"
+              title="{{ tech.title }}"
+              alt="{{ tech.title }}"
+              src="https://img.icons8.com/{{ tech.fill }}/32/null/{{
+                tech.icon
+              }}.png"
+            />
+            <p style="font-size: 0.8rem">{{ tech.title }}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close()">
+      Close
+    </button>
+  </div>
+</ng-template>
