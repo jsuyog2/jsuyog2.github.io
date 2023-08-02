@@ -18,23 +18,6 @@
             "value": "30"
         }
     ],
-    "totals": [
-        {
-            "title": "Projects completed",
-            "icon": "fire",
-            "value": "8"
-        },
-        {
-            "title": "Cup of coffee",
-            "icon": "cup-hot",
-            "value": "4250"
-        },
-        {
-            "title": "Experience",
-            "icon": "briefcase",
-            "value": "4"
-        }
-    ],
     "contact": [
         {
             "title": "Location",

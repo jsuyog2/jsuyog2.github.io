@@ -1,0 +1,8 @@
+<ng-container *ngFor="let item of parallax_item; let index= index">
+    <ng-container [ngSwitch]="item.size">
+        <span parallaxItem [top]="item.top" [left]="item.left" [rotate]="item.rotate" [inversion]="item.inversion"
+            [opacity]="item.opacity" [movement]="item.movement">
+            <img src="./../../../assets/background/blob-{{index+1}}.svg" width="75px">
+        </span>
+    </ng-container>
+</ng-container>

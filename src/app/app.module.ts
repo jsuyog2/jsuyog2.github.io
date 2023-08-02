@@ -15,6 +15,9 @@ import { Section05Component } from './component/home/section05/section05.compone
 import { Section06Component } from './component/home/section06/section06.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ScrollSpyDirective } from './services/scroll-spy.directive';
+import { AnimateCountDirective } from './directive/animate-count.directive';
+import { ParallaxItemDirective } from './directive/parallax-item.directive';
+import { ParallaxScreenComponent } from './layout/parallax-screen/parallax-screen.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { ScrollSpyDirective } from './services/scroll-spy.directive';
     Section05Component,
     Section06Component,
     FooterComponent,
-    ScrollSpyDirective
+    ScrollSpyDirective,
+    AnimateCountDirective,
+    ParallaxItemDirective,
+    ParallaxScreenComponent
   ],
   imports: [
     BrowserModule,

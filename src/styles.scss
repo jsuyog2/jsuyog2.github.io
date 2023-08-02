@@ -14,26 +14,31 @@ $bg-white: #fff;
     @content;
   }
 }
+
 @mixin mobile-and-up {
   @media screen and (min-width: 601px) {
     @content;
   }
 }
+
 @mixin tablet-and-down {
   @media screen and (max-width: 768px) {
     @content;
   }
 }
+
 @mixin mobile-only {
   @media screen and (max-width: 600px) {
     @content;
   }
 }
+
 @mixin desktop-and-down {
   @media screen and (max-width: 1200px) {
     @content;
   }
 }
+
 @mixin desktop-and-up {
   @media screen and (min-width: 1200px) {
     @content;
@@ -55,13 +60,16 @@ body {
   overflow-y: auto;
   height: 100%;
   transition: all 0.3s ease-in-out;
+
   &.active-cont {
     transform: translateX(290px);
   }
+
   @include desktop-and-up {
     margin-left: 290px;
     transform: translateX(0);
   }
+
   .section {
     @include desktop-and-down {
       padding-top: 100px !important;
@@ -73,9 +81,11 @@ nav.navbar {
   padding: 15px 25px;
   transition: all 0.3s ease-in-out;
   background-color: $background-dark-color;
+
   span {
     color: $text-dark-color;
   }
+
   &.active-cont {
     transform: translateX(290px);
   }
@@ -103,6 +113,7 @@ nav.navbar {
     transform: translateX(0);
     margin-left: 0;
   }
+
   @include desktop-and-down {
     transform: translateX(-290px);
   }
@@ -117,13 +128,16 @@ nav.navbar {
       position: relative;
       list-style: none;
       transition: all 0.2s ease-in-out;
+
       a {
         font-size: 18px;
         font-weight: 700;
+
         &:hover,
         &.active {
           color: $primary-color;
         }
+
         span {
           margin-left: 15px;
         }
@@ -134,6 +148,7 @@ nav.navbar {
 
 #menu-btn {
   color: white;
+
   i {
     font-size: 1.5rem;
   }
@@ -165,9 +180,11 @@ a {
     letter-spacing: 0.1em;
     text-decoration: none;
     transition: opacity 0.3s;
+
     &:hover {
       opacity: 0.5;
     }
+
     span {
       position: absolute;
       top: 0;
@@ -182,13 +199,20 @@ a {
       box-sizing: border-box;
     }
   }
+
   &.link {
     color: white;
     text-decoration: none;
+
+    &.hover:hover {
+      color: $primary-color;
+    }
   }
+
   &.link-color {
     color: $primary-color;
   }
+
   &.link-blue {
     color: #003ec4;
   }
@@ -196,6 +220,7 @@ a {
 
 .headerTitle {
   opacity: 0;
+
   &.load {
     opacity: 1;
     -webkit-animation: fadein 2s ease-in;
@@ -205,12 +230,14 @@ a {
     animation: fadein 1s ease-in;
   }
 }
+
 .hide-value {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+
   &.icon {
     -webkit-line-clamp: 1;
   }
@@ -219,6 +246,7 @@ a {
 .profile {
   height: 100px;
 }
+
 iframe {
   border-radius: 25px !important;
   box-shadow: $box-shadow;
@@ -230,79 +258,96 @@ iframe {
   transition: all 0.2s ease-in-out;
   font-weight: 700;
   padding: 8px 20px;
+
   &.btn-custom {
     background-color: $primary-color;
     color: $text-dark-color;
   }
+
   &:hover,
   &:focus {
     transform: scale(1.2);
   }
 }
+
 input {
   border-radius: $border-radius !important;
 }
+
 textarea {
   border-radius: 25px !important;
 }
+
 textarea,
 input {
   border: none !important;
   box-shadow: $box-shadow;
   padding: 15px !important;
 }
+
 .modal {
   .modal-header {
     border: none;
   }
+
   .modal-footer {
     border: none;
   }
 }
+
 .card {
   border: none;
   box-shadow: $box-shadow;
   background: $bg-white;
   border-radius: 25px;
   min-height: 100%;
+
   &#card1 {
     background-color: rgb(108, 108, 229);
     box-shadow: 0px 5px 20px 0px rgb(108 108 229 / 50%) !important;
     color: $text-dark-color;
   }
+
   &#card2 {
     background-color: rgb(249, 215, 76);
     box-shadow: 0px 5px 20px 0px rgb(249 215 76 / 50%) !important;
     color: #0f0c0c;
   }
+
   &#card3 {
     background-color: rgb(249, 123, 139);
     box-shadow: 0px 5px 20px 0px rgb(249 123 139 / 50%) !important;
     color: $text-dark-color;
   }
+
   .card-footer {
     border: none;
     background: $bg-white;
   }
+
   .card-header {
     border: none;
     background: $bg-white;
   }
+
   &#card1,
   &#card2,
   &#card3 {
     transition: all 0.3s ease-in-out;
+
     &:hover {
       transform: translateY(-10px);
     }
   }
 }
+
 .progress {
   --bs-progress-height: 0.55rem;
 }
 
 h1.section-text {
   position: relative;
+
   &:after {
     content: "";
     background-image: url(https://img.icons8.com/ios/32/null/spotted-patterns.png);
@@ -313,6 +358,7 @@ h1.section-text {
     position: absolute;
     width: 33px;
     opacity: 0.1;
+
     @include mobile-only {
       left: -8px;
       top: -4px;
@@ -326,6 +372,7 @@ li {
   padding: 0;
   background-color: transparent !important;
 }
+
 .sessions {
   margin-top: 2rem;
   position: relative;
@@ -336,10 +383,12 @@ li {
     position: relative;
     padding-left: 20px;
     margin-left: 10px;
+
     &:last-child {
       border: 0px;
       padding-bottom: 0;
     }
+
     &:before {
       color: $primary-color;
       font-family: "Bootstrap-icons";
@@ -356,20 +405,24 @@ li {
     .header-top {
       color: #2a2839;
       font-weight: 500;
+
       @include mobile-and-up {
         font-size: 0.9rem;
       }
+
       @include mobile-only {
         margin-bottom: 0.3rem;
         font-size: 0.85rem;
       }
     }
   }
+
   &.work {
     & li:before {
       content: "\F1CC";
     }
   }
+
   &.academic {
     & li:before {
       content: "\F6FE";
@@ -389,6 +442,7 @@ li {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -398,6 +452,7 @@ li {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -407,6 +462,7 @@ li {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -416,6 +472,7 @@ li {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -425,6 +482,7 @@ li {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
