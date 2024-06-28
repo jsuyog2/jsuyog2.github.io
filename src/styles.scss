@@ -6,7 +6,7 @@ $text-color: #454360;
 $text-dark-color: #f9f9ff;
 $primary-color: #00af6c;
 $border-radius: 50px;
-$box-shadow: 0px 5px 20px 0px rgb(69 67 96 / 10%);
+$box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 $bg-white: #fff;
 
 @mixin tablet-and-up {
@@ -304,25 +304,25 @@ input {
 
   &#card1 {
     background-color: rgb(108, 108, 229);
-    box-shadow: 0px 5px 20px 0px rgb(108 108 229 / 50%) !important;
+    box-shadow: 0 1px 3px 0 rgba(108, 108, 229, 0.1), 0 1px 2px -1px rgba(108, 108, 229, 0.1) !important;
     color: $text-dark-color;
   }
 
   &#card2 {
     background-color: rgb(249, 215, 76);
-    box-shadow: 0px 5px 20px 0px rgb(249 215 76 / 50%) !important;
+    box-shadow: 0 1px 3px 0 rgba(249 ,215, 76, 0.1), 0 1px 2px -1px rgba(249 ,215 ,76, 0.1) !important;
     color: #0f0c0c;
   }
 
   &#card3 {
     background-color: rgb(249, 123, 139);
-    box-shadow: 0px 5px 20px 0px rgb(249 123 139 / 50%) !important;
+    box-shadow: 0 1px 3px 0 rgba(249, 123, 139, 0.1), 0 1px 2px -1px rgba(249 ,123 ,139, 0.1) !important;
     color: $text-dark-color;
   }
 
   .card-footer {
     border: none;
-    background: $bg-white;
+    background: #fff0;
   }
 
   .card-header {
@@ -443,7 +443,7 @@ li {
 
 .footer {
   margin-top: 100px;
-  box-shadow: 0 -1rem 2rem rgb(0 0 0 / 15%) !important;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.15) !important;
   padding: 5px;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -517,3 +517,7 @@ li {
 ::-webkit-scrollbar-thumb:hover {
   background: #4e4e4e;
 }
+
+@import "primeicons/primeicons.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.min.css";

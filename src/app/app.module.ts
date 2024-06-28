@@ -19,7 +19,9 @@ import { AnimateCountDirective } from './directive/animate-count.directive';
 import { ParallaxItemDirective } from './directive/parallax-item.directive';
 import { ParallaxScreenComponent } from './layout/parallax-screen/parallax-screen.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
+import { TagModule } from 'primeng/tag';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,13 +38,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ScrollSpyDirective,
     AnimateCountDirective,
     ParallaxItemDirective,
-    ParallaxScreenComponent
+    ParallaxScreenComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CarouselModule,
+    ButtonModule,
+    TagModule
   ],
   providers: [],
   bootstrap: [AppComponent]

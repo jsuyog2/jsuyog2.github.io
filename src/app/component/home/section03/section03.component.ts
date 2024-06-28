@@ -12,19 +12,42 @@ import projects from '../../../../assets/data/projects.json';
   styleUrls: ['./section03.component.scss'],
 })
 export class Section03Component {
+  products: any;
+  responsiveOptions: any;
   projects: any;
-  description_length = 100;
+  description_length = 150;
   projectId: number = 0;
   constructor(private modalService: NgbModal) { }
   ngOnInit() {
     this.projects = projects;
-    this.projects.map((val: any) => {
+    this.projects.map((val: any, index: any) => {
+      console.log(index);
+      
+      val.id = index
       if (val.start_date) {
         const duration = this.returnDuration(val.start_date, val.end_date);
         val.duration = duration
       }
       return val
     })
+    this.products = this.projects
+    this.responsiveOptions = [
+      {
+        breakpoint: '1199px',
+        numVisible: 2,
+        numScroll: 2
+      },
+      {
+        breakpoint: '991px',
+        numVisible: 2,
+        numScroll: 2
+      },
+      {
+        breakpoint: '767px',
+        numVisible: 1,
+        numScroll: 1
+      }
+    ];
   }
   validURL(str: any) {
     var pattern = new RegExp(
@@ -66,4 +89,17 @@ export class Section03Component {
     let date_year = new Date(date).getFullYear();
     return `${date_month} ${date_year}`
   }
+
+  getSeverity(status: string) {
+    switch (status) {
+      case 'INSTOCK':
+        return 'success';
+      case 'LOWSTOCK':
+        return 'warning';
+      case 'OUTOFSTOCK':
+        return 'danger';
+    }
+    return 'success';
+  }
+
 }
