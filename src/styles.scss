@@ -335,9 +335,20 @@ input {
   &#card3 {
     transition: all 0.3s ease-in-out;
 
+    img {
+      transition: all 0.3s ease-in-out;
+    }
+
     &:hover {
       transform: translateY(-10px);
+
+      img {
+        transform: rotate(360deg);
+      }
     }
+
+
+
   }
 }
 

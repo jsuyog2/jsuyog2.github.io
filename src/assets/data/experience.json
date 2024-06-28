@@ -1,28 +1,28 @@
 {
     "edu": [
         {
-            "year": 2021,
+            "year": "05-01-2021",
             "degree": "Master of Science in Information Technology (M.Sc. IT)",
             "name": "Pillai College of Arts, Commerce and Science",
             "university": "Autonomous",
             "marks": "75.20"
         },
         {
-            "year": 2018,
+            "year": "05-01-2018",
             "degree": "Bachelor of Science in Information Technology (B.Sc. IT)",
             "name": "Pillai College of Arts, Commerce and Science",
             "university": "Mumbai University",
             "marks": "63.49"
         },
         {
-            "year": 2014,
+            "year": "02-01-2014",
             "degree": "Higher Secondary School Certificate (H.S.C.)",
             "name": "Changu Kana Thakur Jr. College",
             "university": "Mumbai University",
             "marks": "56.00"
         },
         {
-            "year": 2012,
+            "year": "03-01-2012",
             "degree": "Secondary School Certificate (S.S.C.)",
             "name": "Changu Kana Thakur Vidyalaya",
             "university": "Mumbai University",
@@ -31,22 +31,31 @@
     ],
     "work": [
         {
-            "duration": "May 2022 - Present",
+            "start_date": "01-17-2024",
+            "name": "Accenture Pvt. Ltd.",
+            "role": "Software Development Senior Analyst"
+        },
+        {
+            "start_date": "05-05-2022",
+            "end_date": "01-05-2024",
             "name": "Infosys Ltd, Pune",
             "role": "Senior Associate Consultant"
         },
         {
-            "duration": "July 2021 - May 2022",
+            "start_date": "07-26-2021",
+            "end_date": "05-04-2022",
             "name": "TechStar IT Services Pvt. Ltd",
             "role": "Software Developer"
         },
         {
-            "duration": "March 2019 - July 2021",
+            "start_date": "03-11-2019",
+            "end_date": "07-25-2021",
             "name": "Valectus Pvt. Ltd.",
             "role": "Web Developer"
         },
         {
-            "duration": "September 2018 - March 2019",
+            "start_date": "09-11-2018",
+            "end_date": "03-11-2019",
             "name": "Valectus Pvt. Ltd.",
             "role": "Intern"
         }

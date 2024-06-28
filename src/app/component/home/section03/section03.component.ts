@@ -15,18 +15,25 @@ export class Section03Component {
   projects: any;
   description_length = 100;
   projectId: number = 0;
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal) { }
   ngOnInit() {
     this.projects = projects;
+    this.projects.map((val: any) => {
+      if (val.start_date) {
+        const duration = this.returnDuration(val.start_date, val.end_date);
+        val.duration = duration
+      }
+      return val
+    })
   }
   validURL(str: any) {
     var pattern = new RegExp(
       '^(https?:\\/\\/)?' + // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-        '(\\#[-a-z\\d_]*)?$',
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '(\\#[-a-z\\d_]*)?$',
       'i'
     ); // fragment locator
     return !!pattern.test(str);
@@ -44,6 +51,19 @@ export class Section03Component {
   }
   open(content: any, id: any) {
     this.projectId = id;
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl', scrollable: true });
+  }
+
+  returnDuration(start_date: any, end_date: any) {
+    let start = this.returnDateFormat(start_date);
+    let end = end_date ? this.returnDateFormat(end_date) : 'Present';
+    return `${start} - ${end}`;
+  }
+
+  returnDateFormat(date: any) {
+    const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let date_month = month[new Date(date).getMonth()];
+    let date_year = new Date(date).getFullYear();
+    return `${date_month} ${date_year}`
   }
 }

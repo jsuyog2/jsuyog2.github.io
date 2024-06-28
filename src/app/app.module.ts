@@ -18,6 +18,7 @@ import { ScrollSpyDirective } from './services/scroll-spy.directive';
 import { AnimateCountDirective } from './directive/animate-count.directive';
 import { ParallaxItemDirective } from './directive/parallax-item.directive';
 import { ParallaxScreenComponent } from './layout/parallax-screen/parallax-screen.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ParallaxScreenComponent } from './layout/parallax-screen/parallax-scree
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

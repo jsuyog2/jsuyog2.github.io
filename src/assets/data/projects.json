@@ -1,15 +1,179 @@
 [
     {
-        "duration": "January 2023 - Till Date",
-        "title": "ICRA - Incident and Change Review Automation",
-        "description": "Service Now is complicated and long forms that take time to submit any request. ICRA is a tool that raise a change, incident request in easy way. You can approve any request in ICRA and send comment also. It reduces Human efforts and with User-Friendly UI it takes less time for submit a request. You can able to share with other just sharing access of request and link.",
-        "responsibility": "Create an API in NodeJS and ExpressJS. Secure with JWT Token and LDAP implementation for accessing API and also implement access level roles in API. Implement Service NOW API in API for easy Submit Changes, Incident raise, approve and comment. Generate a report Implemented in API. Create a UI in angular Bootstrap for easy forms and User-friendly UI. Sharing, access a Request, Check Status for particular request for that route is implemented in UI.",
+        "start_date": "01-01-2024",
+        "title": "Investment Research Retrieval Chatbot",
+        "description": [
+            "Accelerate the process of extracting insights from investment research documents by leveraging NLP and generative AI techniques.",
+            "Enable users to interact with the content using natural language (English).",
+            "Allow users to extract specific key information, as well as related metadata and statistics from the documents."
+        ],
+        "responsibility": [
+            "Create an API in NodeJS and ExpressJS.",
+            "Secure API access with JWT Token implementation.",
+            "Develop a user-friendly UI in Angular using Bootstrap.",
+            "Implement export functionality for PDF and PPT.",
+            "Utilize datatables for data presentation.",
+            "Deploy the ExpressJS app using Azure Function App.",
+            "Deploy the Angular application using Azure Web App.",
+            "Assist in Azure deployment processes.",
+            "Implement edit, like, dislike, and comment options."
+        ],
+        "Link": "Internal use",
+        "tech": [
+            {
+                "title": "HTML",
+                "icon": "html-5",
+                "fill": "color"
+            },
+            {
+                "title": "CSS",
+                "icon": "css3",
+                "fill": "color"
+            },
+            {
+                "title": "JavaScript",
+                "icon": "javascript",
+                "fill": "fluency"
+            },
+            {
+                "title": "JQuery",
+                "icon": "jquery",
+                "fill": "ios-filled"
+            },
+            {
+                "title": "Bootstrap",
+                "icon": "bootstrap",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "start_date": "01-01-2024",
+        "title": "Counterparty Credit Risk Text Summarization Tool",
+        "description": [
+            "Automate the extraction and synthesis of information from financial statements, newsfeeds, and historical credit data.",
+            "Leverage NLP techniques and large language models (LLMs) to generate credit risk summaries.",
+            "Streamline and enhance the credit risk decision-making process."
+        ],
+        "responsibility": [
+            "Create an API in NodeJS and ExpressJS.",
+            "Secure API access with JWT Token implementation.",
+            "Develop a user-friendly UI in Angular using Bootstrap.",
+            "Implement form functionalities and upload options.",
+            "Implement export functionality for PDF and PPT.",
+            "Utilize datatables for data presentation.",
+            "Deploy the ExpressJS app using Azure Function App.",
+            "Deploy the Angular application using Azure Web App.",
+            "Assist in Azure deployment processes.",
+            "Implement edit, like, dislike, and comment options."
+        ],
         "Link": "Internal use",
         "tech": [
             {
                 "title": "NodeJS",
                 "icon": "node-js",
                 "fill": "fluency"
+            },
+            {
+                "title": "ExpressJS",
+                "icon": "express-js",
+                "fill": "ios"
+            },
+            {
+                "title": "Angular Cli",
+                "icon": "angularjs",
+                "fill": "color"
+            },
+            {
+                "title": "Cosmos DB",
+                "icon": "planet",
+                "fill": "ultraviolet"
+            },
+            {
+                "title": "Bootstrap",
+                "icon": "bootstrap",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "start_date": "01-01-2024",
+        "title": "HY Debt Market Commentary Generator",
+        "description": [
+            "Use LLMs to generate market recaps and summaries covering volume, performance, and new issuance",
+            "This application will be used for daily issuance summaries and weekly leveraged finance reports"
+        ],
+        "responsibility": [
+            "Create an API in NodeJS and ExpressJS.",
+            "Secure API access with JWT Token implementation.",
+            "Develop a user-friendly UI in Angular using Bootstrap.",
+            "Implement export functionality for PDF and PPT.",
+            "Utilize datatables for data presentation.",
+            "Deploy the ExpressJS app using Azure Function App.",
+            "Deploy the Angular application using Azure Web App.",
+            "Assist in Azure deployment processes.",
+            "Implement edit, like, dislike, and comment options."
+        ],
+        "Link": "Internal use",
+        "tech": [
+            {
+                "title": "NodeJS",
+                "icon": "node-js",
+                "fill": "fluency"
+            },
+            {
+                "title": "ExpressJS",
+                "icon": "express-js",
+                "fill": "ios"
+            },
+            {
+                "title": "Angular Cli",
+                "icon": "angularjs",
+                "fill": "color"
+            },
+            {
+                "title": "Cosmos DB",
+                "icon": "planet",
+                "fill": "ultraviolet"
+            },
+            {
+                "title": "Bootstrap",
+                "icon": "bootstrap",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "start_date": "01-01-2023",
+        "end_date": "01-01-2024",
+        "title": "ICRA - Incident and Change Review Automation",
+        "description": [
+            "Service Now has complicated and lengthy forms that take significant time to submit any request.",
+            "ICRA is a tool designed to raise change and incident requests easily and efficiently.",
+            "The tool allows for easy approval of requests and enables users to send comments.",
+            "It reduces human effort and, with a user-friendly UI, significantly decreases the time required to submit a request.",
+            "Users can share requests with others by sharing access to the request and its link"
+        ],
+        "responsibility": [
+            "Create an API in NodeJS and ExpressJS.",
+            "Secure API access with JWT Token and LDAP implementation.",
+            "Implement access level roles in the API.",
+            "Integrate Service Now API for easy submission of changes, incident reporting, approval, and commenting.",
+            "Generate reports within the API.",
+            "Develop a user-friendly UI in Angular using Bootstrap.",
+            "Implement functionalities for sharing, accessing requests, and checking the statusof specific requests in the UI."
+        ],
+        "Link": "Internal use",
+        "tech": [
+            {
+                "title": "NodeJS",
+                "icon": "node-js",
+                "fill": "fluency"
+            },
+            {
+                "title": "ExpressJS",
+                "icon": "express-js",
+                "fill": "ios"
             },
             {
                 "title": "Angular Cli",
@@ -24,16 +188,37 @@
         ]
     },
     {
-        "duration": "July 2021 - Till Date",
+        "start_date": "07-01-2021",
+        "end_date": "01-01-2024",
         "title": "HSBC Telecom Service Portal",
-        "description": "Cramer, Splunk, SevOne, NNMi etc. are use for alerts and policy for devices and you need to open all these tools for only one alert or policy. HSBC Telecom Service Portal can reduce time to open these tools and combines into Portal. Corelation and analyse a alerts and policy of various tools side by side. Quick response to high level alerts and policy just sharing a link. Reduce efforts and time using only one tool.",
-        "responsibility": "Creating an API in NodeJS and ExpressJS. Secure with a JWT Token and LDAP implementation for accessing API and also implement access level roles in API. Implement 10 Tools API in 1 API for access various tools at one place. Get alerts and policy from various tools and combine in API. User-Friendly UI using Angular and Bootstrap makes easy to access Application and allow you to correlation between alerts and policies. Implement route also to share policy and alerts using link.",
+        "description": [
+            "Tools like Cramer, Splunk, SevOne, NNMi, etc., are used for managing alerts and policies for devices. Opening each tool individually for a single alert or policy can be time-consuming.",
+            "HSBC Telecom Service Portal streamlines this process by combining multiple tools into a single portal.",
+            "It enables side-by-side correlation and analysis of alerts and policies from various tools.",
+            "Users can quickly respond to high-level alerts and policies by sharing a link, reducing efforts and time.",
+            "The portal provides a unified, user-friendly interface, significantly improving efficiency and reducing the need to switch between multiple tools."
+        ],
+        "responsibility": [
+            "Create an API in NodeJS and ExpressJS.",
+            "Secure API access with JWT Token and LDAP implementation.",
+            "Implement access level roles in the API.",
+            "Integrate 10 different tools' APIs into a single API for consolidated access.",
+            "Retrieve alerts and policies from various tools and combine them in the API.",
+            "Develop a user-friendly UI using Angular and Bootstrap.",
+            "Facilitate easy correlation between alerts and policies through the UI.",
+            "Implement routing for sharing policies and alerts via links."
+        ],
         "Link": "Internal use",
         "tech": [
             {
                 "title": "NodeJS",
                 "icon": "node-js",
                 "fill": "fluency"
+            },
+            {
+                "title": "ExpressJS",
+                "icon": "express-js",
+                "fill": "ios"
             },
             {
                 "title": "Angular Cli",
@@ -48,16 +233,31 @@
         ]
     },
     {
-        "duration": "March 2019 - July 2021",
+        "start_date": "03-01-2019",
+        "end_date": "07-01-2021",
         "title": "MapDataLab",
-        "description": "MapDataLAB is a comprehensive data analytics platform built to help businesses make the most of their spatial or location-based data, which ultimately leads to better decisions, better customers and better business. In That website you will Data Upload & Visualization, Classify Your Data and also add experienced geoanalysts datasets including population, infrastructure penetration, urbanization and more.",
-        "responsibility": "Using NodeJS and PHP create an API that involves spatial Data and GIS analytics. add Google Login and RazorPay Payment gateway for premium users. Management of user roles. use Mapbox API for Map and spatial or location-based data.Front-end creation using Javascript, HTML, CSS, JQuery, and Bootstrap.",
+        "description": [
+            "MapDataLAB is a comprehensive data analytics platform designed to help businesses optimize their use of spatial or location-based data, leading to better decisions, improved customer experiences, and enhanced business outcomes.",
+            "The platform offers features such as data upload and visualization, data classification, and access to datasets from experienced geoanalysts, including information on population, infrastructure penetration, urbanization, and more."
+        ],
+        "responsibility": [
+            "Create APIs using NodeJS and PHP to handle spatial data and GIS analytics.",
+            "Integrate Google Login for user authentication and Razorpay Payment Gateway for premium users.",
+            "Manage user roles within the application.",
+            "Utilize Mapbox API for map and location-based data visualization.",
+            "Develop the front-end using JavaScript, HTML, CSS, JQuery, and Bootstrap"
+        ],
         "Link": "https://www.mapdatalab.com/",
         "tech": [
             {
                 "title": "NodeJS",
                 "icon": "node-js",
                 "fill": "fluency"
+            },
+            {
+                "title": "ExpressJS",
+                "icon": "express-js",
+                "fill": "ios"
             },
             {
                 "title": "Javascript",
@@ -82,9 +282,21 @@
         ]
     },
     {
-        "duration": "September 2018 - March 2019",
+        "start_date": "09-01-2018",
+        "end_date": "03-01-2019",
         "title": "MyEdmate",
-        "description": "MyEdmate is a Website which provides a platform for students and parents where they can find, compare, locate and view every details of various education centres and provide an online marketing for various education centres.",
+        "responsibility": [
+            "Develop and maintain the front-end using JavaScript, HTML, CSS, and JQuery.",
+            "Create and manage the back-end using PHP.",
+            "Implement and manage the PostgreSQL database.",
+            "Integrate the Mapbox API for location-based services.",
+            "Implement Google Login API for user authentication."
+        ],
+        "description": [
+            "MyEdmate is a platform designed for students and parents to find, compare, locate, and view detailed information about various education centers.",
+            "The platform also provides online marketing services for educational institutions.",
+            "Users can use the Mapbox API for location-based services and Google Login APIfor authentication."
+        ],
         "Link": "https://www.myedmate.com/",
         "tech": [
             {
@@ -117,13 +329,22 @@
     {
         "duration": "6 months",
         "title": "Face Recognition System",
-        "description": "In this system, Recognize the face using images. In this system face recognition is using black and white images. We adding new faces with images and automatically crop faces. Also in that we using custom model for Face Detection with 30K images and train model with CNN algorithm. ",
+        "description": [
+            "Implemented a face recognition system using black and white images.",
+            "Developed features for adding new faces with images and automatic face cropping.",
+            "Utilized a custom model for face detection trained with CNN algorithms using 30,000 images."
+        ],
         "Link": "M.Sc. IT Project",
         "tech": [
             {
                 "title": "NodeJS",
                 "icon": "node-js",
                 "fill": "fluency"
+            },
+            {
+                "title": "ExpressJS",
+                "icon": "express-js",
+                "fill": "ios"
             },
             {
                 "title": "Javascript",
@@ -145,7 +366,11 @@
     {
         "duration": "6 months",
         "title": "Car Rental Website",
-        "description": "This system will provide user-friendly interface to view car rental details. Scope of this project is Admin have personal login and view all the customer booking details, modify booking details.",
+        "description": [
+            "Developed a user-friendly interface for viewing car rental details.",
+            "Implemented functionalities allowing admin access to view and modify customer booking details.",
+            "Included personal login capabilities for administrators to manage the system efficiently."
+        ],
         "Link": "B.Sc. IT Project",
         "tech": [
             {
@@ -173,7 +398,11 @@
     {
         "duration": "3 months",
         "title": "ChaiVala",
-        "description": "This project is focused on tea vendors so it will be easy for them to keep the track of which customer consumes which products and show their corresponding bill amount. Tea vendor can add customer, delete them, add specific products for the respective customer, add his own products and delete them.",
+        "description": [
+            "Developed for tea vendors to manage customer orders and billing efficiently.",
+            "Allows tea vendors to track which customer consumes which products and generate corresponding bills.",
+            "Features include adding and deleting customers, adding specific products for customers, managing vendor products, and deleting them."
+        ],
         "Link": "https://play.google.com/store/apps/details?id=com.infinity9.chaivala&hl=en",
         "tech": [
             {
@@ -186,7 +415,11 @@
     {
         "duration": "",
         "title": "Express PostgreSQL API",
-        "description": "The Express PostgreSQL API is make a secure and reliable API use to Login, Registration and Verify USER. This project is open source for everyone and easy to install. This project available on GitHub.",
+        "description": [
+            "Developed a secure and reliable API for user authentication, registration, and verification.",
+            "Utilizes Express framework with features like JWT Token for authentication, pbkdf2-password for password hashing, NODEMAILER for email functionalities, and request-ip for IP address handling.",
+            "The project is open source and available on GitHub for installation and contributions."
+        ],
         "Link": "https://github.com/jsuyog2/express-postgresql-api",
         "tech": [
             {

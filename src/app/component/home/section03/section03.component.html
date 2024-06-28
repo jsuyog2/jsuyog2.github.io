@@ -5,57 +5,30 @@
     </div>
   </div>
   <div class="row">
-    <div
-      class="mb-3 col-md-6 col-12"
-      *ngFor="let item of projects; let i = index"
-      style="min-height: 100%"
-    >
+    <div class="mb-3 col-md-6 col-12" *ngFor="let item of projects; let i = index" style="min-height: 100%">
       <div class="card p-2">
         <div class="card-header">{{ item.duration }}</div>
         <div class="card-body">
           <h5 class="card-title">{{ item.title }}</h5>
-          <p class="card-text hide-value">{{ item.description }}</p>
-          <a
-            class="link-color"
-            *ngIf="item.description.length > description_length"
-            (click)="open(content, i)"
-          >
+          <p class="card-text">{{ item.description[0] }}..</p>
+          <a class="link-color" (click)="open(content, i)">
             Show More
           </a>
-          <!-- <a
-            data-bs-toggle="modal"
-            data-bs-target="#projectModal"
-            class="link-color"
-            *ngIf="item.description.length > description_length"
-            (click)="openModel(i)"
-          ></a> -->
         </div>
         <div class="card-footer">
           <div class="row">
             <div class="col-6" style="font-weight: 700">
-              <a
-                class="link-color"
-                target="_blank"
-                href="{{ item.Link }}"
-                *ngIf="validURL(item.Link); else notLink"
-                >Visit</a
-              >
+              <a class="link-color" target="_blank" href="{{ item.Link }}"
+                *ngIf="validURL(item.Link); else notLink">Visit</a>
               <ng-template #notLink>
                 {{ item.Link }}
               </ng-template>
             </div>
             <div class="col-6 text-end">
               <p class="hide-value icon">
-                <img
-                  class="mx-1"
-                  data-bs-toggle="tooltip"
-                  title="{{ values.title }}"
-                  alt="{{ values.title }}"
-                  src="https://img.icons8.com/{{ values.fill }}/24/null/{{
+                <img class="mx-1" data-bs-toggle="tooltip" title="{{ values.title }}" alt="{{ values.title }}" src="https://img.icons8.com/{{ values.fill }}/24/null/{{
                     values.icon
-                  }}.png"
-                  *ngFor="let values of item.tech"
-                />
+                  }}.png" *ngFor="let values of item.tech" />
               </p>
             </div>
           </div>
@@ -64,103 +37,44 @@
     </div>
   </div>
 </div>
-<!-- <div
-  class="modal fade"
-  id="projectModal"
-  tabindex="-1"
-  aria-labelledby="projectModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="projectModalLabel">
-          {{ projects[projectId].title }}
-        </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <ul>
-          <li><b>Duration:</b> {{ projects[projectId].duration }}</li>
-          <li>
-            <b>Description:</b>
-            <p>{{ projects[projectId].description }}</p>
-          </li>
-          <li *ngIf="projects[projectId].responsibility">
-            <b>Responsibility:</b>
-            <p>{{ projects[projectId].responsibility }}</p>
-          </li>
-          <li>
-            <b>Technologies:</b>
-            <div class="row mt-2">
-              <div class="col-2" *ngFor="let tech of projects[projectId].tech">
-                <img
-                  class="mx-1"
-                  data-bs-toggle="tooltip"
-                  title="{{ tech.title }}"
-                  alt="{{ tech.title }}"
-                  src="https://img.icons8.com/{{ tech.fill }}/32/null/{{
-                    tech.icon
-                  }}.png"
-                />
-                <p style="font-size: 0.8rem">{{ tech.title }}</p>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-</div> -->
 <ng-template #content let-modal>
   <div class="modal-header">
     <h1 class="modal-title fs-5" id="projectModalLabel">
       {{ projects[projectId].title }}
     </h1>
-    <a
-      class="btn-close"
-      (click)="modal.close()"
-    ></a>
+    <a class="btn-close" (click)="modal.close()"></a>
   </div>
   <div class="modal-body">
-    <ul>
-      <li><b>Duration:</b> {{ projects[projectId].duration }}</li>
-      <li>
-        <b>Description:</b>
-        <p>{{ projects[projectId].description }}</p>
-      </li>
-      <li *ngIf="projects[projectId].responsibility">
-        <b>Responsibility:</b>
-        <p>{{ projects[projectId].responsibility }}</p>
-      </li>
-      <li>
-        <b>Technologies:</b>
-        <div class="row mt-2">
-          <div class="col-2" *ngFor="let tech of projects[projectId].tech">
-            <img
-              class="mx-1"
-              data-bs-toggle="tooltip"
-              title="{{ tech.title }}"
-              alt="{{ tech.title }}"
-              src="https://img.icons8.com/{{ tech.fill }}/32/null/{{
-                tech.icon
-              }}.png"
-            />
-            <p style="font-size: 0.8rem">{{ tech.title }}</p>
+    <div class="container-fluid">
+      <ul>
+        <li><b>Duration:</b> {{ projects[projectId].duration }}</li>
+        <li>
+          <b>Description:</b>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let item of projects[projectId].description">{{item}}</li>
+          </ul>
+        </li>
+        <li *ngIf="projects[projectId].responsibility">
+          <b>Responsibility:</b>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let item of projects[projectId].responsibility">{{item}}</li>
+          </ul>
+        </li>
+        <li>
+          <b>Technologies:</b>
+          <div class="row mt-2">
+            <ul class="list-group list-group-horizontal">
+              <li class="p-3 text-center" *ngFor="let tech of projects[projectId].tech">
+                <img class="mx-1" data-bs-toggle="tooltip" title="{{ tech.title }}" alt="{{ tech.title }}" src="https://img.icons8.com/{{ tech.fill }}/32/null/{{
+                  tech.icon
+                }}.png" />
+                <p style="font-size: 0.8rem">{{ tech.title }}</p>
+              </li>
+            </ul>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="modal.close()">

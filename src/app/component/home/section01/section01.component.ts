@@ -17,7 +17,16 @@ export class Section01Component {
     this.totalProjects = projects.length;
     const currentDate: number = new Date().getFullYear();
     const startDate: number = new Date('09/11/2018').getFullYear();
+    console.log("Weeks", this.monthDiff(new Date('09/11/2018'), new Date()));
+
     this.totalExperience = currentDate - startDate;
     this.totalCupCoffee = (((this.totalExperience * 365) + this.totalProjects)) * 3;
+  }
+  monthDiff(d1: any, d2: any) {
+    var months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth();
+    months += d2.getMonth();
+    return months <= 0 ? 0 : months;
   }
 }

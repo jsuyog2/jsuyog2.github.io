@@ -3,18 +3,18 @@
         "title": "Back-End Development",
         "icon": "backend-development",
         "fill": "stickers",
-        "description": "Experience in application design, development, testing and implementation of API's using with NodeJS, ExpressJS. Experience in implementation of LDAP for authentication and authorization and API's (Mapbox API, Google Login API, Razorpay Payment Gateway)."
+        "description": "Experienced in NodeJS for building robust server-side applications. Proficient in SQL and NoSQL databases, with a focus on PostgreSQL. Skilled in implementing APIs like Mapbox, Google Login, and Razorpay. Strong in LDAP for secure authentication. Experienced in deploying on Linux, Windows servers, and Azure."
     },
     {
         "title": "Front-End Development",
         "icon": "web",
         "fill": "stickers",
-        "description": "Experience in design and development UI using Angular Cli, Javascript and Jquery. Hands-on in UI libraries such as Bootstrap."
+        "description": "Skilled in JavaScript, JQuery, and Angular for creating dynamic, responsive user interfaces. Focus on designing user-friendly experiences across browsers and devices."
     },
     {
         "title": "Other Skills",
         "icon": "development-skill",
         "fill": "stickers",
-        "description": "Worked on Linux and Windows server for implement an application. Worked on multiple projects at the same time."
+        "description": "Strong in multi-project management, ensuring timely, high-quality deliveries. Experienced with Azure cloud services. Known for analytical skills, teamwork, and effective communication. Committed to continuous learning and staying updated with industry trends."
     }
 ]
