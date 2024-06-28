@@ -104,7 +104,14 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/",
+            "name": "Suyog Jadhav",
+            "email": "jsuyog2@gmail.com",
+            "noNojekyll": false,
+            "repo": "https://github.com/jsuyog2/jsuyog2.github.io.git"
+          }
         }
       }
     }
