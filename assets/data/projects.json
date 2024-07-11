@@ -1,49 +1,42 @@
 [
     {
         "start_date": "01-01-2024",
-        "title": "Investment Research Retrieval Chatbot",
+        "title": "Daily Insights Generator",
         "description": [
-            "Accelerate the process of extracting insights from investment research documents by leveraging NLP and generative AI techniques.",
-            "Enable users to interact with the content using natural language (English).",
-            "Allow users to extract specific key information, as well as related metadata and statistics from the documents."
+            "Summarize information from T+1 pnl emails into valuable insights, trends, and actionable items, sent to the CIO in a daily email.",
+            "Chatbot that can surface insights from these emails in natural language. The chatbot engine can be incorporated into MS365 Copilot chat as a plugin once the feature becomes available."
         ],
         "responsibility": [
             "Create an API in NodeJS and ExpressJS.",
             "Secure API access with JWT Token implementation.",
-            "Develop a user-friendly UI in Angular using Bootstrap.",
-            "Implement export functionality for PDF and PPT.",
+            "Develop a user-friendly UI in Angular using PrimeNG.",
             "Utilize datatables for data presentation.",
             "Deploy the ExpressJS app using Azure Function App.",
             "Deploy the Angular application using Azure Web App.",
             "Assist in Azure deployment processes.",
-            "Implement edit, like, dislike, and comment options."
+            "Implement like, dislike, and comment options."
         ],
         "Link": "Internal use",
         "tech": [
             {
-                "title": "HTML",
-                "icon": "html-5",
-                "fill": "color"
-            },
-            {
-                "title": "CSS",
-                "icon": "css3",
-                "fill": "color"
-            },
-            {
-                "title": "JavaScript",
-                "icon": "javascript",
+                "title": "NodeJS",
+                "icon": "node-js",
                 "fill": "fluency"
             },
             {
-                "title": "JQuery",
-                "icon": "jquery",
-                "fill": "ios-filled"
+                "title": "ExpressJS",
+                "icon": "express-js",
+                "fill": "ios"
             },
             {
-                "title": "Bootstrap",
-                "icon": "bootstrap",
+                "title": "Angular Cli",
+                "icon": "angularjs",
                 "fill": "color"
+            },
+            {
+                "title": "Cosmos DB",
+                "icon": "planet",
+                "fill": "ultraviolet"
             }
         ]
     },
@@ -135,6 +128,54 @@
                 "title": "Cosmos DB",
                 "icon": "planet",
                 "fill": "ultraviolet"
+            },
+            {
+                "title": "Bootstrap",
+                "icon": "bootstrap",
+                "fill": "color"
+            }
+        ]
+    },
+    {
+        "start_date": "01-01-2024",
+        "title": "Investment Research Retrieval Chatbot",
+        "description": [
+            "Accelerate the process of extracting insights from investment research documents by leveraging NLP and generative AI techniques.",
+            "Enable users to interact with the content using natural language (English).",
+            "Allow users to extract specific key information, as well as related metadata and statistics from the documents."
+        ],
+        "responsibility": [
+            "Create an API in NodeJS and ExpressJS.",
+            "Secure API access with JWT Token implementation.",
+            "Develop a user-friendly UI in Angular using Bootstrap.",
+            "Implement export functionality for PDF and PPT.",
+            "Utilize datatables for data presentation.",
+            "Deploy the ExpressJS app using Azure Function App.",
+            "Deploy the Angular application using Azure Web App.",
+            "Assist in Azure deployment processes.",
+            "Implement edit, like, dislike, and comment options."
+        ],
+        "Link": "Internal use",
+        "tech": [
+            {
+                "title": "HTML",
+                "icon": "html-5",
+                "fill": "color"
+            },
+            {
+                "title": "CSS",
+                "icon": "css3",
+                "fill": "color"
+            },
+            {
+                "title": "JavaScript",
+                "icon": "javascript",
+                "fill": "fluency"
+            },
+            {
+                "title": "JQuery",
+                "icon": "jquery",
+                "fill": "ios-filled"
             },
             {
                 "title": "Bootstrap",
