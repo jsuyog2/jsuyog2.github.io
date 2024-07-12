@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
+import { AnimateOnScrollModule } from 'primeng/animateonscroll';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { TagModule } from 'primeng/tag';
     BrowserAnimationsModule,
     CarouselModule,
     ButtonModule,
-    TagModule
+    TagModule,
+    AnimateOnScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

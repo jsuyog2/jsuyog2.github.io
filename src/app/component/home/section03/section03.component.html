@@ -9,7 +9,7 @@
     <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true"
       [responsiveOptions]="responsiveOptions">
       <ng-template let-item pTemplate="item">
-        <div class="card p-2 m-2">
+        <div class="card p-2 m-2 animation-duration-1000" pAnimateOnScroll enterClass="zoomin" leaveClass="fadeout">
           <div class="card-header">{{ item.duration }}</div>
           <div class="card-body">
             <h5 class="card-title">{{ item.title }}</h5>

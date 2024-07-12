@@ -9,7 +9,7 @@
       class="col-md-4 col-12 mb-2"
       *ngFor="let item of services; let i = index"
     >
-      <div id="card{{ i + 1 }}" class="card">
+      <div id="card{{ i + 1 }}" class="card animation-duration-1000" pAnimateOnScroll enterClass="flipup" leaveClass="fadeout">
         <div class="card-body">
           <div class="row">
             <div class="col-12 text-center">

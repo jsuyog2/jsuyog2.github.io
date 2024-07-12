@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-12">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let item of achievements">
+          <li class="list-group-item animation-duration-1000" pAnimateOnScroll enterClass="fadeinright" leaveClass="fadeout" *ngFor="let item of achievements">
             {{ item }}
           </li>
         </ul>
