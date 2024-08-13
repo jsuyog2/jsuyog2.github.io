@@ -1,0 +1,47 @@
+<header class="side-navbar animation-duration-500" pAnimateOnScroll enterClass="fadeinleft" leaveClass="fadeout"
+  id="sidebar">
+  <ul class="vertical-menu scrollspy">
+    <li class="active">
+      <a class="nav-link" (click)="scroll('section00')" [ngClass]="{ active: currentSection === 'section00' }">
+        <i class="bi bi-house"></i>
+        <span class="ng-star-inserted">Home</span></a>
+    </li>
+    <li class="">
+      <a class="nav-link" (click)="scroll('section01')" [ngClass]="{ active: currentSection === 'section01' }">
+        <i class="bi bi-person"></i>
+        <span class="ng-star-inserted">About</span></a>
+    </li>
+    <li class="">
+      <a class="nav-link" (click)="scroll('section02')" [ngClass]="{ active: currentSection === 'section02' }">
+        <i class="bi bi-gear"></i>
+        <span class="ng-star-inserted">Skills</span></a>
+    </li>
+    <li class="">
+      <a class="nav-link" (click)="scroll('section03')" [ngClass]="{ active: currentSection === 'section03' }">
+        <i class="bi bi-layers"></i>
+        <span class="ng-star-inserted">Projects</span></a>
+    </li>
+    <li class="">
+      <a class="nav-link" (click)="scroll('section04')" [ngClass]="{ active: currentSection === 'section04' }">
+        <i class="bi bi-briefcase"></i>
+        <span class="ng-star-inserted">Experience</span></a>
+    </li>
+    <li class="">
+      <a class="nav-link" (click)="scroll('section05')" [ngClass]="{ active: currentSection === 'section05' }">
+        <i class="bi bi-mortarboard"></i>
+        <span class="ng-star-inserted">Achievements</span></a>
+    </li>
+    <li class="">
+      <a class="nav-link" (click)="scroll('section06')" [ngClass]="{ active: currentSection === 'section06' }">
+        <i class="bi bi-chat"></i>
+        <span class="ng-star-inserted">Contact</span></a>
+    </li>
+  </ul>
+</header>
+<nav class="navbar fixed-top d-lg-block d-xl-none">
+  <div class="container-fluid">
+    <a id="menu-btn">
+      <i class="bi bi-list"></i>
+    </a>
+  </div>
+</nav>

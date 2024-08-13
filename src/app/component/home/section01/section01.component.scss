@@ -1,0 +1,27 @@
+.col-md-4.col-12 {
+    &:hover {
+        .bi {
+            transition: all 0.3s ease-in-out;
+        }
+
+        :has(.bi-fire) {
+            .bi {
+                color: rgb(255, 166, 0) !important;
+            }
+        }
+
+        :has(.bi-cup-hot) {
+
+            .bi {
+                color: rgb(114, 78, 0) !important;
+            }
+        }
+
+        :has(.bi-briefcase) {
+
+            .bi {
+                color: rgb(37, 22, 0) !important;
+            }
+        }
+    }
+}

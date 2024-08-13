@@ -1,0 +1,39 @@
+<div id="section04" class="px-5 my-5 section">
+  <div class="row">
+    <div class="col-12 text-start mb-2">
+      <h1 class="section-text">Experience</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mb-2 col-md-6 col-12 animation-duration-1000" pAnimateOnScroll enterClass="flipleft" leaveClass="fadeout">
+      <div class="card">
+        <div class="card-body">
+          <ul class="sessions work">
+            <li *ngFor="let item of experience.work">
+              <div class="header-top">{{ item.duration }}</div>
+              <h6 class="header">{{ item.name }}</h6>
+              <div>{{ item.role }}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mb-2 col-md-6 col-12 animation-duration-1000" pAnimateOnScroll enterClass="flipleft" leaveClass="fadeout">
+      <div class="card">
+        <div class="card-body">
+          <ul class="sessions academic">
+            <li *ngFor="let item of experience.edu">
+              <div class="header-top">{{ item.year }}</div>
+              <h6 class="header">
+                {{ item.degree }}
+              </h6>
+              <div>{{ item.name }}</div>
+              <div>{{ item.university }}</div>
+              <div>Percentage {{ item.marks }}%</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

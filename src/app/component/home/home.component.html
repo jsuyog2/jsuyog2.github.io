@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div
+  class="main"
+  scrollSpy
+  [spiedTags]="'section'"
+  (sectionChange)="onSectionChange($event)"
+>
+  <app-section00></app-section00>
+  <div class="container">
+    <app-section01></app-section01>
+    <app-section02></app-section02>
+    <app-section03></app-section03>
+    <app-section04></app-section04>
+    <app-section05></app-section05>
+    <app-section06></app-section06>
+  </div>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,34 @@
+<div id="section02" class="px-5 my-5 section">
+  <div class="row">
+    <div class="col-12 text-start mb-2">
+      <h1 class="section-text">Skills</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      class="col-md-4 col-12 mb-2"
+      *ngFor="let item of services; let i = index"
+    >
+      <div id="card{{ i + 1 }}" class="card animation-duration-1000" pAnimateOnScroll enterClass="flipup" leaveClass="fadeout">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 text-center">
+              <img
+                class="p-2"
+                src="https://img.icons8.com/{{ item.fill }}/100/null/{{
+                  item.icon
+                }}.png"
+              />
+              <h5>
+                <b>{{ item.title }}</b>
+              </h5>
+              <p>
+                {{ item.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
