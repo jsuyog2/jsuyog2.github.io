@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Back-End Development",
+        "icon": "backend-development",
+        "fill": "stickers",
+        "description": "Experienced in NodeJS for building robust server-side applications. Proficient in SQL and NoSQL databases, with a focus on PostgreSQL. Skilled in implementing APIs like Mapbox, Google Login, and Razorpay. Strong in LDAP for secure authentication. Experienced in deploying on Linux, Windows servers, and Azure."
+    },
+    {
+        "title": "Front-End Development",
+        "icon": "web",
+        "fill": "stickers",
+        "description": "Skilled in JavaScript, JQuery, and Angular for creating dynamic, responsive user interfaces. Focus on designing user-friendly experiences across browsers and devices."
+    },
+    {
+        "title": "Other Skills",
+        "icon": "development-skill",
+        "fill": "stickers",
+        "description": "Strong in multi-project management, ensuring timely, high-quality deliveries. Experienced with Azure cloud services. Known for analytical skills, teamwork, and effective communication. Committed to continuous learning and staying updated with industry trends."
+    }
+]
