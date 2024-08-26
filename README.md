@@ -91,17 +91,17 @@ These projects showcase my ability to work with diverse technologies, implement 
 
 ## Open Source Contributions
 
-1. **Express PostgreSQL API**
+1. **Express Sequelize API**
    - Environment: Node.js
-   - Packages: Express, JWT Token, bcryptjs, NODEMAILER
-   - Database: PostgreSQL
-   - Description: This project is a robust and scalable RESTful API built using Express.js and PostgreSQL. It provides a clean and efficient backend solution for managing data and handling various API requests in a Node.js environment.
+   - Packages: Express, JWT Token, bcryptjs, Nodemailer, Sequelize
+   - Database: PostgreSQL (via Sequelize ORM)
+   - Description: This project is a robust and scalable RESTful API built using Express.js and Sequelize. It provides a clean and efficient backend solution for managing data and handling various API requests in a Node.js environment.
    - Features:
      - JWT Token for authentication
      - bcryptjs for password hashing
-     - NODEMAILER for email functionalities
-     - request-ip for IP address handling
-   - GitHub Repository: [Express PostgreSQL API](https://github.com/jsuyog2/express-postgresql-api)
+     - Nodemailer for email functionalities
+     - Sequelize for database interaction and ORM functionality
+   - GitHub Repository: [Express Sequelize API](https://github.com/jsuyog2/express-sequelize-api)
 
 2. **ChaiVala**
    - Environment: Android
