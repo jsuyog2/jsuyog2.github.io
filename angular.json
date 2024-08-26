@@ -107,7 +107,7 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "branch": "ghpages",
-            "dir": "E:/Clouds/jsuyog2.github.io/dist/suyog-jadhav",
+            "dir": "dist/suyog-jadhav",
             "repo": "https://github.com/jsuyog2/jsuyog2.github.io.git"
           }
         }
