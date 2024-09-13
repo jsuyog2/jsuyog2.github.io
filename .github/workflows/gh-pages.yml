@@ -28,6 +28,6 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GH_TOKEN }}
-        publish_dir: dist/suyog-jadhav/browser
+        publish_dir: dist/suyog-jadhav
         enable_jekyll: true
         publish_branch: ghpages
